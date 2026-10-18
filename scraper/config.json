@@ -1,0 +1,86 @@
+{
+  "_hinweis": "Einmal pro Saison anpassen: championship, group und short der Mannschaften stehen auf click-TT (Liga-Link der Mannschaft). Alles andere läuft automatisch.",
+  "base": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa",
+  "club_id": "3939",
+  "club_nr": "2051017",
+  "club_name": "TSV Dettingen",
+  "season": "2026/27",
+  "season_from": "01.08.2026",
+  "season_to": "31.07.2027",
+  "mytt_season": "26--27",
+  "teams": [
+    {
+      "key": "h1",
+      "label": "1. Mannschaft",
+      "clicktt": "TSV Dettingen",
+      "short": "E BOL",
+      "league": "Bezirksoberliga",
+      "championship": "SK Bez. AL 26/27",
+      "group": "529958",
+      "mytt": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Bezirksoberliga/gruppe/529958/tabelle/gesamt"
+    },
+    {
+      "key": "h2",
+      "label": "2. Mannschaft",
+      "clicktt": "TSV Dettingen II",
+      "short": "E BK",
+      "league": "Bezirksklasse, Gruppe 3",
+      "championship": "SK Bez. AL 26/27",
+      "group": "528659",
+      "mytt": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Bezirksklasse%2C_Gruppe_3/gruppe/528659/tabelle/gesamt"
+    },
+    {
+      "key": "h3",
+      "label": "3. Mannschaft",
+      "clicktt": "TSV Dettingen III",
+      "short": "E KLA",
+      "league": "Kreisliga A, Gruppe 3",
+      "championship": "SK Bez. AL 26/27",
+      "group": "528666",
+      "mytt": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Kreisliga_A%2C_Gruppe_3/gruppe/528666/tabelle/gesamt"
+    },
+    {
+      "key": "h4",
+      "label": "4. Mannschaft",
+      "clicktt": "TSV Dettingen IV",
+      "short": "E KLB",
+      "league": "Kreisliga B, Gruppe 4",
+      "championship": "SK Bez. AL 26/27",
+      "group": "528667",
+      "mytt": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Kreisliga_B%2C_Gruppe_4/gruppe/528667/tabelle/gesamt"
+    },
+    {
+      "key": "h5",
+      "label": "5. Mannschaft (3er)",
+      "clicktt": "TSV Dettingen V",
+      "short": "E KKA",
+      "league": "Kreisklasse, Gruppe 3",
+      "championship": "SK Bez. AL 26/27",
+      "group": "528672",
+      "mytt": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Kreisklasse%2C_Gruppe_3/gruppe/528672/tabelle/gesamt"
+    },
+    {
+      "key": "s40",
+      "label": "Senioren 40",
+      "clicktt": "TSV Dettingen",
+      "short": "S40 BK",
+      "league": "Senioren Bezirksklasse, Gruppe 1",
+      "championship": "SK Bez. AL 26/27",
+      "group": "528676",
+      "mytt": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Senioren_Bezirksklasse%2C_Gruppe_1/gruppe/528676/tabelle/gesamt"
+    }
+  ],
+  "cups": {
+    "E VP": "Bezirkspokal A",
+    "E BP B": "Bezirkspokal B"
+  },
+  "club": {
+    "hall": "Uhlandhalle (im Ortszentrum)",
+    "address": "Rathausplatz 2, 72581 Dettingen an der Erms",
+    "maps": "https://www.google.com/maps/dir/?api=1&destination=Rathausplatz+2,72581+Dettingen,DEU",
+    "contact": "Iosif Toulkeridis",
+    "email": "",
+    "instagram": "tsvdettingentischtennis",
+    "training": []
+  }
+}

@@ -1,0 +1,1186 @@
+{
+ "updated": "2026-10-18T17:30:00+00:00",
+ "season": "2026/27",
+ "clubName": "TSV Dettingen",
+ "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
+ "myttClubUrl": "https://www.mytischtennis.de/click-tt/TTBW/26--27/verein/2051017/TSV_Dettingen/mannschaften/",
+ "cups": {
+  "E VP": "Bezirkspokal A",
+  "E BP B": "Bezirkspokal B"
+ },
+ "club": {
+  "hall": "Uhlandhalle (im Ortszentrum)",
+  "address": "Rathausplatz 2, 72581 Dettingen an der Erms",
+  "maps": "https://www.google.com/maps/dir/?api=1&destination=Rathausplatz+2,72581+Dettingen,DEU",
+  "contact": "Iosif Toulkeridis",
+  "email": "",
+  "instagram": "tsvdettingentischtennis",
+  "training": []
+ },
+ "teams": [
+  {
+   "key": "h1",
+   "label": "1. Mannschaft",
+   "clicktt": "TSV Dettingen",
+   "short": "E BOL",
+   "league": "Bezirksoberliga",
+   "clickttUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=529958",
+   "myttUrl": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Bezirksoberliga/gruppe/529958/tabelle/gesamt",
+   "table": [
+    {
+     "rank": 1,
+     "team": "TTC Grosselfingen",
+     "m": 3,
+     "w": 3,
+     "d": 0,
+     "l": 0,
+     "games": "27:18",
+     "diff": "+9",
+     "pts": "6:0"
+    },
+    {
+     "rank": 2,
+     "team": "TSV Gomaringen",
+     "m": 3,
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "games": "22:15",
+     "diff": "+7",
+     "pts": "4:2"
+    },
+    {
+     "rank": 3,
+     "team": "TSV Nusplingen",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "9:3",
+     "diff": "+6",
+     "pts": "2:0"
+    },
+    {
+     "rank": 4,
+     "team": "TSV Dettingen",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "16:12",
+     "diff": "+4",
+     "pts": "2:2"
+    },
+    {
+     "rank": 5,
+     "team": "SV Tübingen",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "14:11",
+     "diff": "+3",
+     "pts": "2:2"
+    },
+    {
+     "rank": 6,
+     "team": "TSV Dormettingen",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "12:13",
+     "diff": "-1",
+     "pts": "2:2"
+    },
+    {
+     "rank": 7,
+     "team": "TSV Sondelfingen",
+     "m": 3,
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "games": "14:24",
+     "diff": "-10",
+     "pts": "2:4"
+    },
+    {
+     "rank": 8,
+     "team": "TSV Nusplingen II",
+     "m": 2,
+     "w": 0,
+     "d": 0,
+     "l": 2,
+     "games": "13:18",
+     "diff": "-5",
+     "pts": "0:4"
+    },
+    {
+     "rank": 9,
+     "team": "TTC Ergenzingen II",
+     "m": 2,
+     "w": 0,
+     "d": 0,
+     "l": 2,
+     "games": "5:18",
+     "diff": "-13",
+     "pts": "0:4"
+    }
+   ]
+  },
+  {
+   "key": "h2",
+   "label": "2. Mannschaft",
+   "clicktt": "TSV Dettingen II",
+   "short": "E BK",
+   "league": "Bezirksklasse, Gruppe 3",
+   "clickttUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=528659",
+   "myttUrl": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Bezirksklasse%2C_Gruppe_3/gruppe/528659/tabelle/gesamt",
+   "table": [
+    {
+     "rank": 1,
+     "team": "TSV Dettingen II",
+     "m": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "games": "18:8",
+     "diff": "+10",
+     "pts": "4:0"
+    },
+    {
+     "rank": 2,
+     "team": "TV Neuhausen",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "9:6",
+     "diff": "+3",
+     "pts": "2:0"
+    },
+    {
+     "rank": 3,
+     "team": "TSV Grafenberg",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "14:13",
+     "diff": "+1",
+     "pts": "2:2"
+    },
+    {
+     "rank": 4,
+     "team": "TTC Reutlingen III",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "13:14",
+     "diff": "-1",
+     "pts": "2:2"
+    },
+    {
+     "rank": 5,
+     "team": "TSV Betzingen III",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "14:15",
+     "diff": "-1",
+     "pts": "2:2"
+    },
+    {
+     "rank": 6,
+     "team": "SV Rommelsbach II",
+     "m": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "games": "0:0",
+     "diff": "0",
+     "pts": "0:0"
+    },
+    {
+     "rank": 7,
+     "team": "TSV Riederich",
+     "m": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "games": "0:0",
+     "diff": "0",
+     "pts": "0:0"
+    },
+    {
+     "rank": 8,
+     "team": "TTC Reutlingen II",
+     "m": 1,
+     "w": 0,
+     "d": 0,
+     "l": 1,
+     "games": "6:9",
+     "diff": "-3",
+     "pts": "0:2"
+    },
+    {
+     "rank": 9,
+     "team": "TSV Sondelfingen II",
+     "m": 2,
+     "w": 0,
+     "d": 0,
+     "l": 2,
+     "games": "9:18",
+     "diff": "-9",
+     "pts": "0:4"
+    }
+   ]
+  },
+  {
+   "key": "h3",
+   "label": "3. Mannschaft",
+   "clicktt": "TSV Dettingen III",
+   "short": "E KLA",
+   "league": "Kreisliga A, Gruppe 3",
+   "clickttUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=528666",
+   "myttUrl": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Kreisliga_A%2C_Gruppe_3/gruppe/528666/tabelle/gesamt",
+   "table": [
+    {
+     "rank": 1,
+     "team": "TuS Metzingen III",
+     "m": 3,
+     "w": 3,
+     "d": 0,
+     "l": 0,
+     "games": "27:1",
+     "diff": "+26",
+     "pts": "6:0"
+    },
+    {
+     "rank": 2,
+     "team": "FC Mittelstadt II",
+     "m": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "games": "18:7",
+     "diff": "+11",
+     "pts": "4:0"
+    },
+    {
+     "rank": 3,
+     "team": "TTV Reicheneck",
+     "m": 3,
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "games": "24:12",
+     "diff": "+12",
+     "pts": "4:2"
+    },
+    {
+     "rank": 4,
+     "team": "TTC Reutlingen IV",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "9:3",
+     "diff": "+6",
+     "pts": "2:0"
+    },
+    {
+     "rank": 5,
+     "team": "SV Rommelsbach III",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "9:4",
+     "diff": "+5",
+     "pts": "2:0"
+    },
+    {
+     "rank": 6,
+     "team": "TSV Dettingen III",
+     "m": 3,
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "games": "10:24",
+     "diff": "-14",
+     "pts": "2:4"
+    },
+    {
+     "rank": 7,
+     "team": "TB Metzingen II",
+     "m": 5,
+     "w": 1,
+     "d": 0,
+     "l": 4,
+     "games": "21:39",
+     "diff": "-18",
+     "pts": "2:8"
+    },
+    {
+     "rank": 8,
+     "team": "TV Neuhausen II",
+     "m": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "games": "0:0",
+     "diff": "0",
+     "pts": "0:0"
+    },
+    {
+     "rank": 9,
+     "team": "TSV Sickenhausen II",
+     "m": 4,
+     "w": 0,
+     "d": 0,
+     "l": 4,
+     "games": "8:36",
+     "diff": "-28",
+     "pts": "0:8"
+    }
+   ]
+  },
+  {
+   "key": "h4",
+   "label": "4. Mannschaft",
+   "clicktt": "TSV Dettingen IV",
+   "short": "E KLB",
+   "league": "Kreisliga B, Gruppe 4",
+   "clickttUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=528667",
+   "myttUrl": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Kreisliga_B%2C_Gruppe_4/gruppe/528667/tabelle/gesamt",
+   "table": [
+    {
+     "rank": 1,
+     "team": "TSV Riederich II",
+     "m": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "games": "18:5",
+     "diff": "+13",
+     "pts": "4:0"
+    },
+    {
+     "rank": 2,
+     "team": "TuS Metzingen IV",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "9:0",
+     "diff": "+9",
+     "pts": "2:0"
+    },
+    {
+     "rank": 3,
+     "team": "TSV Sondelfingen III",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "9:1",
+     "diff": "+8",
+     "pts": "2:0"
+    },
+    {
+     "rank": 4,
+     "team": "FC Mittelstadt III",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "9:2",
+     "diff": "+7",
+     "pts": "2:0"
+    },
+    {
+     "rank": 5,
+     "team": "TSV Dettingen IV",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "10:13",
+     "diff": "-3",
+     "pts": "2:2"
+    },
+    {
+     "rank": 6,
+     "team": "TB Metzingen III",
+     "m": 1,
+     "w": 0,
+     "d": 0,
+     "l": 1,
+     "games": "0:9",
+     "diff": "-9",
+     "pts": "0:2"
+    },
+    {
+     "rank": 7,
+     "team": "TuS Metzingen V",
+     "m": 2,
+     "w": 0,
+     "d": 0,
+     "l": 2,
+     "games": "6:18",
+     "diff": "-12",
+     "pts": "0:4"
+    },
+    {
+     "rank": 8,
+     "team": "TSV Sondelfingen IV",
+     "m": 2,
+     "w": 0,
+     "d": 0,
+     "l": 2,
+     "games": "5:18",
+     "diff": "-13",
+     "pts": "0:4"
+    }
+   ]
+  },
+  {
+   "key": "h5",
+   "label": "5. Mannschaft (3er)",
+   "clicktt": "TSV Dettingen V",
+   "short": "E KKA",
+   "league": "Kreisklasse, Gruppe 3",
+   "clickttUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=528672",
+   "myttUrl": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Erwachsene_Kreisklasse%2C_Gruppe_3/gruppe/528672/tabelle/gesamt",
+   "table": [
+    {
+     "rank": 1,
+     "team": "EK Lustnau II",
+     "m": 3,
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "games": "23:7",
+     "diff": "+16",
+     "pts": "5:1"
+    },
+    {
+     "rank": 2,
+     "team": "SV Tübingen IV",
+     "m": 3,
+     "w": 1,
+     "d": 2,
+     "l": 0,
+     "games": "20:10",
+     "diff": "+10",
+     "pts": "4:2"
+    },
+    {
+     "rank": 3,
+     "team": "TTV Reicheneck II",
+     "m": 2,
+     "w": 1,
+     "d": 1,
+     "l": 0,
+     "games": "11:9",
+     "diff": "+2",
+     "pts": "3:1"
+    },
+    {
+     "rank": 4,
+     "team": "TSV Dettingen V",
+     "m": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "games": "6:4",
+     "diff": "+2",
+     "pts": "2:0"
+    },
+    {
+     "rank": 5,
+     "team": "TSV Grafenberg II",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "9:11",
+     "diff": "-2",
+     "pts": "2:2"
+    },
+    {
+     "rank": 6,
+     "team": "SSV Reutlingen IV",
+     "m": 3,
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "games": "7:23",
+     "diff": "-16",
+     "pts": "2:4"
+    },
+    {
+     "rank": 7,
+     "team": "TSV Sickenhausen III",
+     "m": 1,
+     "w": 0,
+     "d": 0,
+     "l": 1,
+     "games": "4:6",
+     "diff": "-2",
+     "pts": "0:2"
+    },
+    {
+     "rank": 8,
+     "team": "TB Metzingen IV",
+     "m": 3,
+     "w": 0,
+     "d": 0,
+     "l": 3,
+     "games": "10:20",
+     "diff": "-10",
+     "pts": "0:6"
+    }
+   ]
+  },
+  {
+   "key": "s40",
+   "label": "Senioren 40",
+   "clicktt": "TSV Dettingen",
+   "short": "S40 BK",
+   "league": "Senioren Bezirksklasse, Gruppe 1",
+   "clickttUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=528676",
+   "myttUrl": "https://www.mytischtennis.de/click-tt/TTBW/26--27/ligen/Senioren_Bezirksklasse%2C_Gruppe_1/gruppe/528676/tabelle/gesamt",
+   "table": [
+    {
+     "rank": 1,
+     "team": "TSV Gomaringen",
+     "m": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "games": "12:0",
+     "diff": "+12",
+     "pts": "4:0"
+    },
+    {
+     "rank": 2,
+     "team": "TuS Metzingen",
+     "m": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "games": "12:5",
+     "diff": "+7",
+     "pts": "4:0"
+    },
+    {
+     "rank": 3,
+     "team": "TSV Dettingen",
+     "m": 2,
+     "w": 1,
+     "d": 1,
+     "l": 0,
+     "games": "11:9",
+     "diff": "+2",
+     "pts": "3:1"
+    },
+    {
+     "rank": 4,
+     "team": "VfL Dettenhausen",
+     "m": 3,
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "games": "12:14",
+     "diff": "-2",
+     "pts": "3:3"
+    },
+    {
+     "rank": 5,
+     "team": "FC Mittelstadt",
+     "m": 2,
+     "w": 1,
+     "d": 0,
+     "l": 1,
+     "games": "7:7",
+     "diff": "0",
+     "pts": "2:2"
+    },
+    {
+     "rank": 6,
+     "team": "TTC Ergenzingen",
+     "m": 3,
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "games": "10:13",
+     "diff": "-3",
+     "pts": "2:4"
+    },
+    {
+     "rank": 7,
+     "team": "VfL Dettenhausen II",
+     "m": 4,
+     "w": 0,
+     "d": 0,
+     "l": 4,
+     "games": "8:24",
+     "diff": "-16",
+     "pts": "0:8"
+    }
+   ]
+  }
+ ],
+ "matches": [
+  {
+   "d": "2026-09-19",
+   "t": "16:00",
+   "f": [
+    "v"
+   ],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "TTC Grosselfingen",
+   "r": "7:9",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1000&club=3939"
+  },
+  {
+   "d": "2026-09-19",
+   "t": "18:00",
+   "f": [],
+   "lg": "E KLB",
+   "h": "TSV Dettingen IV",
+   "a": "TSV Riederich II",
+   "r": "1:9",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1001&club=3939"
+  },
+  {
+   "d": "2026-09-19",
+   "t": "19:30",
+   "f": [],
+   "lg": "E KLA",
+   "h": "TSV Dettingen III",
+   "a": "TuS Metzingen III",
+   "r": "1:9",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1002&club=3939"
+  },
+  {
+   "d": "2026-09-25",
+   "t": "20:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TSV Sondelfingen II",
+   "r": "9:3",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1003&club=3939"
+  },
+  {
+   "d": "2026-09-26",
+   "t": "17:30",
+   "f": [],
+   "lg": "E KLA",
+   "h": "TTV Reicheneck",
+   "a": "TSV Dettingen III",
+   "r": "6:9",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1004&club=3939"
+  },
+  {
+   "d": "2026-10-02",
+   "t": "19:30",
+   "f": [
+    "v"
+   ],
+   "lg": "E VP",
+   "h": "TSV Dettingen II",
+   "a": "TV Derendingen II",
+   "r": "1:4",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1005&club=3939"
+  },
+  {
+   "d": "2026-10-02",
+   "t": "20:30",
+   "f": [],
+   "lg": "S40 BK",
+   "h": "TSV Dettingen",
+   "a": "VfL Dettenhausen",
+   "r": "5:5",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1006&club=3939"
+  },
+  {
+   "d": "2026-10-03",
+   "t": "18:00",
+   "f": [],
+   "lg": "E KLB",
+   "h": "TSV Dettingen IV",
+   "a": "TSV Sondelfingen IV",
+   "r": "9:4",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1007&club=3939"
+  },
+  {
+   "d": "2026-10-03",
+   "t": "18:20",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "TSV Sondelfingen",
+   "r": "9:3",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1008&club=3939"
+  },
+  {
+   "d": "2026-10-16",
+   "t": "19:00",
+   "f": [
+    "v"
+   ],
+   "lg": "S40 BK",
+   "h": "TSV Dettingen",
+   "a": "VfL Dettenhausen II",
+   "r": "6:4",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1009&club=3939"
+  },
+  {
+   "d": "2026-10-16",
+   "t": "19:30",
+   "f": [
+    "v"
+   ],
+   "lg": "E VP",
+   "h": "TSV Dettingen",
+   "a": "TV Derendingen",
+   "r": "4:3",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1010&club=3939"
+  },
+  {
+   "d": "2026-10-17",
+   "t": "17:30",
+   "f": [],
+   "lg": "E KLA",
+   "h": "FC Mittelstadt II",
+   "a": "TSV Dettingen III",
+   "r": "9:0",
+   "n": "NA",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1011&club=3939"
+  },
+  {
+   "d": "2026-10-17",
+   "t": "18:00",
+   "f": [
+    "v"
+   ],
+   "lg": "E KKA",
+   "h": "TSV Sickenhausen III",
+   "a": "TSV Dettingen V",
+   "r": "4:6",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1012&club=3939"
+  },
+  {
+   "d": "2026-10-17",
+   "t": "18:30",
+   "f": [],
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TSV Grafenberg",
+   "r": "9:5",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=1013&club=3939"
+  },
+  {
+   "d": "2026-10-21",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "TSV Grafenberg II",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-23",
+   "t": "20:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TV Neuhausen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-24",
+   "t": "18:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TB Metzingen IV",
+   "a": "TSV Dettingen V",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-24",
+   "t": "18:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "TTC Reutlingen II",
+   "a": "TSV Dettingen II",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-24",
+   "t": "19:30",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dormettingen",
+   "a": "TSV Dettingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-25",
+   "t": "16:00",
+   "f": [
+    "v"
+   ],
+   "lg": "E BP B",
+   "h": "TSV Dettingen III",
+   "a": "spielfrei",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-29",
+   "t": "20:15",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "S40 BK",
+   "h": "TSV Gomaringen",
+   "a": "TSV Dettingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-30",
+   "t": "19:30",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLB",
+   "h": "TuS Metzingen V",
+   "a": "TSV Dettingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-31",
+   "t": "18:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "SV Rommelsbach II",
+   "a": "TSV Dettingen II",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-31",
+   "t": "19:00",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Nusplingen II",
+   "a": "TSV Dettingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-10-31",
+   "t": "19:30",
+   "f": [],
+   "lg": "E KLA",
+   "h": "TSV Dettingen III",
+   "a": "TTC Reutlingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-06",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "SV Tübingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-06",
+   "t": "20:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TSV Riederich",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-07",
+   "t": "16:30",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "TTC Ergenzingen II",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-14",
+   "t": "18:00",
+   "f": [],
+   "lg": "E KLA",
+   "h": "TV Neuhausen II",
+   "a": "TSV Dettingen III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-14",
+   "t": "18:00",
+   "f": [],
+   "lg": "E KLB",
+   "h": "TB Metzingen III",
+   "a": "TSV Dettingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-14",
+   "t": "18:30",
+   "f": [],
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TSV Betzingen III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-18",
+   "t": "19:30",
+   "f": [
+    "v"
+   ],
+   "lg": "S40 BK",
+   "h": "FC Mittelstadt",
+   "a": "TSV Dettingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-18",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "TTV Reicheneck II",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-21",
+   "t": "17:30",
+   "f": [],
+   "lg": "E KLB",
+   "h": "FC Mittelstadt III",
+   "a": "TSV Dettingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-21",
+   "t": "18:00",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Gomaringen",
+   "a": "TSV Dettingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-21",
+   "t": "19:30",
+   "f": [],
+   "lg": "E KLA",
+   "h": "TSV Dettingen III",
+   "a": "SV Rommelsbach III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-27",
+   "t": "20:30",
+   "f": [],
+   "lg": "S40 BK",
+   "h": "TSV Dettingen",
+   "a": "TuS Metzingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-28",
+   "t": "18:00",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLA",
+   "h": "TSV Sickenhausen II",
+   "a": "TSV Dettingen III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-28",
+   "t": "18:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "TTC Reutlingen III",
+   "a": "TSV Dettingen II",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-03",
+   "t": "20:30",
+   "f": [],
+   "lg": "S40 BK",
+   "h": "TTC Ergenzingen",
+   "a": "TSV Dettingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-04",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "EK Lustnau II",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-05",
+   "t": "16:30",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "TSV Nusplingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-05",
+   "t": "18:00",
+   "f": [],
+   "lg": "E KLB",
+   "h": "TuS Metzingen IV",
+   "a": "TSV Dettingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-05",
+   "t": "19:00",
+   "f": [
+    "v"
+   ],
+   "lg": "E KLA",
+   "h": "TB Metzingen II",
+   "a": "TSV Dettingen III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-09",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "SSV Reutlingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-12",
+   "t": "16:30",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "SV Tübingen",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-12",
+   "t": "18:00",
+   "f": [],
+   "lg": "E KLB",
+   "h": "TSV Sondelfingen III",
+   "a": "TSV Dettingen IV",
+   "r": "",
+   "n": "",
+   "u": ""
+  }
+ ],
+ "warnings": []
+}

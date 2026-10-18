@@ -1,0 +1,721 @@
+<title>TSV Dettingen Tischtennis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Tischtennis beim TSV Dettingen/Erms: sechs Mannschaften von der Kreisklasse bis zur Bezirksoberliga. Spielplan, Ergebnisse, Tabellen und Probetraining.">
+<meta property="og:title" content="Tischtennis beim TSV Dettingen/Erms">
+<meta property="og:description" content="Sechs Mannschaften, eine Halle und Platz für dich. Komm zum Probetraining!">
+<link rel="icon" href="assets/logo.png">
+<style>
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo.woff2") format("woff2");font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap}
+/* Layout: Vereinsband mit Logo und lebendiger Platte (Ballwechsel + nächstes Spiel), Ergebnis-Laufband,
+   schwebende Saisonbilanz, Liga-Leiter "jedes Niveau", Spiele, Mannschaften, Mitmachen im Vereinsblau.
+   Ein Ball führt durch die Seite: Fortschritt unter der Kopfzeile, Leiste rechts, Bälle in den Überschriften. */
+:root{
+  --navy:#002a4d; --club:#004173; --sky:#0093cf; --ball:#f57c1f; --ball-hi:#ff9a4a; --ball-ink:#b4530c;
+  --bg:#eef3f8; --surface:#ffffff; --ink:#0d1c30; --muted:#55687f; --rule:#d5e0eb; --tint:#e3eff8;
+  --table:#155fae; --table-deep:#0b4381; --chalk:#ffffff;
+  --win:#13804e; --win-bg:#e0f3ea; --loss:#bf3a31; --loss-bg:#fbe7e5; --draw:#8a6714; --draw-bg:#f7efd9;
+  --on-band:#ffffff; --on-band-soft:#cfe6f5;
+  --f:"Archivo","Arial",system-ui,sans-serif;
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem; --s6:2rem; --s7:3rem; --s8:5.5rem;
+  --max:1160px; --ease:cubic-bezier(.2,.7,.2,1); --spring:cubic-bezier(.34,1.56,.64,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#071524; --surface:#0f2238; --ink:#e6eef8; --muted:#97aac2; --rule:#1f3550; --tint:#12304d;
+  --table:#1c68bb; --table-deep:#124d8e; --ball-ink:#ffa25c;
+  --win:#4ccb8f; --win-bg:#0f3427; --loss:#f3807a; --loss-bg:#3a1719; --draw:#e2c06a; --draw-bg:#332816;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#071524; --surface:#0f2238; --ink:#e6eef8; --muted:#97aac2; --rule:#1f3550; --tint:#12304d;
+  --table:#1c68bb; --table-deep:#124d8e; --ball-ink:#ffa25c;
+  --win:#4ccb8f; --win-bg:#0f3427; --loss:#f3807a; --loss-bg:#3a1719; --draw:#e2c06a; --draw-bg:#332816;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{background:var(--bg);color:var(--ink);font:400 1.02rem/1.6 var(--f);font-stretch:100%;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--navy)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ball);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f);text-wrap:balance;margin:0}
+h1,h2{font-stretch:115%;font-weight:850;letter-spacing:-.02em;line-height:.98}
+h2{font-size:clamp(2rem,4.6vw,3.3rem)}
+h3{font-size:1.25rem;font-weight:750;font-stretch:105%;line-height:1.15}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.narrow{font-stretch:78%}
+
+/* ---------- Kopfzeile ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--navy) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--on-band)}
+.top .wrap{display:flex;align-items:center;gap:var(--s5);padding-block:var(--s2)}
+.brand{display:flex;align-items:center;gap:var(--s3);text-decoration:none;flex:none}
+.brand img{height:42px;width:auto;display:block}
+.brand span{font-weight:800;font-stretch:112%;font-size:1.05rem;letter-spacing:-.01em}
+nav{margin-left:auto;display:flex;align-items:center;gap:var(--s1);overflow-x:auto;scrollbar-width:none;min-width:0}
+nav a{position:relative;text-decoration:none;font-weight:600;font-size:.95rem;padding:.5rem .75rem;white-space:nowrap;color:var(--on-band-soft);transition:color .2s}
+nav a:hover{color:#fff}
+nav a::after{content:"";position:absolute;left:.75rem;right:.75rem;bottom:.15rem;height:2px;border-radius:2px;background:var(--ball);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+nav a.active{color:#fff}
+nav a.active::after{transform:scaleX(1)}
+nav .nav-cta{background:var(--ball);color:#1b0d00;border-radius:999px;padding:.45rem 1rem;margin-left:var(--s2);font-weight:700;transition:transform .2s var(--ease),background .2s}
+nav .nav-cta:hover{color:#1b0d00;background:var(--ball-hi);transform:translateY(-1px)}
+nav .nav-cta::after{display:none}
+.track{position:relative;height:3px;background:#ffffff1f}
+.track i{position:absolute;inset:0;background:linear-gradient(90deg,var(--sky),#6ccdf2);transform-origin:left;transform:scaleX(0)}
+.track b{position:absolute;top:50%;left:0;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff8 0 15%,transparent 16%),var(--ball);box-shadow:0 2px 6px #0007}
+
+/* ---------- Bühne ---------- */
+.hero{position:relative;color:var(--on-band);overflow:hidden;background:
+  radial-gradient(900px 520px at 88% 105%,#0093cf66,transparent 62%),
+  radial-gradient(700px 420px at -5% -10%,#0a5a9c55,transparent 60%),
+  linear-gradient(180deg,var(--navy) 0%,var(--club) 72%,#00578f 100%)}
+.hero::before{content:"";position:absolute;inset:-20% -10%;pointer-events:none;opacity:.06;
+  background:repeating-linear-gradient(115deg,#fff 0 2px,transparent 2px 120px)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,11fr) minmax(0,13fr);gap:var(--s7);align-items:center;padding-block:var(--s7) calc(var(--s8) + 2rem)}
+.logo-badge{display:block;width:min(100%,250px);height:auto;filter:drop-shadow(0 14px 22px #00152b99);margin-bottom:var(--s5);animation:badge .8s var(--spring) both}
+@keyframes badge{from{transform:translateY(-14px) scale(.94);opacity:0}}
+.hero h1{font-size:clamp(2.7rem,6vw,4.9rem)}
+.hero h1 .w{display:inline-block;animation:rise .75s var(--ease) both}
+.hero h1 .w:nth-child(2){animation-delay:.08s}.hero h1 .w:nth-child(3){animation-delay:.16s}.hero h1 .w:nth-child(4){animation-delay:.24s}
+.hero h1 .hl{color:var(--ball);font-style:normal}
+@keyframes rise{from{transform:translateY(.45em);opacity:0}}
+.hero p.lead{color:var(--on-band-soft);font-size:1.15rem;max-width:38ch;margin:var(--s4) 0 var(--s6);animation:rise .8s var(--ease) .3s both}
+.cta{display:flex;flex-wrap:wrap;gap:var(--s3);animation:rise .8s var(--ease) .4s both}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font:700 1rem var(--f);padding:.85rem 1.3rem;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--spring),background .2s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn-ball{background:var(--ball);color:#1b0d00;box-shadow:0 10px 24px -10px #f57c1fcc}
+.btn-ball:hover{background:var(--ball-hi);box-shadow:0 16px 30px -12px #f57c1fee}
+.btn-ghost{border-color:#ffffff66;color:#fff}
+.btn-ghost:hover{background:#ffffff1a}
+.btn .arrow{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:var(--ball);animation:nudge 1.6s var(--ease) 1.2s infinite}
+@keyframes nudge{0%,55%,100%{transform:translateY(0)}20%{transform:translateY(6px)}35%{transform:translateY(-2px)}}
+.pulse{animation:ring 2.4s ease-out 1.5s infinite}
+.pulse:hover{animation:none}
+@keyframes ring{0%{box-shadow:0 0 0 0 #f57c1fbb,0 10px 24px -10px #f57c1fcc}70%,100%{box-shadow:0 0 0 16px #f57c1f00,0 10px 24px -10px #f57c1fcc}}
+
+.next-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--s2);margin-bottom:var(--s5)}
+.next-head .k{font-weight:750;font-stretch:110%;font-size:1.1rem}
+.countdown{font-weight:800;font-stretch:90%;font-size:1.1rem;color:var(--ball)}
+.stage{perspective:1200px;animation:rise .9s var(--ease) .2s both}
+.ttable{position:relative;aspect-ratio:274/152.5;max-width:100%;background:var(--table);
+  border:4px solid var(--chalk);border-radius:3px;display:grid;grid-template-columns:1fr 1fr;color:#fff;
+  transform:rotateX(18deg);transform-origin:50% 100%;
+  box-shadow:0 18px 0 -6px var(--table-deep),0 46px 60px -22px #000b;animation:tilt-in 1.2s var(--ease) .15s both}
+@keyframes tilt-in{from{transform:rotateX(52deg) translateY(30px)}to{transform:rotateX(18deg)}}
+.ttable::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:var(--chalk);opacity:.8;transform:translateY(-1px)}
+.net{position:absolute;left:50%;top:-18px;bottom:-18px;width:10px;transform:translateX(-50%);
+  background:repeating-linear-gradient(0deg,#08162a 0 3px,#3a4c66 3px 5px);border-left:2px solid #fff;border-right:2px solid #fff;z-index:2}
+.half{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;text-align:center;padding:var(--s4);min-width:0}
+.plate{display:flex;flex-direction:column;align-items:center;gap:var(--s2);background:var(--table);padding:.4rem .75rem;max-width:100%;border-radius:4px}
+.half .side{font-size:.72rem;font-weight:700;opacity:.85;letter-spacing:.12em}
+.half .team{font-weight:850;font-stretch:88%;font-size:clamp(1.3rem,2.9vw,2.15rem);line-height:1.02;overflow-wrap:anywhere}
+.half:not(.ours) .team{opacity:.82}
+.half .lbl{font-size:.8rem;font-weight:650;background:#ffffff2b;padding:.15rem .6rem;border-radius:99px}
+/* Ballwechsel: x-Bewegung außen, Flughöhe (Größe) innen, Schatten bleibt auf der Platte */
+.rally-x{position:absolute;inset:0;z-index:4;pointer-events:none}
+.rally-x .bx{position:absolute;top:0;bottom:0;width:0;left:20%;animation:bx 2.6s ease-in-out infinite alternate}
+@keyframes bx{0%{left:16%;transform:translateY(12%)}100%{left:84%;transform:translateY(-14%)}}
+.bx .ball{position:absolute;left:-10px;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fffa 0 14%,transparent 15%),var(--ball);box-shadow:inset -3px -3px 0 #0003;animation:fly 2.6s ease-in-out infinite}
+.bx .shadow{position:absolute;left:-12px;top:50%;width:24px;height:8px;margin-top:22px;border-radius:50%;background:#000;filter:blur(3px);opacity:.35;animation:shadow 2.6s ease-in-out infinite}
+@keyframes fly{0%,50%,100%{transform:translateY(0) scale(1)}25%,75%{transform:translateY(-34px) scale(1.35)}}
+@keyframes shadow{0%,50%,100%{transform:scale(1);opacity:.45}25%,75%{transform:scale(.6);opacity:.15}}
+.next-meta{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s6);color:var(--on-band-soft);font-weight:500}
+.next-meta strong{color:#fff}
+
+/* ---------- Laufband mit Ergebnissen ---------- */
+.ticker{position:relative;z-index:1;margin-top:var(--s7);background:var(--ball);color:#1b0d00;overflow:hidden;display:flex;align-items:stretch;font-weight:650}
+.ticker .lab{flex:none;display:flex;align-items:center;gap:.5rem;background:var(--navy);color:#fff;padding:.7rem 1rem .7rem max(16px,env(safe-area-inset-left,0px));font-weight:750;font-stretch:105%;font-size:.9rem;z-index:1;box-shadow:12px 0 16px -8px #0006}
+.ticker .lab i{width:8px;height:8px;border-radius:50%;background:var(--ball);animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.ticker .viewport{overflow:hidden;flex:1;min-width:0;display:flex;align-items:center}
+.ticker .belt{display:flex;gap:2.5rem;white-space:nowrap;padding-inline:1.5rem;animation:belt 48s linear infinite;width:max-content}
+.ticker:hover .belt{animation-play-state:paused}
+@keyframes belt{to{transform:translateX(-50%)}}
+.ticker .it{display:inline-flex;align-items:center;gap:.6rem}
+.ticker .it b{font-stretch:80%;font-weight:850;font-size:1.15rem;font-variant-numeric:tabular-nums}
+.ticker .it em{font-style:normal;font-size:.72rem;font-weight:800;background:#1b0d00;color:var(--ball);border-radius:4px;padding:.05rem .35rem}
+
+/* ---------- Saisonbilanz ---------- */
+.season{position:relative;z-index:2;margin-top:calc(-1 * var(--s8) + 1.2rem)}
+.season-card{background:var(--surface);border-radius:18px;box-shadow:0 24px 50px -26px #00284d66,0 0 0 1px var(--rule);
+  display:flex;flex-wrap:wrap;align-items:center;gap:var(--s4) var(--s7);padding:var(--s5) var(--s6)}
+.season-card .t{font-weight:800;font-stretch:110%;font-size:1.15rem;line-height:1.15}
+.season-card .t small{display:block;font-weight:500;font-stretch:100%;font-size:.85rem;color:var(--muted);margin-top:.2rem}
+.tally{display:flex;gap:var(--s6);flex-wrap:wrap}
+.tally div{display:flex;flex-direction:column}
+.tally b{font-weight:850;font-stretch:80%;font-size:2.8rem;line-height:1}
+.tally span{font-size:.85rem;color:var(--muted)}
+.tally .w b{color:var(--win)} .tally .d b{color:var(--draw)} .tally .l b{color:var(--loss)} .tally .n b{color:var(--club)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tally .n b{color:var(--sky)}}
+:root[data-theme="dark"] .tally .n b{color:var(--sky)}
+.leader{margin-left:auto;display:flex;align-items:center;gap:var(--s3);background:var(--tint);padding:.7rem 1rem;border-radius:14px}
+.leader .crown{width:32px;height:32px;border-radius:50%;background:var(--ball);display:grid;place-items:center;color:#1b0d00;font-weight:900;flex:none}
+.leader small{display:block;color:var(--muted);font-size:.8rem}
+.leader strong{font-weight:700}
+
+/* ---------- Abschnitte ---------- */
+section{padding-block:var(--s8) 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--s4);margin-bottom:var(--s6)}
+.sec-head h2{display:flex;align-items:center;gap:.8rem}
+.sec-head p{margin:var(--s3) 0 0;color:var(--muted);max-width:56ch;font-size:1.08rem}
+.drop{width:.5em;height:.5em;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff9 0 14%,transparent 15%),var(--ball);flex:none}
+.drop.go{animation:drop 1s cubic-bezier(.3,0,.3,1)}
+@keyframes drop{0%{transform:translateY(-2.2em)}40%{transform:translateY(0) scale(1.15,.85)}55%{transform:translateY(-.6em) scale(1)}72%{transform:translateY(0) scale(1.08,.92)}84%{transform:translateY(-.15em) scale(1)}100%{transform:translateY(0)}}
+
+/* Einblenden beim Scrollen (nur für Elemente, die beim Laden noch unten liegen) */
+.in{animation:reveal .7s var(--ease) both}
+@keyframes reveal{from{opacity:0;transform:translateY(26px)}}
+
+/* Liga-Leiter */
+.ladder{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s7);align-items:start}
+.ladder-copy p{font-size:1.1rem;color:var(--muted);margin:var(--s4) 0 var(--s5);max-width:44ch}
+.ladder-copy .btn-line{border-color:var(--club);color:var(--ink)}
+.ladder-copy .btn-line:hover{background:var(--surface)}
+.rungs{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.rung{position:relative;display:grid;grid-template-columns:3rem minmax(0,1fr) auto;align-items:center;gap:var(--s4);background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:var(--s3) var(--s4);text-decoration:none;color:inherit;cursor:pointer;transition:transform .25s var(--spring),box-shadow .25s,border-color .25s}
+.rung:hover{transform:translateX(6px);border-color:var(--sky);box-shadow:0 14px 30px -20px #00284d88}
+.rung .lvl{width:3rem;height:3rem;border-radius:12px;background:var(--club);color:#fff;display:grid;place-items:center;font-weight:850;font-stretch:80%;font-size:1.3rem}
+.rung:nth-child(2) .lvl{background:#00538f}.rung:nth-child(3) .lvl{background:#0065a6}.rung:nth-child(4) .lvl{background:#0077ba}.rung:nth-child(5) .lvl{background:#0088c8}
+.rung.sen .lvl{background:var(--ball);color:#1b0d00;font-size:1rem}
+.rung b{display:block;font-weight:750;font-stretch:105%}
+.rung .meter{height:6px;border-radius:6px;background:var(--tint);margin-top:.45rem;overflow:hidden}
+.rung .meter i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--sky),var(--club));transform-origin:left}
+.rung.in .meter i{animation:grow 1.1s var(--ease) .25s both}
+@keyframes grow{from{transform:scaleX(0)}}
+.rung .pl{text-align:right;font-weight:800;font-stretch:85%;font-size:1.15rem;white-space:nowrap}
+.rung .pl small{display:block;font-weight:500;font-stretch:100%;font-size:.75rem;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7)}
+.col-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);margin-bottom:var(--s4);min-height:2.4rem}
+.seg{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:3px}
+.seg::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--club);transition:transform .4s var(--spring)}
+.seg.home::before{transform:translateX(100%)}
+.seg button{position:relative;font:650 .88rem var(--f);border:0;background:transparent;color:var(--muted);padding:.42rem .95rem;border-radius:999px;cursor:pointer;transition:color .3s}
+.seg button[aria-pressed="true"]{color:#fff}
+
+.ticket{display:grid;grid-template-columns:4.4rem minmax(0,1fr) auto;align-items:stretch;background:var(--surface);border:1px solid var(--rule);border-radius:14px;margin-bottom:var(--s3);overflow:hidden;transition:transform .25s var(--spring),box-shadow .25s}
+.ticket:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px #00284d88}
+.cal{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--tint);border-right:2px dashed var(--rule);padding:var(--s3) var(--s2);text-align:center}
+.cal .wd{font-size:.7rem;font-weight:750;color:var(--muted);letter-spacing:.08em}
+.cal .dd{font-weight:850;font-stretch:80%;font-size:1.9rem;line-height:1}
+.cal .mm{font-size:.75rem;color:var(--muted)}
+.ticket.home .cal{background:var(--club);color:#fff;border-right-color:#ffffff55}
+.ticket.home .cal .wd,.ticket.home .cal .mm{color:#cfe6f5}
+.ticket .body{padding:var(--s3) var(--s4);min-width:0}
+.vs{font-weight:500;overflow-wrap:anywhere}
+.vs .us{font-weight:750}
+.sub{font-size:.84rem;color:var(--muted);margin-top:.15rem}
+.ticket .side{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:.35rem;padding:var(--s3) var(--s4)}
+.ticket .time{font-weight:800;font-stretch:80%;font-size:1.35rem;line-height:1}
+.tag{font-size:.72rem;font-weight:750;padding:.18rem .55rem;border-radius:99px;white-space:nowrap}
+.tag.home{background:var(--club);color:#fff}
+.tag.away{border:1px solid var(--rule);color:var(--muted)}
+.tag.cup{background:var(--draw-bg);color:var(--draw)}
+.flag{font-size:.75rem;color:var(--ball-ink);font-weight:700}
+.soon{color:var(--ball-ink);font-weight:750;white-space:nowrap}
+
+.res{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s3);align-items:center;background:var(--surface);border:1px solid var(--rule);border-left:5px solid var(--rule);border-radius:12px;padding:var(--s3) var(--s4);margin-bottom:var(--s3);transition:transform .25s var(--spring)}
+.res:hover{transform:translateX(5px)}
+.res.w{border-left-color:var(--win)} .res.l{border-left-color:var(--loss)} .res.d{border-left-color:var(--draw)}
+.score{display:flex;align-items:center;gap:var(--s3)}
+.score b{font-weight:850;font-stretch:78%;font-size:1.9rem;line-height:1;min-width:3rem;text-align:right}
+.score a{text-decoration:none}
+.score a:hover{text-decoration:underline}
+.chip{font-size:.72rem;font-weight:750;padding:.22rem .5rem;border-radius:6px;min-width:1.7rem;text-align:center}
+.chip.w{background:var(--win-bg);color:var(--win)} .chip.l{background:var(--loss-bg);color:var(--loss)} .chip.d{background:var(--draw-bg);color:var(--draw)}
+.more{margin-top:var(--s2)}
+.link-btn{font:650 .95rem var(--f);background:none;border:0;color:var(--ink);cursor:pointer;padding:.3rem 0;text-decoration:underline;text-decoration-color:var(--ball);text-decoration-thickness:2px;text-underline-offset:4px}
+
+.tabs{display:flex;gap:var(--s3);overflow-x:auto;padding:var(--s2) var(--s1) var(--s3);margin:0 calc(-1 * var(--s1)) var(--s5);scrollbar-width:thin}
+.tabs button{position:relative;flex:none;text-align:left;font:inherit;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:16px;padding:.8rem 1.1rem .8rem 3.5rem;cursor:pointer;min-width:11.5rem;transition:background .3s,border-color .3s,transform .25s var(--spring)}
+.tabs button:hover{transform:translateY(-3px)}
+.tabs button .rk{position:absolute;left:.85rem;top:50%;width:2rem;height:2rem;margin-top:-1rem;border-radius:50%;display:grid;place-items:center;font-weight:850;font-stretch:80%;font-size:1.1rem;background:var(--tint);color:var(--club);transition:background .3s,transform .4s var(--spring)}
+.tabs button b{display:block;font-weight:750;font-stretch:105%;font-size:1.02rem;line-height:1.2}
+.tabs button span.l{font-size:.8rem;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:var(--club);border-color:var(--club);color:#fff}
+.tabs button[aria-selected="true"] span.l{color:#cfe6f5}
+.tabs button[aria-selected="true"] .rk{background:var(--ball);color:#1b0d00;transform:rotate(360deg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabs button .rk{color:#cfe6f5}}
+:root[data-theme="dark"] .tabs button .rk{color:#cfe6f5}
+.panel{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s7)}
+.panel.swap{animation:swap .45s var(--ease)}
+@keyframes swap{from{opacity:0;transform:translateY(12px)}}
+.panel-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s4);margin-bottom:var(--s3)}
+.place{font-weight:800;font-stretch:90%;font-size:1.1rem;color:var(--ball-ink)}
+.tbox{background:var(--surface);border:1px solid var(--rule);border-radius:16px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:.62rem .55rem;text-align:right;white-space:nowrap}
+th{font-size:.75rem;font-weight:700;color:var(--muted);border-bottom:2px solid var(--rule)}
+td{border-bottom:1px solid var(--rule)}
+tr:last-child td{border-bottom:0}
+th:nth-child(2),td:nth-child(2){text-align:left;white-space:normal;min-width:10rem}
+th:first-child,td:first-child{text-align:center;width:2.6rem}
+td:last-child{font-weight:750}
+tr.us td{background:var(--tint);font-weight:750}
+tr.us td:first-child{box-shadow:inset 4px 0 0 var(--ball)}
+.src{font-size:.88rem;color:var(--muted);margin-top:var(--s3);display:flex;gap:var(--s4);flex-wrap:wrap}
+
+/* ---------- Mitmachen ---------- */
+.band{margin-top:var(--s8);color:var(--on-band);position:relative;overflow:hidden;background:
+  radial-gradient(800px 400px at 100% 0%,#0093cf55,transparent 60%),linear-gradient(180deg,var(--club),var(--navy))}
+.band section{padding-block:var(--s8)}
+.band .sec-head p{color:var(--on-band-soft)}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);margin-bottom:var(--s6)}
+.why div{background:#ffffff10;border:1px solid #ffffff22;border-radius:16px;padding:var(--s5)}
+.why b{display:block;font-weight:850;font-stretch:80%;font-size:2.4rem;line-height:1;color:var(--ball);margin-bottom:var(--s2)}
+.why h3{margin-bottom:.35rem}
+.why p{margin:0;color:var(--on-band-soft);font-size:.95rem}
+.hall{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s5);align-items:start}
+.hcard{background:#ffffff12;border:1px solid #ffffff26;border-radius:18px;padding:var(--s5) var(--s6)}
+.hcard h3{margin-bottom:var(--s3);font-size:1.4rem}
+.hcard p{margin:0 0 var(--s3);color:var(--on-band-soft)}
+.hcard p strong{color:#fff}
+.hcard a{color:#fff;text-decoration-color:var(--ball);text-underline-offset:3px}
+.train{list-style:none;margin:0 0 var(--s4);padding:0}
+.train li{display:grid;grid-template-columns:7.5rem 1fr;gap:var(--s3);padding-block:var(--s2);border-bottom:1px solid #ffffff26}
+.train b{font-weight:750}
+.steps{list-style:none;margin:var(--s3) 0 var(--s5);padding:0;display:grid;gap:var(--s4);position:relative}
+.steps::before{content:"";position:absolute;left:1.1rem;top:1rem;bottom:1rem;width:2px;background:#ffffff33}
+.steps li{position:relative;display:grid;grid-template-columns:2.2rem 1fr;gap:var(--s4);align-items:start;color:var(--on-band-soft)}
+.steps li b{width:2.2rem;height:2.2rem;border-radius:50%;display:grid;place-items:center;background:var(--ball);color:#1b0d00;font-weight:850}
+.steps li strong{color:#fff;display:block;font-weight:750}
+.copy{display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap}
+.copy button{font:650 .8rem var(--f);background:#ffffff1f;color:#fff;border:1px solid #ffffff44;border-radius:999px;padding:.25rem .7rem;cursor:pointer}
+.copy button:hover{background:#ffffff33}
+.insta{display:inline-flex;align-items:center;gap:.6rem;margin-top:var(--s2)}
+
+footer{background:var(--navy);color:var(--on-band-soft);border-top:1px solid #ffffff1a}
+footer .wrap{padding-block:var(--s6) calc(var(--s6) + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:var(--s4) var(--s6);align-items:center;justify-content:space-between;font-size:.9rem}
+footer img{height:56px;width:auto;display:block}
+footer a{color:#fff}
+.err{background:var(--loss-bg);color:var(--loss);padding:var(--s4);border-radius:10px}
+
+/* Ballwechsel-Leiste rechts */
+.rally{position:fixed;z-index:20;right:calc((100vw - var(--max)) / 2 - 46px);top:50%;transform:translateY(-50%);display:none}
+.rally ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:42px;position:relative}
+.rally ol::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--rule)}
+.rally a{position:relative;display:block;width:16px;height:16px;text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:650}
+.rally a::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--rule);background:var(--bg);transition:border-color .3s}
+.rally a span{position:absolute;left:26px;top:50%;margin-top:-.6em;line-height:1.2;white-space:nowrap;opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s}
+.rally:hover a span,.rally a:focus-visible span{opacity:1;transform:none}
+@media (min-width:1460px){.rally a.active span{opacity:1;transform:none}}
+.rally a.active{color:var(--ink)}
+.rally a.active::before{border-color:var(--ball)}
+.rally .rb{position:absolute;left:1px;top:1px;width:14px;height:14px;border-radius:50%;background:var(--ball);box-shadow:0 3px 8px #0004;pointer-events:none}
+.hop{animation:hop .5s var(--spring)}
+@keyframes hop{0%{scale:1}40%{scale:1.6}100%{scale:1}}
+@media (min-width:1300px){.rally{display:block}}
+
+/* Probetraining-Knopf am Handy */
+.fab{position:fixed;z-index:35;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);transition:transform .45s var(--spring);display:none}
+.fab.show{transform:translate(-50%,0)}
+.fab .btn{box-shadow:0 14px 30px -10px #000a;white-space:nowrap}
+@media (max-width:880px){.fab{display:block}}
+
+/* Weniger Bewegung gewünscht: große Bewegungen aus, kleine und sanfte bleiben */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .ttable{animation:none;transform:rotateX(18deg)}
+  .ticker .belt{animation-duration:120s}
+  .in{animation-name:fade}
+  .hero h1 .w,.hero p.lead,.cta,.stage,.logo-badge{animation-name:fade}
+  @keyframes fade{from{opacity:0}}
+}
+
+@media (max-width:980px){
+  .hero .wrap,.cols,.panel,.hall,.ladder{grid-template-columns:minmax(0,1fr);gap:var(--s6)}
+  .hero .wrap{padding-block:var(--s5) calc(var(--s8) + 2rem)}
+  .logo-badge{width:min(62%,220px)}
+  .leader{margin-left:0}
+  .season-card{gap:var(--s4) var(--s5)}
+  .why{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .brand span{display:none}
+  .brand img{height:36px}
+  nav a{padding:.5rem .5rem;font-size:.88rem}
+  nav .nav-cta{display:none}
+  nav a[data-sec="niveau"]{display:none}
+  .ttable{aspect-ratio:auto;min-height:17rem;grid-template-columns:1fr;grid-template-rows:1fr 1fr;transform:rotateX(10deg)}
+  @keyframes tilt-in{from{transform:rotateX(40deg) translateY(20px)}to{transform:rotateX(10deg)}}
+  .ttable::before{top:0;bottom:0;left:50%;right:auto;width:2px;height:auto;transform:translateX(-1px)}
+  .net{left:-18px;right:-18px;top:50%;bottom:auto;width:auto;height:10px;transform:translateY(-50%);
+    background:repeating-linear-gradient(90deg,#08162a 0 3px,#3a4c66 3px 5px);border:0;border-top:2px solid #fff;border-bottom:2px solid #fff}
+  .rally-x .bx{top:auto;bottom:auto;left:0;right:0;width:auto;height:0;top:18%;animation-name:by}
+  @keyframes by{0%{top:16%;transform:translateX(18%)}100%{top:84%;transform:translateX(-22%)}}
+  .bx .ball{left:50%;top:0;margin-left:-10px}
+  .bx .shadow{left:50%;top:0;margin-left:-12px}
+  .season-card{padding:var(--s4) var(--s5)}
+  .tally{gap:var(--s5)}
+  .tally b{font-size:2.2rem}
+  section{padding-block:var(--s7) 0}
+  .band section{padding-block:var(--s7)}
+  .hcard{padding:var(--s4) var(--s5)}
+  .rung{grid-template-columns:2.6rem minmax(0,1fr) auto;gap:var(--s3)}
+  .rung .lvl{width:2.6rem;height:2.6rem;font-size:1.1rem}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#start" aria-label="TSV Dettingen/Erms Tischtennis, zum Anfang">
+      <img src="assets/logo.png" alt="TSV Dettingen/Erms" width="260" height="168">
+      <span>Tischtennis</span>
+    </a>
+    <nav aria-label="Seitenbereiche">
+      <a href="#niveau" data-sec="niveau">Mannschaften</a>
+      <a href="#spiele" data-sec="spiele">Spiele</a>
+      <a href="#tabellen" data-sec="tabellen">Tabellen</a>
+      <a href="#mitmachen" data-sec="mitmachen">Mitmachen</a>
+      <a href="#mitmachen" class="nav-cta">Probetraining</a>
+    </nav>
+  </div>
+  <div class="track" aria-hidden="true"><i id="track-fill"></i><b id="track-ball"></b></div>
+</header>
+
+<aside class="rally" aria-label="Seitenübersicht">
+  <ol>
+    <li><a href="#start" data-sec="start"><span>Start</span></a></li>
+    <li><a href="#niveau" data-sec="niveau"><span>Mannschaften</span></a></li>
+    <li><a href="#spiele" data-sec="spiele"><span>Spiele</span></a></li>
+    <li><a href="#tabellen" data-sec="tabellen"><span>Tabellen</span></a></li>
+    <li><a href="#mitmachen" data-sec="mitmachen"><span>Mitmachen</span></a></li>
+  </ol>
+  <span class="rb" id="rally-ball" aria-hidden="true"></span>
+</aside>
+
+<main>
+  <div class="hero" id="start">
+    <div class="wrap">
+      <div>
+        <img class="logo-badge" src="assets/logo.png" alt="Logo TSV Dettingen/Erms" width="260" height="168">
+        <h1><span class="w">Dein</span> <span class="w">Platz</span> <span class="w">an der</span> <span class="w hl">Platte.</span></h1>
+        <p class="lead">Tischtennis beim TSV Dettingen/Erms: <span id="team-count">sechs</span> Mannschaften von der Kreisklasse bis zur Bezirksoberliga, eine Halle mitten im Ort und Platz für alle, die mitspielen wollen.</p>
+        <div class="cta">
+          <a class="btn btn-ball pulse" href="#mitmachen">Probetraining vereinbaren</a>
+          <a class="btn btn-ghost" href="#spiele"><span class="arrow" aria-hidden="true"></span>Nächste Spiele</a>
+        </div>
+      </div>
+      <div class="stage" id="next" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="season" id="season" hidden><div class="wrap"><div class="season-card" id="season-in"></div></div></div>
+
+  <div class="ticker" id="ticker" hidden>
+    <span class="lab"><i aria-hidden="true"></i>Ergebnisse</span>
+    <div class="viewport"><div class="belt" id="belt"></div></div>
+  </div>
+
+  <section id="niveau">
+    <div class="wrap ladder">
+      <div class="ladder-copy">
+        <div class="sec-head" style="margin-bottom:0"><div><h2><span class="drop" aria-hidden="true"></span>Für jedes Niveau</h2></div></div>
+        <p>Ob du zum ersten Mal einen Schläger hältst, nach Jahren zurückkommst oder um Punkte kämpfen willst: Bei uns gibt es eine Mannschaft, die zu dir passt.</p>
+        <a class="btn btn-line" href="#mitmachen" style="border:2px solid var(--club)">Unverbindlich reinschnuppern</a>
+      </div>
+      <ol class="rungs" id="rungs"></ol>
+    </div>
+  </section>
+
+  <section id="spiele">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><h2><span class="drop" aria-hidden="true"></span>Spiele</h2><p>Komm vorbei und feuer uns an. Heimspiele sind blau markiert und finden in der Uhlandhalle statt.</p></div>
+      </div>
+      <div class="cols">
+        <div>
+          <div class="col-head">
+            <h3>Als Nächstes</h3>
+            <div class="seg" id="seg" role="group" aria-label="Spiele filtern">
+              <button type="button" id="f-all" aria-pressed="true">Alle</button>
+              <button type="button" id="f-home" aria-pressed="false">Heimspiele</button>
+            </div>
+          </div>
+          <div id="upcoming"></div>
+        </div>
+        <div>
+          <div class="col-head"><h3>Letzte Ergebnisse</h3></div>
+          <div id="results"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tabellen">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><h2><span class="drop" aria-hidden="true"></span>Tabellen</h2><p id="season-label">Tabellenstand und Spielplan jeder Mannschaft.</p></div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Mannschaften" id="tabs"></div>
+      <div id="panel" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <div class="band">
+    <section id="mitmachen">
+      <div class="wrap">
+        <div class="sec-head"><div><h2><span class="drop" aria-hidden="true"></span>Komm zum Probetraining</h2><p>Du musst nichts mitbringen außer Hallenschuhen und Lust auf schnelle Ballwechsel. Anfänger, Wiedereinsteiger und Erfahrene sind gleichermaßen willkommen.</p></div></div>
+        <div class="why" id="why"></div>
+        <div class="hall" id="hall"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="fab" id="fab"><a class="btn btn-ball" href="#mitmachen">Probetraining vereinbaren</a></div>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="TSV Dettingen/Erms" width="260" height="168">
+    <span id="stand">Daten werden geladen …</span>
+    <span>Daten: click-TT des TTBW, auch auf <a id="mytt-link" href="https://www.mytischtennis.de/" target="_blank" rel="noopener">mytischtennis.de</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var DATA=null, homeOnly=false, showAll=false, activeTeam=null;
+  var $=function(id){return document.getElementById(id)};
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+  var WD=["So","Mo","Di","Mi","Do","Fr","Sa"], WDL=["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+  var MON=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+  var MONS=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  var ROMAN={"":1,"II":2,"III":3,"IV":4,"V":5,"VI":6,"VII":7,"VIII":8};
+  var WORDS=["null","eine","zwei","drei","vier","fünf","sechs","sieben","acht","neun","zehn"];
+
+  function parseDate(m){var p=m.d.split("-"),t=(m.t||"00:00").split(":");return new Date(+p[0],p[1]-1,+p[2],+t[0],+t[1])}
+  function dayStart(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
+  function isUs(name){var c=DATA.clubName;return name===c||name.indexOf(c+" ")===0}
+  function ordinal(name){var s=name.slice(DATA.clubName.length).trim();return ROMAN[s]||1}
+  function ourName(m){return isUs(m.h)?m.h:m.a}
+  function teamFor(m){var n=ourName(m);for(var i=0;i<DATA.teams.length;i++){var t=DATA.teams[i];if(t.short===m.lg&&t.clicktt===n)return t}return null}
+  function labelFor(m){var t=teamFor(m);if(t)return t.label;return /^S\d/.test(m.lg)?"Senioren":ordinal(ourName(m))+". Mannschaft"}
+  function isCup(m){return !!(DATA.cups&&DATA.cups[m.lg])}
+  function leagueFor(m){var t=teamFor(m);return t?t.league:(DATA.cups&&DATA.cups[m.lg])||m.lg}
+  function outcome(m){if(!m.r)return null;var p=m.r.split(":"),a=+p[0],b=+p[1];if(!isUs(m.h)){var x=a;a=b;b=x}return a>b?"w":a<b?"l":"d"}
+  var OUT_TXT={w:"Sieg",l:"Niederlage",d:"Unentschieden"}, OUT_S={w:"S",l:"N",d:"U"};
+  function daysUntil(d){return Math.round((dayStart(d)-dayStart(new Date()))/864e5)}
+  function rel(d){var n=daysUntil(d);if(n===0)return "heute";if(n===1)return "morgen";if(n===2)return "übermorgen";if(n<7)return "in "+n+" Tagen";var w=Math.round(n/7);return w===1?"in einer Woche":"in "+w+" Wochen"}
+  function dayHead(d){return WDL[d.getDay()]+", "+d.getDate()+". "+MON[d.getMonth()]}
+  function shortDate(d){return WD[d.getDay()]+" "+("0"+d.getDate()).slice(-2)+"."+("0"+(d.getMonth()+1)).slice(-2)+"."}
+  function vs(m){var h=isUs(m.h)?'<span class="us">'+esc(m.h)+'</span>':esc(m.h),a=isUs(m.a)?'<span class="us">'+esc(m.a)+'</span>':esc(m.a);return h+" – "+a}
+  function playable(m){return m.h!=="spielfrei"&&m.a!=="spielfrei"}
+  function flags(m){return (m.f||[]).indexOf("v")>=0?' <span class="flag">verlegt</span>':""}
+  function upcomingList(){var now=dayStart(new Date());return DATA.matches.filter(function(m){return !m.r&&playable(m)&&parseDate(m)>=now}).sort(function(a,b){return parseDate(a)-parseDate(b)})}
+  function playedList(){return DATA.matches.filter(function(m){return m.r&&playable(m)}).sort(function(a,b){return parseDate(b)-parseDate(a)})}
+  function ourRow(t){return (t.table||[]).filter(function(x){return x.team===t.clicktt})[0]}
+  function shortLeague(t){return t.league.split(",")[0]}
+
+  function renderNext(){
+    var m=upcomingList()[0], box=$("next");
+    var rally='<span class="rally-x" aria-hidden="true"><span class="bx"><span class="shadow"></span><span class="ball"></span></span></span>';
+    if(!m){box.innerHTML='<div class="next-head"><span class="k">Nächstes Spiel</span></div><div class="ttable"><span class="net"></span>'+rally+'<div class="half ours"><span class="plate"><span class="team">Spielpause</span></span></div><div class="half"><span class="plate"><span class="side">TRAINING LÄUFT</span></span></div></div>';return}
+    var d=parseDate(m), home=isUs(m.h);
+    function half(name,side){var us=isUs(name);return '<div class="half'+(us?" ours":"")+'"><span class="plate"><span class="side">'+side+'</span><span class="team">'+esc(name)+'</span>'+(us?'<span class="lbl">'+esc(labelFor(m))+'</span>':'')+'</span></div>'}
+    box.innerHTML='<div class="next-head"><span class="k">Nächstes Spiel</span><span class="countdown">'+rel(d)+'</span></div>'+
+      '<div class="ttable" role="img" aria-label="Nächstes Spiel: '+esc(m.h)+' gegen '+esc(m.a)+', '+dayHead(d)+', '+esc(m.t)+' Uhr">'+
+      '<span class="net" aria-hidden="true"></span>'+rally+half(m.h,"HEIM")+half(m.a,"GAST")+'</div>'+
+      '<div class="next-meta"><span><strong>'+dayHead(d)+'</strong>, '+esc(m.t)+' Uhr</span><span>'+esc(leagueFor(m))+'</span>'+
+      '<span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span></div>';
+  }
+
+  function renderTicker(){
+    var list=playedList().slice(0,10);if(!list.length)return;
+    var items=list.map(function(m){var o=outcome(m);return '<span class="it">'+shortDate(parseDate(m))+' '+esc(m.h)+' <b>'+esc(m.r)+'</b> '+esc(m.a)+' <em title="'+OUT_TXT[o]+'">'+OUT_S[o]+'</em></span>'}).join("");
+    $("belt").innerHTML=items+items.replace(/class="it"/g,'class="it" aria-hidden="true"');
+    $("ticker").hidden=false;
+  }
+
+  function renderSeason(){
+    var c={w:0,d:0,l:0};playedList().forEach(function(m){c[outcome(m)]++});
+    if(!(c.w+c.d+c.l)){$("season").hidden=true;return}
+    var leaders=DATA.teams.filter(function(t){var r=ourRow(t);return r&&r.rank===1&&r.m>0});
+    $("season-in").innerHTML='<div class="t">Saison '+esc(DATA.season)+'<small>Bilanz aller Mannschaften bisher</small></div>'+
+      '<div class="tally num"><div class="n"><b data-count="'+DATA.teams.length+'">'+DATA.teams.length+'</b><span>Mannschaften</span></div><div class="w"><b data-count="'+c.w+'">'+c.w+'</b><span>Siege</span></div><div class="d"><b data-count="'+c.d+'">'+c.d+'</b><span>Unentschieden</span></div><div class="l"><b data-count="'+c.l+'">'+c.l+'</b><span>Niederlagen</span></div></div>'+
+      (leaders.length?'<div class="leader"><span class="crown">1</span><div><small>Tabellenführer</small><strong>'+leaders.map(function(t){return esc(t.label)+", "+esc(shortLeague(t))}).join("; ")+'</strong></div></div>':"");
+    $("season").hidden=false;
+  }
+
+  function renderRungs(){
+    $("rungs").innerHTML=DATA.teams.map(function(t){
+      var r=ourRow(t), n=(t.table||[]).length, sen=/^S\d/.test(t.short);
+      var share=r&&n?Math.max(.08,(n-r.rank+1)/n):0;
+      return '<li class="rung'+(sen?" sen":"")+' rv" data-k="'+esc(t.key)+'" tabindex="0" role="link" aria-label="'+esc(t.label)+', '+esc(t.league)+'">'+
+        '<span class="lvl">'+(sen?"Ü40":esc(t.label.charAt(0)))+'</span>'+
+        '<div style="min-width:0"><b>'+esc(shortLeague(t))+'</b><span class="muted" style="font-size:.88rem">'+esc(t.label)+'</span><div class="meter"><i style="width:'+(share*100).toFixed(0)+'%"></i></div></div>'+
+        '<span class="pl num">'+(r&&r.m?"Platz "+r.rank:"–")+'<small>'+(n?"von "+n:"")+'</small></span></li>';
+    }).join("");
+    Array.prototype.forEach.call($("rungs").querySelectorAll(".rung"),function(li){
+      function go(){selectTeam(li.getAttribute("data-k"));document.getElementById("tabellen").scrollIntoView({behavior:"smooth"})}
+      li.onclick=go;li.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
+    });
+    var n=DATA.teams.length;$("team-count").textContent=WORDS[n]||n;
+  }
+
+  function ticket(m){
+    var d=parseDate(m), home=isUs(m.h), n=daysUntil(d);
+    return '<div class="ticket rv'+(home?" home":"")+'"><div class="cal"><span class="wd">'+WD[d.getDay()].toUpperCase()+'</span><span class="dd num">'+d.getDate()+'</span><span class="mm">'+MONS[d.getMonth()]+'</span></div>'+
+      '<div class="body"><div class="vs">'+vs(m)+'</div><div class="sub">'+esc(labelFor(m))+', '+esc(leagueFor(m))+flags(m)+(n<7?' <span class="soon">'+rel(d)+'</span>':'')+'</div></div>'+
+      '<div class="side"><span class="time num">'+esc(m.t)+'</span>'+(isCup(m)?'<span class="tag cup">Pokal</span>':home?'<span class="tag home">Heim</span>':'<span class="tag away">Auswärts</span>')+'</div></div>';
+  }
+  function renderUpcoming(){
+    var list=upcomingList().filter(function(m){return !homeOnly||isUs(m.h)});
+    var lim=showAll?list.length:6;
+    if(!list.length){$("upcoming").innerHTML='<p class="muted">'+(homeOnly?"Keine Heimspiele angesetzt.":"Keine Spiele angesetzt. Der Spielplan der nächsten Runde erscheint hier, sobald er in click-TT steht.")+'</p>';return}
+    var html=list.slice(0,lim).map(ticket).join("");
+    if(list.length>lim)html+='<div class="more"><button class="link-btn" type="button" id="more-up">Alle '+list.length+' Spiele zeigen</button></div>';
+    $("upcoming").innerHTML=html;
+    var b=$("more-up");if(b)b.onclick=function(){showAll=true;renderUpcoming()};
+    watch($("upcoming"));
+  }
+  function resCard(m,withTeam){
+    var o=outcome(m), d=parseDate(m);
+    return '<div class="res rv '+o+'"><div style="min-width:0"><div class="vs">'+vs(m)+'</div><div class="sub">'+shortDate(d)+(withTeam?', '+esc(labelFor(m)):'')+(isCup(m)?', Pokal':'')+'</div></div>'+
+      '<div class="score"><b class="num">'+(m.u?'<a href="'+esc(m.u)+'" target="_blank" rel="noopener" title="Spielbericht auf click-TT">'+esc(m.r)+'</a>':esc(m.r))+'</b>'+
+      '<span class="chip '+o+'" title="'+OUT_TXT[o]+'">'+OUT_S[o]+'</span></div></div>';
+  }
+  function renderResults(){
+    var list=playedList().slice(0,6);
+    $("results").innerHTML=list.length?list.map(function(m){return resCard(m,true)}).join(""):'<p class="muted">Noch keine Ergebnisse in dieser Saison.</p>';
+  }
+
+  function selectTeam(k){activeTeam=k;try{localStorage.setItem("tt-team",k)}catch(e){}renderTabs();renderPanel(true)}
+  function renderTabs(){
+    $("tabs").innerHTML=DATA.teams.map(function(t){
+      var r=ourRow(t);
+      return '<button type="button" role="tab" id="tab-'+esc(t.key)+'" aria-selected="'+(t.key===activeTeam)+'" data-k="'+esc(t.key)+'">'+
+        '<span class="rk num" title="Tabellenplatz">'+(r&&r.m?r.rank:"–")+'</span><b>'+esc(t.label)+'</b><span class="l">'+esc(shortLeague(t))+'</span></button>';
+    }).join("");
+    Array.prototype.forEach.call($("tabs").querySelectorAll("button"),function(b){
+      b.onclick=function(){selectTeam(b.getAttribute("data-k"));$("tab-"+activeTeam).focus()};
+    });
+    var sel=$("tab-"+activeTeam),tb=$("tabs");if(sel){var a=sel.getBoundingClientRect(),c=tb.getBoundingClientRect();if(a.left<c.left||a.right>c.right)tb.scrollLeft+=a.left-c.left-16}
+  }
+  function renderPanel(animate){
+    var t=DATA.teams.filter(function(x){return x.key===activeTeam})[0];if(!t)return;
+    var me=ourRow(t);
+    var rows=(t.table||[]).map(function(r){return '<tr'+(r.team===t.clicktt?' class="us"':'')+'><td>'+esc(r.rank)+'</td><td>'+esc(r.team)+'</td><td>'+esc(r.m)+'</td><td>'+esc(r.w)+'</td><td>'+esc(r.d)+'</td><td>'+esc(r.l)+'</td><td>'+esc(r.games)+'</td><td>'+esc(r.diff)+'</td><td>'+esc(r.pts)+'</td></tr>'}).join("");
+    var games=DATA.matches.filter(function(m){var x=teamFor(m);return x&&x.key===t.key&&playable(m)}).sort(function(a,b){return parseDate(a)-parseDate(b)});
+    var gl=games.map(function(m){return m.r?resCard(m,false):ticket(m)}).join("").replace(/ rv/g,"");
+    var p=$("panel");p.setAttribute("aria-labelledby","tab-"+t.key);
+    p.innerHTML='<div class="panel'+(animate?" swap":"")+'"><div><div class="panel-head"><h3>'+esc(t.league)+'</h3>'+(me&&me.m?'<span class="place">Platz '+me.rank+' von '+t.table.length+'</span>':'')+'</div>'+
+      (rows?'<div class="tbox"><table><thead><tr><th>Pl.</th><th>Mannschaft</th><th title="Begegnungen">Sp.</th><th title="Siege">S</th><th title="Unentschieden">U</th><th title="Niederlagen">N</th><th>Spiele</th><th>+/-</th><th>Punkte</th></tr></thead><tbody>'+rows+'</tbody></table></div>':'<p class="muted">Tabelle noch nicht verfügbar.</p>')+
+      '<div class="src"><a href="'+esc(t.clickttUrl)+'" target="_blank" rel="noopener">Liga auf click-TT</a>'+(t.myttUrl?'<a href="'+esc(t.myttUrl)+'" target="_blank" rel="noopener">Liga auf mytischtennis.de</a>':'')+'</div></div>'+
+      '<div><div class="panel-head"><h3>Spielplan '+esc(t.label)+'</h3></div>'+(gl||'<p class="muted">Noch keine Spiele angesetzt.</p>')+'</div></div>';
+  }
+
+  function renderWhy(){
+    var n=DATA.teams.length, leagues=DATA.teams.length, sen=DATA.teams.some(function(t){return /^S\d/.test(t.short)});
+    var home=DATA.matches.filter(function(m){return isUs(m.h)&&playable(m)}).length;
+    $("why").innerHTML=
+      '<div class="rv"><b class="num" data-count="'+n+'">'+n+'</b><h3>Mannschaften</h3><p>Von der Kreisklasse bis zur Bezirksoberliga'+(sen?', dazu eine Seniorenmannschaft Ü40':'')+'. Du spielst dort, wo es Spaß macht.</p></div>'+
+      '<div class="rv"><b class="num" data-count="'+home+'">'+home+'</b><h3>Heimspiele</h3><p>So viele Heimspiele stehen bisher im Spielplan dieser Saison. Erlebe Tischtennis live, ganz in deiner Nähe.</p></div>'+
+      '<div class="rv"><b>1</b><h3>Halle mitten im Ort</h3><p>'+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle")+' am Rathausplatz, mitten im Ortszentrum von Dettingen.</p></div>';
+  }
+
+  function renderHall(){
+    var c=DATA.club||{}, tr=c.training||[];
+    var train=tr.length?'<ul class="train">'+tr.map(function(x){return '<li><b>'+esc(x.day)+'</b><span>'+esc(x.time)+(x.group?'<br>'+esc(x.group):'')+'</span></li>'}).join("")+'</ul>':'';
+    var contact=c.contact?'<strong>'+esc(c.contact)+'</strong>':'unsere Abteilungsleitung';
+    $("hall").innerHTML='<div class="hcard rv"><h3>In drei Schritten an die Platte</h3>'+train+
+      '<ol class="steps"><li><b>1</b><span><strong>Kurz melden</strong>Schreib '+contact+(c.instagram?' oder uns auf Instagram':'')+', wann du vorbeikommen möchtest.'+(tr.length?'':' Dort erfährst du auch die aktuellen Trainingszeiten.')+'</span></li>'+
+      '<li><b>2</b><span><strong>Hallenschuhe einpacken</strong>Bequeme Sportkleidung reicht für den Anfang.</span></li>'+
+      '<li><b>3</b><span><strong>Mitspielen</strong>Einfach an die Platte stellen und loslegen. Den Rest zeigen wir dir.</span></li></ol>'+
+      (c.instagram?'<a class="btn btn-ball insta" href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">Auf Instagram schreiben</a>':'')+'</div>'+
+      '<div class="hcard rv"><h3>'+esc(c.hall||"Uhlandhalle")+'</h3><p>'+esc(c.address||"Rathausplatz 2, 72581 Dettingen an der Erms")+'</p>'+
+      (c.maps?'<p><a href="'+esc(c.maps)+'" target="_blank" rel="noopener">Route planen</a></p>':'')+
+      (c.contact?'<p>Ansprechpartner<br><strong>'+esc(c.contact)+'</strong></p>':'')+
+      (c.email?'<p class="copy"><span style="user-select:all">'+esc(c.email)+'</span><button type="button" id="copy-mail">Kopieren</button></p>':'')+
+      (c.instagram?'<p>Instagram<br><a href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">@'+esc(c.instagram)+'</a></p>':'')+'</div>';
+    var cb=$("copy-mail");if(cb)cb.onclick=function(){var t=c.email;try{navigator.clipboard.writeText(t).then(function(){cb.textContent="Kopiert"},function(){cb.textContent="Bitte markieren"})}catch(e){cb.textContent="Bitte markieren"}};
+  }
+
+  function renderStand(){
+    var u=new Date(DATA.updated);
+    var s=u.toLocaleString("de-DE",{timeZone:"Europe/Berlin",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
+    $("stand").textContent="Stand der Ergebnisse: "+s.replace(","," um")+" Uhr";
+    if(DATA.myttClubUrl)$("mytt-link").href=DATA.myttClubUrl;
+    $("season-label").textContent="Saison "+DATA.season+": Wähle eine Mannschaft für Tabelle und Spielplan.";
+  }
+
+  function setFilter(h){homeOnly=h;showAll=false;$("seg").classList.toggle("home",h);$("f-all").setAttribute("aria-pressed",String(!h));$("f-home").setAttribute("aria-pressed",String(h));renderUpcoming()}
+  $("f-all").onclick=function(){setFilter(false)};
+  $("f-home").onclick=function(){setFilter(true)};
+
+  /* ---------- Bewegung ---------- */
+  function countUp(el){
+    var to=+el.getAttribute("data-count");if(!(to>0))return;
+    var t0=null,dur=1100;el.textContent="0";
+    function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=String(Math.round(to*e));if(p<1)requestAnimationFrame(step)}
+    requestAnimationFrame(step);
+  }
+  var io="IntersectionObserver" in window?new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
+      if(el.classList.contains("sec-head")){var d=el.querySelector(".drop");if(d)d.classList.add("go");return}
+      if(el.hasAttribute("data-count")){countUp(el);return}
+      el.style.animationDelay=(el._delay||0)+"ms";el.classList.add("in");
+    });
+  },{rootMargin:"0px 0px -6% 0px"}):null;
+  // Elemente, die beim Laden schon sichtbar sind, bleiben ruhig; alles darunter wird beim Erreichen eingeblendet.
+  function watch(root){
+    if(!io)return;
+    var vh=window.innerHeight, groups={};
+    Array.prototype.forEach.call((root||document).querySelectorAll(".rv"),function(el){
+      if(el._watched)return;el._watched=true;
+      var top=el.getBoundingClientRect().top;if(top<vh*.94)return;
+      var key=el.parentNode;groups[key]=(groups[key]||0);
+      var idx=Array.prototype.indexOf.call(el.parentNode.children,el);el._delay=Math.min(idx,6)*70;
+      io.observe(el);
+    });
+  }
+  function watchCounts(){if(!io)return;document.querySelectorAll("[data-count]").forEach(function(el){io.observe(el)})}
+  function watchHeads(){if(!io)return;document.querySelectorAll(".sec-head").forEach(function(h){io.observe(h)})}
+
+  var secs=["start","niveau","spiele","tabellen","mitmachen"].map(function(id){return document.getElementById(id)});
+  var links=document.querySelectorAll("a[data-sec]");
+  var rallyBall=$("rally-ball"), trackBall=$("track-ball"), trackFill=$("track-fill"), fab=$("fab"), current=-1, ticking=false;
+  function hop(el){if(!el)return;el.classList.remove("hop");void el.offsetWidth;el.classList.add("hop")}
+  function update(){
+    ticking=false;
+    var y=window.scrollY, vh=window.innerHeight, max=Math.max(1,document.documentElement.scrollHeight-vh);
+    var tops=secs.map(function(s){return s.getBoundingClientRect().top+y});
+    var probe=y+vh*.35, idx=0;
+    for(var i=0;i<tops.length;i++)if(probe>=tops[i])idx=i;
+    var atEnd=y>=max-4;if(atEnd)idx=secs.length-1;
+    var next=idx<tops.length-1?tops[idx+1]:tops[idx]+1;
+    var frac=atEnd?0:Math.min(1,Math.max(0,(probe-tops[idx])/Math.max(1,next-tops[idx])));
+    var pos=Math.min(secs.length-1,idx+frac*.999);
+    if(rallyBall)rallyBall.style.transform="translateY("+(pos*58)+"px)";
+    var p=Math.min(1,y/max);
+    trackFill.style.transform="scaleX("+p+")";trackBall.style.left=(p*100)+"%";
+    var heroBottom=secs[0].getBoundingClientRect().bottom, joinTop=secs[4].getBoundingClientRect().top;
+    fab.classList.toggle("show",heroBottom<0&&joinTop>vh*.6);
+    if(idx!==current){
+      current=idx;
+      Array.prototype.forEach.call(links,function(a){a.classList.toggle("active",a.getAttribute("data-sec")===secs[idx].id)});
+      hop(rallyBall);hop(trackBall);
+    }
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
+  window.addEventListener("scroll",onScroll,{passive:true});
+  window.addEventListener("resize",onScroll);
+
+  function render(){
+    try{activeTeam=localStorage.getItem("tt-team")}catch(e){}
+    if(!DATA.teams.some(function(t){return t.key===activeTeam}))activeTeam=DATA.teams[0]&&DATA.teams[0].key;
+    renderNext();renderTicker();renderSeason();renderRungs();renderUpcoming();renderResults();renderTabs();renderPanel(false);renderWhy();renderHall();renderStand();
+    watch();watchCounts();watchHeads();update();
+  }
+
+  fetch("data.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+    .then(function(d){DATA=d;render()})
+    .catch(function(){
+      $("upcoming").innerHTML='<p class="err">Die Spieldaten konnten gerade nicht geladen werden. Lade die Seite neu oder schau direkt auf mytischtennis.de nach.</p>';
+      $("stand").textContent="Daten nicht verfügbar";watchHeads();update();
+    });
+})();
+</script>
