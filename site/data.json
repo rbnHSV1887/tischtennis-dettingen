@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-18T18:20:34+00:00",
+ "updated": "2026-10-18T22:24:50+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -901,22 +901,24 @@
   },
   {
    "d": "2026-10-31",
-   "t": "18:00",
-   "f": [],
-   "lg": "E BK",
-   "h": "SV Rommelsbach II",
-   "a": "TSV Dettingen II",
+   "t": "15:00",
+   "f": [
+    "v"
+   ],
+   "lg": "E BOL",
+   "h": "TSV Nusplingen II",
+   "a": "TSV Dettingen",
    "r": "",
    "n": "",
    "u": ""
   },
   {
    "d": "2026-10-31",
-   "t": "19:00",
+   "t": "18:00",
    "f": [],
-   "lg": "E BOL",
-   "h": "TSV Nusplingen II",
-   "a": "TSV Dettingen",
+   "lg": "E BK",
+   "h": "SV Rommelsbach II",
+   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -969,9 +971,9 @@
    "d": "2026-11-14",
    "t": "18:00",
    "f": [],
-   "lg": "E KLA",
-   "h": "TV Neuhausen II",
-   "a": "TSV Dettingen III",
+   "lg": "E KLB",
+   "h": "TB Metzingen III",
+   "a": "TSV Dettingen IV",
    "r": "",
    "n": "",
    "u": ""
@@ -980,9 +982,9 @@
    "d": "2026-11-14",
    "t": "18:00",
    "f": [],
-   "lg": "E KLB",
-   "h": "TB Metzingen III",
-   "a": "TSV Dettingen IV",
+   "lg": "E KLA",
+   "h": "TV Neuhausen II",
+   "a": "TSV Dettingen III",
    "r": "",
    "n": "",
    "u": ""
