@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T18:35:56+00:00",
+ "updated": "2026-10-21T23:16:31+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -480,6 +480,17 @@
     },
     {
      "rank": 3,
+     "team": "TSV Grafenberg II",
+     "m": 3,
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "games": "15:15",
+     "diff": "0",
+     "pts": "4:2"
+    },
+    {
+     "rank": 4,
      "team": "TTV Reicheneck II",
      "m": 2,
      "w": 1,
@@ -490,25 +501,14 @@
      "pts": "3:1"
     },
     {
-     "rank": 4,
-     "team": "TSV Dettingen V",
-     "m": 1,
-     "w": 1,
-     "d": 0,
-     "l": 0,
-     "games": "6:4",
-     "diff": "+2",
-     "pts": "2:0"
-    },
-    {
      "rank": 5,
-     "team": "TSV Grafenberg II",
+     "team": "TSV Dettingen V",
      "m": 2,
      "w": 1,
      "d": 0,
      "l": 1,
-     "games": "9:11",
-     "diff": "-2",
+     "games": "10:10",
+     "diff": "0",
      "pts": "2:2"
     },
     {
@@ -810,9 +810,9 @@
    "lg": "E KKA",
    "h": "TSV Dettingen V",
    "a": "TSV Grafenberg II",
-   "r": "",
+   "r": "4:6",
    "n": "",
-   "u": ""
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16264487&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
   },
   {
    "d": "2026-10-23",
@@ -832,17 +832,6 @@
    "lg": "E KKA",
    "h": "TB Metzingen IV",
    "a": "TSV Dettingen V",
-   "r": "",
-   "n": "",
-   "u": ""
-  },
-  {
-   "d": "2026-10-24",
-   "t": "18:00",
-   "f": [],
-   "lg": "E BK",
-   "h": "TTC Reutlingen II",
-   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -971,9 +960,9 @@
    "d": "2026-11-14",
    "t": "18:00",
    "f": [],
-   "lg": "E KLB",
-   "h": "TB Metzingen III",
-   "a": "TSV Dettingen IV",
+   "lg": "E KLA",
+   "h": "TV Neuhausen II",
+   "a": "TSV Dettingen III",
    "r": "",
    "n": "",
    "u": ""
@@ -982,9 +971,9 @@
    "d": "2026-11-14",
    "t": "18:00",
    "f": [],
-   "lg": "E KLA",
-   "h": "TV Neuhausen II",
-   "a": "TSV Dettingen III",
+   "lg": "E KLB",
+   "h": "TB Metzingen III",
+   "a": "TSV Dettingen IV",
    "r": "",
    "n": "",
    "u": ""
@@ -1053,6 +1042,19 @@
    "lg": "E KLA",
    "h": "TSV Dettingen III",
    "a": "SV Rommelsbach III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-27",
+   "t": "20:00",
+   "f": [
+    "v"
+   ],
+   "lg": "E BK",
+   "h": "TTC Reutlingen II",
+   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
