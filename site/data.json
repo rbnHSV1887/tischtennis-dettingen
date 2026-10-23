@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T13:22:33+00:00",
+ "updated": "2026-10-23T18:17:40+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -927,9 +927,9 @@
    "d": "2026-11-06",
    "t": "20:00",
    "f": [],
-   "lg": "E KKA",
-   "h": "TSV Dettingen V",
-   "a": "SV Tübingen IV",
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TSV Riederich",
    "r": "",
    "n": "",
    "u": ""
@@ -938,9 +938,9 @@
    "d": "2026-11-06",
    "t": "20:00",
    "f": [],
-   "lg": "E BK",
-   "h": "TSV Dettingen II",
-   "a": "TSV Riederich",
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "SV Tübingen IV",
    "r": "",
    "n": "",
    "u": ""
