@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T11:19:52+00:00",
+ "updated": "2026-10-25T16:10:24+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -150,6 +150,17 @@
     },
     {
      "rank": 2,
+     "team": "TSV Betzingen III",
+     "m": 3,
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "games": "23:16",
+     "diff": "+7",
+     "pts": "4:2"
+    },
+    {
+     "rank": 3,
      "team": "TV Neuhausen",
      "m": 3,
      "w": 2,
@@ -160,7 +171,7 @@
      "pts": "4:2"
     },
     {
-     "rank": 3,
+     "rank": 4,
      "team": "SV Rommelsbach II",
      "m": 1,
      "w": 1,
@@ -171,24 +182,13 @@
      "pts": "2:0"
     },
     {
-     "rank": 4,
+     "rank": 5,
      "team": "TTC Reutlingen III",
      "m": 2,
      "w": 1,
      "d": 0,
      "l": 1,
      "games": "13:14",
-     "diff": "-1",
-     "pts": "2:2"
-    },
-    {
-     "rank": 5,
-     "team": "TSV Betzingen III",
-     "m": 2,
-     "w": 1,
-     "d": 0,
-     "l": 1,
-     "games": "14:15",
      "diff": "-1",
      "pts": "2:2"
     },
@@ -228,13 +228,13 @@
     {
      "rank": 9,
      "team": "TSV Sondelfingen II",
-     "m": 3,
+     "m": 4,
      "w": 0,
      "d": 0,
-     "l": 3,
-     "games": "12:27",
-     "diff": "-15",
-     "pts": "0:6"
+     "l": 4,
+     "games": "13:36",
+     "diff": "-23",
+     "pts": "0:8"
     }
    ]
   },
