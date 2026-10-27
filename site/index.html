@@ -105,32 +105,45 @@ nav .nav-cta::after{display:none}
 .next-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--s2);margin-bottom:var(--s5)}
 .next-head .k{font-weight:750;font-stretch:110%;font-size:1.1rem}
 .countdown{font-weight:800;font-stretch:90%;font-size:1.1rem;color:var(--ball)}
-.stage{perspective:1200px;animation:rise .9s var(--ease) .2s both}
-.ttable{position:relative;aspect-ratio:274/152.5;max-width:100%;background:var(--table);
-  border:4px solid var(--chalk);border-radius:3px;display:grid;grid-template-columns:1fr 1fr;color:#fff;
-  transform:rotateX(18deg);transform-origin:50% 100%;
-  box-shadow:0 18px 0 -6px var(--table-deep),0 46px 60px -22px #000b;animation:tilt-in 1.2s var(--ease) .15s both}
-@keyframes tilt-in{from{transform:rotateX(52deg) translateY(30px)}to{transform:rotateX(18deg)}}
-.ttable::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:var(--chalk);opacity:.8;transform:translateY(-1px)}
-.net{position:absolute;left:50%;top:-18px;bottom:-18px;width:10px;transform:translateX(-50%);
-  background:repeating-linear-gradient(0deg,#08162a 0 3px,#3a4c66 3px 5px);border-left:2px solid #fff;border-right:2px solid #fff;z-index:2}
-.half{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;text-align:center;padding:var(--s4);min-width:0}
-.plate{display:flex;flex-direction:column;align-items:center;gap:var(--s2);background:var(--table);padding:.4rem .75rem;max-width:100%;border-radius:4px}
-.half .side{font-size:.72rem;font-weight:700;opacity:.85;letter-spacing:.12em}
-.half .team{font-weight:850;font-stretch:88%;font-size:clamp(1.3rem,2.9vw,2.15rem);line-height:1.02;overflow-wrap:anywhere}
-.half:not(.ours) .team{opacity:.82}
-.half .lbl{font-size:.8rem;font-weight:650;background:#ffffff2b;padding:.15rem .6rem;border-radius:99px}
-/* Ballwechsel: x-Bewegung außen, Flughöhe (Größe) innen, Schatten bleibt auf der Platte */
-.rally-x{position:absolute;inset:0;z-index:4;pointer-events:none}
-.rally-x .bx{position:absolute;top:0;bottom:0;width:0;left:20%;animation:bx 2.6s ease-in-out infinite alternate}
-@keyframes bx{0%{left:16%;transform:translateY(12%)}100%{left:84%;transform:translateY(-14%)}}
-.bx .ball{position:absolute;left:-10px;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#fffa 0 14%,transparent 15%),var(--ball);box-shadow:inset -3px -3px 0 #0003;animation:fly 2.6s ease-in-out infinite}
-.bx .shadow{position:absolute;left:-12px;top:50%;width:24px;height:8px;margin-top:22px;border-radius:50%;background:#000;filter:blur(3px);opacity:.35;animation:shadow 2.6s ease-in-out infinite}
-@keyframes fly{0%,50%,100%{transform:translateY(0) scale(1)}25%,75%{transform:translateY(-34px) scale(1.35)}}
-@keyframes shadow{0%,50%,100%{transform:scale(1);opacity:.45}25%,75%{transform:scale(.6);opacity:.15}}
+.stage{animation:rise .9s var(--ease) .2s both}
+/* Platte im Maßstab 274 x 152,5 cm, gezeichnet in 3D (Canvas) */
+.arena{position:relative;aspect-ratio:16/10;max-width:100%;margin-inline:-2%}
+.arena canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.board{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);background:#03101e;border:1px solid #ffffff1f;border-radius:16px;overflow:hidden;box-shadow:inset 0 1px 0 #ffffff14,0 20px 40px -24px #000c}
+.board .tm{padding:.85rem 1.05rem;display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.board .tm.g{text-align:right;align-items:flex-end}
+.board .tm small{font-size:.68rem;font-weight:750;letter-spacing:.14em;color:var(--on-band-soft)}
+.board .tm b{font-weight:850;font-stretch:84%;font-size:clamp(1.15rem,2.3vw,1.6rem);line-height:1.04;overflow-wrap:anywhere}
+.board .tm.them b{color:#cfe0ef}
+.board .lbl{font-size:.74rem;font-weight:650;background:#ffffff1c;padding:.12rem .55rem;border-radius:99px;width:max-content;max-width:100%}
+.board .mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15rem;padding:.6rem 1.1rem;background:#ffffff0b;border-inline:1px solid #ffffff1a;text-align:center}
+.board .mid b{font-weight:850;font-stretch:72%;font-size:2rem;line-height:1;color:var(--ball);font-variant-numeric:tabular-nums}
+.board .mid small{font-size:.74rem;color:var(--on-band-soft);white-space:nowrap}
 .next-meta{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s6);color:var(--on-band-soft);font-weight:500}
 .next-meta strong{color:#fff}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;opacity:.14;-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 30%,transparent 62%);mask-image:linear-gradient(90deg,#000 0%,#000 30%,transparent 62%);filter:grayscale(1) contrast(1.15);mix-blend-mode:luminosity;pointer-events:none}
+
+/* ---------- Bilder ---------- */
+.gallery{columns:3 260px;column-gap:var(--s3)}
+.shot{display:block;width:100%;margin:0 0 var(--s3);padding:0;border:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:var(--tint);break-inside:avoid;position:relative;font:inherit;color:inherit}
+.shot img{display:block;width:100%;height:auto;transition:transform .7s var(--ease)}
+.shot:hover img,.shot:focus-visible img{transform:scale(1.045)}
+.shot::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #00000014;pointer-events:none}
+.credit{margin:var(--s2) 0 0;font-size:.9rem;color:var(--muted)}
+.lb{border:0;padding:0;margin:0;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;background:#020a14f5;color:#fff}
+.lb::backdrop{background:#020a14e6}
+.lb figure{margin:0;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;
+  padding:calc(60px + env(safe-area-inset-top,0px)) max(64px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(64px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;min-height:0;object-fit:contain;border-radius:8px;box-shadow:0 30px 60px -20px #000}
+.lb figcaption{font-size:.9rem;color:#cfe6f5;text-align:center}
+.lb-btn{position:absolute;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff3d;background:#ffffff14;color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.lb-btn:hover{background:#ffffff2e}
+.lb-btn svg{width:22px;height:22px}
+.lb-btn.x{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+.lb-btn.prev{left:max(10px,env(safe-area-inset-left,0px));top:50%;margin-top:-24px}
+.lb-btn.next{right:max(10px,env(safe-area-inset-right,0px));top:50%;margin-top:-24px}
+.join-photo{margin:0 0 var(--s4);border-radius:18px;overflow:hidden;border:1px solid #ffffff26}
+.join-photo img{display:block;width:100%;height:auto}
 
 /* ---------- Laufband mit Ergebnissen ---------- */
 .ticker{position:relative;z-index:1;margin-top:var(--s7);background:var(--ball);color:#1b0d00;overflow:hidden;display:flex;align-items:stretch;font-weight:650}
@@ -289,6 +302,7 @@ tr.us td:first-child{box-shadow:inset 4px 0 0 var(--ball)}
 .steps li{position:relative;display:grid;grid-template-columns:2.2rem 1fr;gap:var(--s4);align-items:start;color:var(--on-band-soft)}
 .steps li b{width:2.2rem;height:2.2rem;border-radius:50%;display:grid;place-items:center;background:var(--ball);color:#1b0d00;font-weight:850}
 .steps li strong{color:#fff;display:block;font-weight:750}
+.steps .nm{color:#fff;font-weight:700}
 .copy{display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap}
 .copy button{font:650 .8rem var(--f);background:#ffffff1f;color:#fff;border:1px solid #ffffff44;border-radius:999px;padding:.25rem .7rem;cursor:pointer}
 .copy button:hover{background:#ffffff33}
@@ -325,7 +339,6 @@ footer a{color:#fff}
 /* Weniger Bewegung gewünscht: große Bewegungen aus, kleine und sanfte bleiben */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .ttable{animation:none;transform:rotateX(18deg)}
   .ticker .belt{animation-duration:120s}
   .in{animation-name:fade}
   .hero h1 .w,.hero p.lead,.cta,.stage,.logo-badge{animation-name:fade}
@@ -346,15 +359,12 @@ footer a{color:#fff}
   nav a{padding:.5rem .5rem;font-size:.88rem}
   nav .nav-cta{display:none}
   nav a[data-sec="niveau"]{display:none}
-  .ttable{aspect-ratio:auto;min-height:17rem;grid-template-columns:1fr;grid-template-rows:1fr 1fr;transform:rotateX(10deg)}
-  @keyframes tilt-in{from{transform:rotateX(40deg) translateY(20px)}to{transform:rotateX(10deg)}}
-  .ttable::before{top:0;bottom:0;left:50%;right:auto;width:2px;height:auto;transform:translateX(-1px)}
-  .net{left:-18px;right:-18px;top:50%;bottom:auto;width:auto;height:10px;transform:translateY(-50%);
-    background:repeating-linear-gradient(90deg,#08162a 0 3px,#3a4c66 3px 5px);border:0;border-top:2px solid #fff;border-bottom:2px solid #fff}
-  .rally-x .bx{top:auto;bottom:auto;left:0;right:0;width:auto;height:0;top:18%;animation-name:by}
-  @keyframes by{0%{top:16%;transform:translateX(18%)}100%{top:84%;transform:translateX(-22%)}}
-  .bx .ball{left:50%;top:0;margin-left:-10px}
-  .bx .shadow{left:50%;top:0;margin-left:-12px}
+  .arena{aspect-ratio:16/11;margin-inline:-4%}
+  .board .tm{padding:.7rem .75rem}
+  .board .mid{padding:.5rem .6rem}
+  .board .mid b{font-size:1.6rem}
+  .gallery{columns:2 140px}
+  .lb .lb-btn.prev,.lb .lb-btn.next{display:none}
   .season-card{padding:var(--s4) var(--s5)}
   .tally{gap:var(--s5)}
   .tally b{font-size:2.2rem}
@@ -376,6 +386,7 @@ footer a{color:#fff}
     </a>
     <nav aria-label="Seitenbereiche">
       <a href="#niveau" data-sec="niveau">Mannschaften</a>
+      <a href="#bilder" data-sec="bilder">Bilder</a>
       <a href="#spiele" data-sec="spiele">Spiele</a>
       <a href="#tabellen" data-sec="tabellen">Tabellen</a>
       <a href="#mitmachen" data-sec="mitmachen">Mitmachen</a>
@@ -389,6 +400,7 @@ footer a{color:#fff}
   <ol>
     <li><a href="#start" data-sec="start"><span>Start</span></a></li>
     <li><a href="#niveau" data-sec="niveau"><span>Mannschaften</span></a></li>
+    <li><a href="#bilder" data-sec="bilder"><span>Bilder</span></a></li>
     <li><a href="#spiele" data-sec="spiele"><span>Spiele</span></a></li>
     <li><a href="#tabellen" data-sec="tabellen"><span>Tabellen</span></a></li>
     <li><a href="#mitmachen" data-sec="mitmachen"><span>Mitmachen</span></a></li>
@@ -398,6 +410,7 @@ footer a{color:#fff}
 
 <main>
   <div class="hero" id="start">
+    <img class="hero-photo" src="assets/photos/p022-l.webp" srcset="assets/photos/p022-s.webp 800w, assets/photos/p022-l.webp 1600w" sizes="100vw" width="1600" height="1066" alt="" aria-hidden="true" decoding="async">
     <div class="wrap">
       <div>
         <img class="logo-badge" src="assets/logo.png" alt="Logo TSV Dettingen/Erms" width="260" height="168">
@@ -427,6 +440,16 @@ footer a{color:#fff}
         <a class="btn btn-line" href="#mitmachen" style="border:2px solid var(--club)">Unverbindlich reinschnuppern</a>
       </div>
       <ol class="rungs" id="rungs"></ol>
+    </div>
+  </section>
+
+  <section id="bilder">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><h2><span class="drop" aria-hidden="true"></span>So sieht's bei uns aus</h2><p>Eindrücke vom Heimspieltag am 19. September 2026 in der Uhlandhalle. Tippe auf ein Foto, um es groß zu sehen.</p></div>
+      </div>
+      <div class="gallery" id="gallery"></div>
+      <p class="credit">Fotos: Marcel Mueller</p>
     </div>
   </section>
 
@@ -475,6 +498,13 @@ footer a{color:#fff}
   </div>
 </main>
 
+<dialog class="lb" id="lb" aria-label="Bildansicht">
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lb-btn x" id="lb-x" type="button" aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-btn prev" id="lb-prev" type="button" aria-label="Vorheriges Foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lb-btn next" id="lb-next" type="button" aria-label="Nächstes Foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+</dialog>
+
 <div class="fab" id="fab"><a class="btn btn-ball" href="#mitmachen">Probetraining vereinbaren</a></div>
 
 <footer>
@@ -522,15 +552,158 @@ footer a{color:#fff}
 
   function renderNext(){
     var m=upcomingList()[0], box=$("next");
-    var rally='<span class="rally-x" aria-hidden="true"><span class="bx"><span class="shadow"></span><span class="ball"></span></span></span>';
-    if(!m){box.innerHTML='<div class="next-head"><span class="k">Nächstes Spiel</span></div><div class="ttable"><span class="net"></span>'+rally+'<div class="half ours"><span class="plate"><span class="team">Spielpause</span></span></div><div class="half"><span class="plate"><span class="side">TRAINING LÄUFT</span></span></div></div>';return}
-    var d=parseDate(m), home=isUs(m.h);
-    function half(name,side){var us=isUs(name);return '<div class="half'+(us?" ours":"")+'"><span class="plate"><span class="side">'+side+'</span><span class="team">'+esc(name)+'</span>'+(us?'<span class="lbl">'+esc(labelFor(m))+'</span>':'')+'</span></div>'}
-    box.innerHTML='<div class="next-head"><span class="k">Nächstes Spiel</span><span class="countdown">'+rel(d)+'</span></div>'+
-      '<div class="ttable" role="img" aria-label="Nächstes Spiel: '+esc(m.h)+' gegen '+esc(m.a)+', '+dayHead(d)+', '+esc(m.t)+' Uhr">'+
-      '<span class="net" aria-hidden="true"></span>'+rally+half(m.h,"HEIM")+half(m.a,"GAST")+'</div>'+
-      '<div class="next-meta"><span><strong>'+dayHead(d)+'</strong>, '+esc(m.t)+' Uhr</span><span>'+esc(leagueFor(m))+'</span>'+
-      '<span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span></div>';
+    var label=m?"Tischtennisplatte mit Ballwechsel. Nächstes Spiel: "+m.h+" gegen "+m.a:"Tischtennisplatte mit Ballwechsel";
+    var head, board;
+    if(!m){
+      head='<div class="next-head"><span class="k">Nächstes Spiel</span></div>';
+      board='<div class="board"><div class="tm"><small>SPIELPAUSE</small><b>Training läuft</b></div><div class="mid"><b>–</b></div><div class="tm g them"><small>SPIELPLAN</small><b>folgt</b></div></div>';
+    }else{
+      var d=parseDate(m), home=isUs(m.h);
+      function side(name,tag,cls){var us=isUs(name);return '<div class="tm'+cls+(us?'':' them')+'"><small>'+tag+'</small><b>'+esc(name)+'</b>'+(us?'<span class="lbl">'+esc(labelFor(m))+'</span>':'')+'</div>'}
+      head='<div class="next-head"><span class="k">Nächstes Spiel</span><span class="countdown">'+rel(d)+'</span></div>';
+      board='<div class="board">'+side(m.h,"HEIM","")+'<div class="mid"><b>'+esc(m.t)+'</b><small>'+WD[d.getDay()]+' '+d.getDate()+'. '+MONS[d.getMonth()]+'</small></div>'+side(m.a,"GAST"," g")+'</div>'+
+        '<div class="next-meta"><span>'+esc(leagueFor(m))+'</span><span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span></div>';
+    }
+    box.innerHTML=head+'<div class="arena"><canvas id="arena" role="img" aria-label="'+esc(label)+'"></canvas></div>'+board;
+    startArena($("arena"));
+  }
+
+  /* ---------- Tischtennisplatte in 3D ----------
+     Maße nach ITTF in cm: Platte 274 x 152,5, Höhe 76, Netz 15,25 hoch und 15,25 über die Seitenlinie hinaus,
+     Randlinien 2 cm, Mittellinie 3 mm, Ball 40 mm. */
+  var arenaStop=null;
+  function startArena(cv){
+    if(arenaStop)arenaStop();
+    if(!cv||!cv.getContext)return;
+    var ctx=cv.getContext("2d"), W=0,H=0,S=1,OX=0,OY=0, raf=0, onScreen=true, last=0, clock=.35;
+    var L=137, D=76.25, TOP=76, TH=2.5, NETH=15.25, NETZ=D+15.25;
+    var speed=(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?.7:1;
+    var eye=[150,345,600], tgt=[0,50,0];
+    function sub(a,b){return[a[0]-b[0],a[1]-b[1],a[2]-b[2]]}
+    function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
+    function cross(a,b){return[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}
+    function nrm(a){var l=Math.hypot(a[0],a[1],a[2]);return[a[0]/l,a[1]/l,a[2]/l]}
+    var F=nrm(sub(tgt,eye)), R=nrm(cross(F,[0,1,0])), U=cross(R,F);
+    function raw(x,y,z){var d=[x-eye[0],y-eye[1],z-eye[2]],zz=dot(d,F);return[dot(d,R)/zz,-dot(d,U)/zz,zz]}
+    function P(x,y,z){var q=raw(x,y,z);return[OX+q[0]*S,OY+q[1]*S]}
+    function K(x,y,z){return S/raw(x,y,z)[2]}
+    function fit(){
+      var r=cv.getBoundingClientRect(), dpr=Math.min(2,window.devicePixelRatio||1);
+      W=r.width;H=r.height;if(!W||!H)return;
+      cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+      var pts=[[-L-60,TOP+40,0],[L+60,TOP+40,0],[-L,0,D],[L,0,D],[-L,TOP,-D],[L,TOP,-D],[0,TOP+NETH,-NETZ],[0,0,D+10],[-L-55,TOP,-30],[L+55,TOP,30]];
+      var mnx=1e9,mxx=-1e9,mny=1e9,mxy=-1e9;
+      pts.forEach(function(p){var q=raw(p[0],p[1],p[2]);mnx=Math.min(mnx,q[0]);mxx=Math.max(mxx,q[0]);mny=Math.min(mny,q[1]);mxy=Math.max(mxy,q[1])});
+      var m=6;S=Math.min((W-2*m)/(mxx-mnx),(H-2*m)/(mxy-mny));
+      OX=W/2-(mnx+mxx)/2*S;OY=H/2-(mny+mxy)/2*S;
+    }
+    function poly(list,fill){ctx.beginPath();list.forEach(function(p,i){var q=P(p[0],p[1],p[2]);if(i)ctx.lineTo(q[0],q[1]);else ctx.moveTo(q[0],q[1])});ctx.closePath();ctx.fillStyle=fill;ctx.fill()}
+    function line(a,b,w,col){var p=P(a[0],a[1],a[2]),q=P(b[0],b[1],b[2]);ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.lineWidth=w;ctx.strokeStyle=col;ctx.stroke()}
+    function lerp(a,b,t){return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t]}
+    function ease(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
+
+    /* Ballwechsel: jeder Schlag fliegt übers Netz, springt einmal auf der Gegenseite auf und wird zurückgespielt */
+    var TF=.62, TB=.38, HALF=TF+TB, ZS=[-28,24,-6,38,-40,12,30,-18];
+    function hit(i){var s=(i%2===0)?-1:1;return[s*(L+26),TOP+16+(i*7%5),ZS[((i%ZS.length)+ZS.length)%ZS.length]]}
+    function ballAt(t){
+      var n=Math.floor(t/HALF), u=t-n*HALF, A=hit(n), B=hit(n+1), s=(n%2===0)?1:-1;
+      var bn=[s*L*.56,TOP+2,A[2]+(B[2]-A[2])*.62], p, y;
+      if(u<TF){var v=u/TF;p=lerp(A,bn,v);p[1]=A[1]+(bn[1]-A[1])*v+30*4*v*(1-v);}
+      else{var w=(u-TF)/TB;p=lerp(bn,B,w);p[1]=bn[1]+(B[1]-bn[1])*w+20*4*w*(1-w);}
+      return p;
+    }
+    function racketAt(t,s){
+      var par=s<0?0:1, i=par+2*Math.round((t/HALF-par)/2), dt=t-i*HALF, H=hit(i);
+      H=[H[0]+s*3,H[1]-1,H[2]];
+      var rest=[s*(L+48),TOP+4,s*12], back=[H[0]+s*18,H[1]-9,H[2]], fol=[H[0]-s*30,H[1]+24,H[2]-s*4], p, open=0;
+      if(dt<-.5||dt>.8)p=rest;
+      else if(dt<-.12)p=lerp(rest,back,ease((dt+.5)/.38));
+      else if(dt<0){p=lerp(back,H,(dt+.12)/.12);open=1}
+      else if(dt<.25){p=lerp(H,fol,ease(dt/.25));open=1-dt/.25}
+      else p=lerp(fol,rest,ease((dt-.25)/.55));
+      return{p:p,open:open};
+    }
+    function drawRacket(st,s){
+      var c=st.p, phi=-s*(1.05+.3*st.open), e1=[0,1,0], e2=[Math.sin(phi),0,Math.cos(phi)];
+      var n=cross(e1,e2), toEye=sub(eye,c), front=dot(n,toEye)>0;
+      var netSide=s<0?front:!front, rubber=(s<0)===netSide?"#c8102e":"#16181c";
+      var k=K(c[0],c[1],c[2]);
+      line([c[0],c[1]-8.6,c[2]],[c[0],c[1]-19,c[2]],Math.max(2,2.7*k),"#b98757");
+      function blade(r1,r2,col){var l=[];for(var a=0;a<24;a++){var g=a/24*Math.PI*2;l.push([c[0]+e2[0]*Math.sin(g)*r2,c[1]+Math.cos(g)*r1,c[2]+e2[2]*Math.sin(g)*r2])}poly(l,col)}
+      blade(8.6,7.7,"#c89a66");blade(8.1,7.2,rubber);
+    }
+    function drawBall(b){
+      var q=P(b[0],b[1],b[2]), r=Math.max(3,2.3*K(b[0],b[1],b[2]));
+      var g=ctx.createRadialGradient(q[0]-r*.35,q[1]-r*.4,r*.1,q[0],q[1],r);
+      g.addColorStop(0,"#ffd1a3");g.addColorStop(.45,"#f78a34");g.addColorStop(1,"#c3570b");
+      ctx.beginPath();ctx.arc(q[0],q[1],r,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    }
+    function shadowOf(b){
+      var onTable=Math.abs(b[0])<=L&&Math.abs(b[2])<=D, y=onTable?TOP+.05:0, h=b[1]-y, l=[];
+      var rad=2.4+h*.05, a=onTable?Math.max(.08,.5-h*.009):.18;
+      for(var i=0;i<16;i++){var g=i/16*Math.PI*2;l.push([b[0]+Math.cos(g)*rad*1.2,y,b[2]+Math.sin(g)*rad])}
+      poly(l,"rgba(0,10,25,"+a.toFixed(3)+")");
+    }
+    function frame(t){
+      ctx.clearRect(0,0,W,H);
+      // Schatten der Platte auf dem Hallenboden
+      ctx.save();ctx.shadowColor="rgba(0,6,16,.6)";ctx.shadowBlur=Math.max(20,40*S/600);ctx.shadowOffsetX=4000;ctx.translate(-4000,0);
+      poly([[-L-6,0,-D-4],[L+6,0,-D-4],[L+10,0,D+10],[-L-10,0,D+10]],"#000");ctx.restore();
+      // Untergestell: Beine, Querstreben, Rollen
+      var steel="#1c2430", sk=function(x,y,z){return Math.max(1.5,3.2*K(x,y,z))};
+      [-1,1].forEach(function(sz){var z=sz*(D-16);
+        line([-(L-24),18,z],[L-24,18,z],sk(0,18,z)*.9,steel);
+        [-20,20].forEach(function(x){line([x,18,z],[x,7,z],sk(x,12,z)*.8,steel);var q=P(x,5,z),r=4.5*K(x,5,z);ctx.beginPath();ctx.arc(q[0],q[1],r,0,7);ctx.fillStyle="#0c1118";ctx.fill()})});
+      [-1,1].forEach(function(sx){var x=sx*(L-24);line([x,40,-(D-16)],[x,40,D-16],sk(x,40,0)*.9,steel)});
+      [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(function(v){var x=v[0]*(L-24),z=v[1]*(D-16);line([x,2,z],[x,TOP-TH-6,z],sk(x,40,z),steel);
+        var q=P(x,1,z);ctx.beginPath();ctx.ellipse(q[0],q[1],4*K(x,1,z),1.6*K(x,1,z),0,0,7);ctx.fillStyle="#0c1118";ctx.fill()});
+      // Zarge und Plattenkante
+      poly([[-L+8,TOP-TH-7,D-8],[L-8,TOP-TH-7,D-8],[L-8,TOP-TH,D-8],[-L+8,TOP-TH,D-8]],"#0b1622");
+      poly([[-L,TOP-TH,D],[L,TOP-TH,D],[L,TOP,D],[-L,TOP,D]],"#0f3462");
+      // Spielfläche
+      var a=P(0,TOP,-D), b=P(0,TOP,D), g=ctx.createLinearGradient(a[0],a[1],b[0],b[1]);
+      g.addColorStop(0,"#2a62a8");g.addColorStop(1,"#174a86");
+      poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,D],[-L,TOP,D]],g);
+      var c=P(-30,TOP,-25), sh=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],W*.45);sh.addColorStop(0,"rgba(255,255,255,.10)");sh.addColorStop(1,"rgba(255,255,255,0)");
+      poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,D],[-L,TOP,D]],sh);
+      // weiße Linien: 2 cm Rand, 3 mm Mittellinie
+      var wl="#f3f6fa";
+      poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,-D+2],[-L,TOP,-D+2]],wl);
+      poly([[-L,TOP,D-2],[L,TOP,D-2],[L,TOP,D],[-L,TOP,D]],wl);
+      poly([[-L,TOP,-D],[-L+2,TOP,-D],[-L+2,TOP,D],[-L,TOP,D]],wl);
+      poly([[L-2,TOP,-D],[L,TOP,-D],[L,TOP,D],[L-2,TOP,D]],wl);
+      line([-L,TOP,0],[L,TOP,0],Math.max(1,.3*K(0,TOP,0)),"rgba(243,246,250,.9)");
+      var ball=ballAt(t), rl=racketAt(t,-1), rr=racketAt(t,1);
+      shadowOf(ball);
+      // alles hinter dem Netz zuerst
+      if(rl.p[0]<0)drawRacket(rl,-1);
+      if(ball[0]<0)drawBall(ball);
+      // Netzgarnitur
+      [-1,1].forEach(function(sz){var z=sz*NETZ;
+        poly([[-2,TOP-5,sz*D],[2,TOP-5,sz*D],[2,TOP-5,z],[-2,TOP-5,z]],"#2b323c");
+        poly([[-1.5,TOP-6,z],[1.5,TOP-6,z],[1.5,TOP+NETH+1,z],[-1.5,TOP+NETH+1,z]],"#1a1f27")});
+      poly([[0,TOP,-NETZ],[0,TOP,NETZ],[0,TOP+NETH,NETZ],[0,TOP+NETH,-NETZ]],"rgba(8,20,38,.5)");
+      ctx.save();ctx.globalAlpha=.32;
+      for(var z=-NETZ;z<=NETZ;z+=2.2)line([0,TOP,z],[0,TOP+NETH-1.5,z],.6,"#9fb4cc");
+      for(var y=TOP+2;y<TOP+NETH-1.5;y+=2.2)line([0,y,-NETZ],[0,y,NETZ],.6,"#9fb4cc");
+      ctx.restore();
+      poly([[0,TOP+NETH-1.5,-NETZ],[0,TOP+NETH-1.5,NETZ],[0,TOP+NETH,NETZ],[0,TOP+NETH,-NETZ]],"#f3f6fa");
+      // alles vor dem Netz
+      if(ball[0]>=0)drawBall(ball);
+      if(rl.p[0]>=0)drawRacket(rl,-1);
+      drawRacket(rr,1);
+    }
+    function loop(ts){
+      raf=0;if(!onScreen||document.hidden){last=0;return}
+      if(last)clock+=Math.min(.05,(ts-last)/1000)*speed;last=ts;
+      frame(clock);raf=requestAnimationFrame(loop);
+    }
+    function kick(){if(!raf&&onScreen&&!document.hidden){last=0;raf=requestAnimationFrame(loop)}}
+    fit();frame(clock);kick();
+    var ro=window.ResizeObserver?new ResizeObserver(function(){fit();frame(clock)}):null;if(ro)ro.observe(cv);
+    var vis=window.IntersectionObserver?new IntersectionObserver(function(es){onScreen=es[0].isIntersecting;kick()}):null;if(vis)vis.observe(cv);
+    function onVis(){kick()}document.addEventListener("visibilitychange",onVis);
+    arenaStop=function(){if(raf)cancelAnimationFrame(raf);if(ro)ro.disconnect();if(vis)vis.disconnect();document.removeEventListener("visibilitychange",onVis)};
   }
 
   function renderTicker(){
@@ -630,19 +803,50 @@ footer a{color:#fff}
   function renderHall(){
     var c=DATA.club||{}, tr=c.training||[];
     var train=tr.length?'<ul class="train">'+tr.map(function(x){return '<li><b>'+esc(x.day)+'</b><span>'+esc(x.time)+(x.group?'<br>'+esc(x.group):'')+'</span></li>'}).join("")+'</ul>':'';
-    var contact=c.contact?'<strong>'+esc(c.contact)+'</strong>':'unsere Abteilungsleitung';
+    var contact=c.contact?'<span class="nm">'+esc(c.contact)+'</span>':'unsere Abteilungsleitung';
     $("hall").innerHTML='<div class="hcard rv"><h3>In drei Schritten an die Platte</h3>'+train+
       '<ol class="steps"><li><b>1</b><span><strong>Kurz melden</strong>Schreib '+contact+(c.instagram?' oder uns auf Instagram':'')+', wann du vorbeikommen möchtest.'+(tr.length?'':' Dort erfährst du auch die aktuellen Trainingszeiten.')+'</span></li>'+
       '<li><b>2</b><span><strong>Hallenschuhe einpacken</strong>Bequeme Sportkleidung reicht für den Anfang.</span></li>'+
       '<li><b>3</b><span><strong>Mitspielen</strong>Einfach an die Platte stellen und loslegen. Den Rest zeigen wir dir.</span></li></ol>'+
       (c.instagram?'<a class="btn btn-ball insta" href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">Auf Instagram schreiben</a>':'')+'</div>'+
-      '<div class="hcard rv"><h3>'+esc(c.hall||"Uhlandhalle")+'</h3><p>'+esc(c.address||"Rathausplatz 2, 72581 Dettingen an der Erms")+'</p>'+
+      '<div class="rv"><figure class="join-photo"><img src="assets/photos/p050-s.webp" srcset="'+srcset("p050")+'" sizes="(max-width:980px) 100vw, 460px" width="1600" height="1066" alt="Drei Mitglieder der Abteilung lächeln in der Halle in die Kamera" loading="lazy" decoding="async"></figure><div class="hcard"><h3>'+esc(c.hall||"Uhlandhalle")+'</h3><p>'+esc(c.address||"Rathausplatz 2, 72581 Dettingen an der Erms")+'</p>'+
       (c.maps?'<p><a href="'+esc(c.maps)+'" target="_blank" rel="noopener">Route planen</a></p>':'')+
       (c.contact?'<p>Ansprechpartner<br><strong>'+esc(c.contact)+'</strong></p>':'')+
       (c.email?'<p class="copy"><span style="user-select:all">'+esc(c.email)+'</span><button type="button" id="copy-mail">Kopieren</button></p>':'')+
-      (c.instagram?'<p>Instagram<br><a href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">@'+esc(c.instagram)+'</a></p>':'')+'</div>';
+      (c.instagram?'<p>Instagram<br><a href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">@'+esc(c.instagram)+'</a></p>':'')+'</div></div>';
     var cb=$("copy-mail");if(cb)cb.onclick=function(){var t=c.email;try{navigator.clipboard.writeText(t).then(function(){cb.textContent="Kopiert"},function(){cb.textContent="Bitte markieren"})}catch(e){cb.textContent="Bitte markieren"}};
   }
+
+  /* ---------- Fotos ---------- */
+  var PHOTOS=[
+    {n:"p035",w:1600,h:1600,alt:"Spieler wirft den Ball zum Aufschlag hoch"},
+    {n:"p023",w:1066,h:1600,alt:"Spieler im Vereinstrikot von hinten in Bereitschaftsstellung"},
+    {n:"p140",w:1600,h:1066,alt:"Aufschlag vor der blauen Hallenwand, der Ball schwebt in der Luft"},
+    {n:"p003",w:1440,h:1440,alt:"Junger Spieler spielt den Ball knapp über dem Netz, hinten die Zähltafel"},
+    {n:"p108",w:1600,h:1066,alt:"Zwei Spieler verfolgen konzentriert den Ballwechsel"},
+    {n:"p058",w:1066,h:1600,alt:"Doppel kurz vor dem Aufschlag"},
+    {n:"p178",w:1600,h:1066,alt:"Zwei Mannschaftskameraden Arm in Arm in der Halle"},
+    {n:"p194",w:1440,h:1440,alt:"Spieler mit rotem Schläger beim Aufschlag"},
+    {n:"p148",w:1600,h:1066,alt:"Spieler streckt sich nach einem flachen Ball"}
+  ];
+  function srcset(n){return "assets/photos/"+n+"-s.webp 800w, assets/photos/"+n+"-l.webp 1600w"}
+  function renderGallery(){
+    $("gallery").innerHTML=PHOTOS.map(function(p,i){
+      return '<button type="button" class="shot rv" data-i="'+i+'" aria-label="Foto vergrößern: '+esc(p.alt)+'"><img src="assets/photos/'+p.n+'-s.webp" srcset="'+srcset(p.n)+'" sizes="(max-width:640px) 50vw, 380px" width="'+p.w+'" height="'+p.h+'" alt="'+esc(p.alt)+'" loading="lazy" decoding="async"></button>';
+    }).join("");
+    Array.prototype.forEach.call($("gallery").querySelectorAll(".shot"),function(b){b.onclick=function(){openLb(+b.getAttribute("data-i"))}});
+  }
+  var lb=$("lb"), lbI=0, lbFrom=null;
+  function showLb(i){lbI=(i+PHOTOS.length)%PHOTOS.length;var p=PHOTOS[lbI];var im=$("lb-img");im.src="assets/photos/"+p.n+"-l.webp";im.alt=p.alt;$("lb-cap").textContent=(lbI+1)+" von "+PHOTOS.length+" · Foto: Marcel Mueller"}
+  function openLb(i){lbFrom=document.activeElement;showLb(i);if(lb.showModal)lb.showModal();else lb.setAttribute("open","")}
+  function closeLb(){if(lb.close)lb.close();else lb.removeAttribute("open")}
+  lb.addEventListener("close",function(){if(lbFrom&&lbFrom.focus)lbFrom.focus()});
+  $("lb-x").onclick=closeLb;$("lb-prev").onclick=function(){showLb(lbI-1)};$("lb-next").onclick=function(){showLb(lbI+1)};
+  lb.addEventListener("click",function(e){if(e.target===lb||e.target.tagName==="FIGURE")closeLb()});
+  lb.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")showLb(lbI-1);if(e.key==="ArrowRight")showLb(lbI+1)});
+  var sx=null;lb.addEventListener("pointerdown",function(e){sx=e.clientX});
+  lb.addEventListener("pointerup",function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)showLb(lbI+(dx<0?1:-1))});
+  renderGallery();
 
   function renderStand(){
     var u=new Date(DATA.updated);
@@ -686,7 +890,7 @@ footer a{color:#fff}
   function watchCounts(){if(!io)return;document.querySelectorAll("[data-count]").forEach(function(el){io.observe(el)})}
   function watchHeads(){if(!io)return;document.querySelectorAll(".sec-head").forEach(function(h){io.observe(h)})}
 
-  var secs=["start","niveau","spiele","tabellen","mitmachen"].map(function(id){return document.getElementById(id)});
+  var secs=["start","niveau","bilder","spiele","tabellen","mitmachen"].map(function(id){return document.getElementById(id)});
   var links=document.querySelectorAll("a[data-sec]");
   var rallyBall=$("rally-ball"), trackBall=$("track-ball"), trackFill=$("track-fill"), fab=$("fab"), current=-1, ticking=false;
   function hop(el){if(!el)return;el.classList.remove("hop");void el.offsetWidth;el.classList.add("hop")}
@@ -703,7 +907,7 @@ footer a{color:#fff}
     if(rallyBall)rallyBall.style.transform="translateY("+(pos*58)+"px)";
     var p=Math.min(1,y/max);
     trackFill.style.transform="scaleX("+p+")";trackBall.style.left=(p*100)+"%";
-    var heroBottom=secs[0].getBoundingClientRect().bottom, joinTop=secs[4].getBoundingClientRect().top;
+    var heroBottom=secs[0].getBoundingClientRect().bottom, joinTop=$("mitmachen").getBoundingClientRect().top;
     fab.classList.toggle("show",heroBottom<0&&joinTop>vh*.6);
     if(idx!==current){
       current=idx;
