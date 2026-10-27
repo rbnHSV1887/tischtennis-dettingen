@@ -112,29 +112,26 @@ nav .nav-cta::after{display:none}
 .board .mid small{font-size:.74rem;color:var(--on-band-soft);white-space:nowrap}
 .next-meta{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:var(--s6);color:var(--on-band-soft);font-weight:500}
 .next-meta strong{color:#fff}
-.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;opacity:.14;-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 30%,transparent 62%);mask-image:linear-gradient(90deg,#000 0%,#000 30%,transparent 62%);filter:grayscale(1) contrast(1.15);mix-blend-mode:luminosity;pointer-events:none}
-
-/* ---------- Bilder ---------- */
-.gallery{columns:3 260px;column-gap:var(--s3)}
-.shot{display:block;width:100%;margin:0 0 var(--s3);padding:0;border:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:var(--tint);break-inside:avoid;position:relative;font:inherit;color:inherit}
-.shot img{display:block;width:100%;height:auto;transition:transform .7s var(--ease)}
-.shot:hover img,.shot:focus-visible img{transform:scale(1.045)}
-.shot::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #00000014;pointer-events:none}
-.credit{margin:var(--s2) 0 0;font-size:.9rem;color:var(--muted)}
-.lb{border:0;padding:0;margin:0;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;background:#020a14f5;color:#fff}
-.lb::backdrop{background:#020a14e6}
-.lb figure{margin:0;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;
-  padding:calc(60px + env(safe-area-inset-top,0px)) max(64px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(64px,env(safe-area-inset-left,0px))}
-.lb img{max-width:100%;max-height:100%;min-height:0;object-fit:contain;border-radius:8px;box-shadow:0 30px 60px -20px #000}
-.lb figcaption{font-size:.9rem;color:#cfe6f5;text-align:center}
-.lb-btn{position:absolute;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff3d;background:#ffffff14;color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s}
-.lb-btn:hover{background:#ffffff2e}
-.lb-btn svg{width:22px;height:22px}
-.lb-btn.x{top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
-.lb-btn.prev{left:max(10px,env(safe-area-inset-left,0px));top:50%;margin-top:-24px}
-.lb-btn.next{right:max(10px,env(safe-area-inset-right,0px));top:50%;margin-top:-24px}
-.join-photo{margin:0 0 var(--s4);border-radius:18px;overflow:hidden;border:1px solid #ffffff26}
-.join-photo img{display:block;width:100%;height:auto}
+/* ---------- Comic-Banner ---------- */
+.comic{position:relative;margin-top:var(--s7);padding-block:var(--s5) var(--s6);overflow:hidden;color:#fff;
+  background:radial-gradient(circle,#ffffff17 1.4px,transparent 1.6px) 0 0/12px 12px,linear-gradient(180deg,var(--navy),#00345e)}
+.comic-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5);margin-bottom:var(--s4)}
+.cap{display:inline-block;background:#ffd23f;color:#14100a;font-weight:800;font-stretch:110%;font-size:.95rem;padding:.4rem .8rem;border:3px solid #14100a;box-shadow:4px 4px 0 #14100a;transform:rotate(-1.5deg)}
+.comic-head p{margin:0;color:var(--on-band-soft);font-size:.95rem}
+.strip{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.reel{display:flex;gap:18px;width:max-content;padding:14px 9px 18px;animation:reel 70s linear infinite}
+.strip:hover .reel,.strip:focus-within .reel{animation-play-state:paused}
+@keyframes reel{to{transform:translateX(-50%)}}
+.panel-c{--h:clamp(220px,26vw,330px);position:relative;flex:none;margin:0;height:var(--h);border:4px solid #14100a;box-shadow:6px 6px 0 #14100a;overflow:hidden;background:var(--c1);transform:rotate(var(--r,0deg))}
+.panel-c::before{content:"";position:absolute;inset:-50%;background:repeating-conic-gradient(from 0deg at 50% 50%,var(--c2) 0 7deg,transparent 7deg 14deg);animation:spin 40s linear infinite}
+.panel-c::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#00000026 1.3px,transparent 1.5px) 0 0/8px 8px;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.panel-c img{position:absolute;z-index:1;left:2%;bottom:0;display:block;height:96%;width:96%;object-fit:contain;object-position:50% 100%;transform-origin:50% 100%;transition:transform .35s var(--spring)}
+.panel-c:hover img{transform:scale(1.05) rotate(-1deg)}
+.sfx{position:absolute;z-index:2;top:10px;left:10px;font-weight:900;font-stretch:125%;font-size:clamp(1.1rem,2.2vw,1.7rem);letter-spacing:.01em;line-height:1;color:#ffd23f;
+  -webkit-text-stroke:2px #14100a;paint-order:stroke fill;text-shadow:3px 3px 0 #14100a;transform:rotate(-8deg) skewX(-6deg);animation:pop 3.2s var(--spring) infinite;animation-delay:var(--d,0s)}
+.panel-c.o .sfx{color:#fff}
+@keyframes pop{0%,70%,100%{scale:1}78%{scale:1.22}86%{scale:.96}}
 
 /* ---------- Laufband mit Ergebnissen ---------- */
 .ticker{position:relative;z-index:1;margin-top:var(--s7);background:var(--ball);color:#1b0d00;overflow:hidden;display:flex;align-items:stretch;font-weight:650}
@@ -331,6 +328,8 @@ footer a{color:#fff}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .ticker .belt{animation-duration:120s}
+  .reel{animation-duration:140s}
+  .panel-c::before,.sfx{animation:none}
   .in{animation-name:fade}
   .hero h1 .w,.hero p.lead,.cta,.stage,.logo-badge{animation-name:fade}
   @keyframes fade{from{opacity:0}}
@@ -354,8 +353,8 @@ footer a{color:#fff}
   .board .tm{padding:.7rem .75rem}
   .board .mid{padding:.5rem .6rem}
   .board .mid b{font-size:1.6rem}
-  .gallery{columns:2 140px}
-  .lb .lb-btn.prev,.lb .lb-btn.next{display:none}
+  .reel{gap:12px;animation-duration:55s}
+  .panel-c{--h:210px;border-width:3px;box-shadow:4px 4px 0 #14100a}
   .season-card{padding:var(--s4) var(--s5)}
   .tally{gap:var(--s5)}
   .tally b{font-size:2.2rem}
@@ -375,7 +374,6 @@ footer a{color:#fff}
     </a>
     <nav aria-label="Seitenbereiche">
       <a href="#niveau" data-sec="niveau">Mannschaften</a>
-      <a href="#bilder" data-sec="bilder">Bilder</a>
       <a href="#spiele" data-sec="spiele">Spiele</a>
       <a href="#tabellen" data-sec="tabellen">Tabellen</a>
       <a href="#mitmachen" data-sec="mitmachen">Mitmachen</a>
@@ -389,7 +387,6 @@ footer a{color:#fff}
   <ol>
     <li><a href="#start" data-sec="start"><span>Start</span></a></li>
     <li><a href="#niveau" data-sec="niveau"><span>Mannschaften</span></a></li>
-    <li><a href="#bilder" data-sec="bilder"><span>Bilder</span></a></li>
     <li><a href="#spiele" data-sec="spiele"><span>Spiele</span></a></li>
     <li><a href="#tabellen" data-sec="tabellen"><span>Tabellen</span></a></li>
     <li><a href="#mitmachen" data-sec="mitmachen"><span>Mitmachen</span></a></li>
@@ -399,7 +396,6 @@ footer a{color:#fff}
 
 <main>
   <div class="hero" id="start">
-    <img class="hero-photo" src="assets/photos/p022-l.webp" srcset="assets/photos/p022-s.webp 800w, assets/photos/p022-l.webp 1600w" sizes="100vw" width="1600" height="1066" alt="" aria-hidden="true" decoding="async">
     <div class="wrap">
       <div>
         <img class="logo-badge" src="assets/logo.png" alt="Logo TSV Dettingen/Erms" width="260" height="168">
@@ -416,6 +412,14 @@ footer a{color:#fff}
 
   <div class="season" id="season" hidden><div class="wrap"><div class="season-card" id="season-in"></div></div></div>
 
+  <div class="comic" aria-label="Comic-Streifen vom Heimspieltag">
+    <div class="wrap comic-head">
+      <span class="cap">Heimspieltag, 19. September 2026</span>
+      <p>Unsere Spieler als Comicfiguren. Nach Fotos von Marcel Mueller.</p>
+    </div>
+    <div class="strip"><div class="reel" id="reel"></div></div>
+  </div>
+
   <div class="ticker" id="ticker" hidden>
     <span class="lab"><i aria-hidden="true"></i>Ergebnisse</span>
     <div class="viewport"><div class="belt" id="belt"></div></div>
@@ -429,16 +433,6 @@ footer a{color:#fff}
         <a class="btn btn-line" href="#mitmachen" style="border:2px solid var(--club)">Unverbindlich reinschnuppern</a>
       </div>
       <ol class="rungs" id="rungs"></ol>
-    </div>
-  </section>
-
-  <section id="bilder">
-    <div class="wrap">
-      <div class="sec-head">
-        <div><h2><span class="drop" aria-hidden="true"></span>So sieht's bei uns aus</h2><p>Eindrücke vom Heimspieltag am 19. September 2026 in der Uhlandhalle. Tippe auf ein Foto, um es groß zu sehen.</p></div>
-      </div>
-      <div class="gallery" id="gallery"></div>
-      <p class="credit">Fotos: Marcel Mueller</p>
     </div>
   </section>
 
@@ -486,13 +480,6 @@ footer a{color:#fff}
     </section>
   </div>
 </main>
-
-<dialog class="lb" id="lb" aria-label="Bildansicht">
-  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
-  <button class="lb-btn x" id="lb-x" type="button" aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <button class="lb-btn prev" id="lb-prev" type="button" aria-label="Vorheriges Foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-  <button class="lb-btn next" id="lb-next" type="button" aria-label="Nächstes Foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-</dialog>
 
 <div class="fab" id="fab"><a class="btn btn-ball" href="#mitmachen">Probetraining vereinbaren</a></div>
 
@@ -798,44 +785,33 @@ footer a{color:#fff}
       '<li><b>2</b><span><strong>Hallenschuhe einpacken</strong>Bequeme Sportkleidung reicht für den Anfang.</span></li>'+
       '<li><b>3</b><span><strong>Mitspielen</strong>Einfach an die Platte stellen und loslegen. Den Rest zeigen wir dir.</span></li></ol>'+
       (c.instagram?'<a class="btn btn-ball insta" href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">Auf Instagram schreiben</a>':'')+'</div>'+
-      '<div class="rv"><figure class="join-photo"><img src="assets/photos/p050-s.webp" srcset="'+srcset("p050")+'" sizes="(max-width:980px) 100vw, 460px" width="1600" height="1066" alt="Drei Mitglieder der Abteilung lächeln in der Halle in die Kamera" loading="lazy" decoding="async"></figure><div class="hcard"><h3>'+esc(c.hall||"Uhlandhalle")+'</h3><p>'+esc(c.address||"Rathausplatz 2, 72581 Dettingen an der Erms")+'</p>'+
+      '<div class="hcard rv"><h3>'+esc(c.hall||"Uhlandhalle")+'</h3><p>'+esc(c.address||"Rathausplatz 2, 72581 Dettingen an der Erms")+'</p>'+
       (c.maps?'<p><a href="'+esc(c.maps)+'" target="_blank" rel="noopener">Route planen</a></p>':'')+
       (c.contact?'<p>Ansprechpartner<br><strong>'+esc(c.contact)+'</strong></p>':'')+
       (c.email?'<p class="copy"><span style="user-select:all">'+esc(c.email)+'</span><button type="button" id="copy-mail">Kopieren</button></p>':'')+
-      (c.instagram?'<p>Instagram<br><a href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">@'+esc(c.instagram)+'</a></p>':'')+'</div></div>';
+      (c.instagram?'<p>Instagram<br><a href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">@'+esc(c.instagram)+'</a></p>':'')+'</div>';
     var cb=$("copy-mail");if(cb)cb.onclick=function(){var t=c.email;try{navigator.clipboard.writeText(t).then(function(){cb.textContent="Kopiert"},function(){cb.textContent="Bitte markieren"})}catch(e){cb.textContent="Bitte markieren"}};
   }
 
-  /* ---------- Fotos ---------- */
-  var PHOTOS=[
-    {n:"p035",w:1600,h:1600,alt:"Spieler wirft den Ball zum Aufschlag hoch"},
-    {n:"p023",w:1066,h:1600,alt:"Spieler im Vereinstrikot von hinten in Bereitschaftsstellung"},
-    {n:"p140",w:1600,h:1066,alt:"Aufschlag vor der blauen Hallenwand, der Ball schwebt in der Luft"},
-    {n:"p003",w:1440,h:1440,alt:"Junger Spieler spielt den Ball knapp über dem Netz, hinten die Zähltafel"},
-    {n:"p108",w:1600,h:1066,alt:"Zwei Spieler verfolgen konzentriert den Ballwechsel"},
-    {n:"p058",w:1066,h:1600,alt:"Doppel kurz vor dem Aufschlag"},
-    {n:"p178",w:1600,h:1066,alt:"Zwei Mannschaftskameraden Arm in Arm in der Halle"},
-    {n:"p194",w:1440,h:1440,alt:"Spieler mit rotem Schläger beim Aufschlag"},
-    {n:"p148",w:1600,h:1066,alt:"Spieler streckt sich nach einem flachen Ball"}
+  /* ---------- Comic-Streifen ---------- */
+  var COMIC=[
+    {n:"p035",w:593,h:640,sfx:"AUFSCHLAG!",alt:"Comicfigur: Spieler wirft den Ball zum Aufschlag hoch"},
+    {n:"p148",w:587,h:640,sfx:"ZACK!",alt:"Comicfigur: Spieler streckt sich nach dem Ball"},
+    {n:"p178",w:1117,h:640,sfx:"TEAMGEIST!",alt:"Comicfiguren: zwei Mannschaftskameraden Arm in Arm"},
+    {n:"p140",w:623,h:640,sfx:"WUSCH!",alt:"Comicfigur: Spieler beim Aufschlag"},
+    {n:"p108",w:789,h:640,sfx:"FOKUS!",alt:"Comicfiguren: zwei Spieler verfolgen den Ballwechsel"},
+    {n:"p050",w:950,h:640,sfx:"WILLKOMMEN!",alt:"Comicfiguren: drei Mitglieder der Abteilung lächeln"},
+    {n:"p058",w:493,h:640,sfx:"DOPPEL!",alt:"Comicfiguren: Doppel kurz vor dem Aufschlag"},
+    {n:"p023",w:396,h:640,sfx:"BEREIT?",alt:"Comicfigur: Spieler in Bereitschaftsstellung"}
   ];
-  function srcset(n){return "assets/photos/"+n+"-s.webp 800w, assets/photos/"+n+"-l.webp 1600w"}
-  function renderGallery(){
-    $("gallery").innerHTML=PHOTOS.map(function(p,i){
-      return '<button type="button" class="shot rv" data-i="'+i+'" aria-label="Foto vergrößern: '+esc(p.alt)+'"><img src="assets/photos/'+p.n+'-s.webp" srcset="'+srcset(p.n)+'" sizes="(max-width:640px) 50vw, 380px" width="'+p.w+'" height="'+p.h+'" alt="'+esc(p.alt)+'" loading="lazy" decoding="async"></button>';
-    }).join("");
-    Array.prototype.forEach.call($("gallery").querySelectorAll(".shot"),function(b){b.onclick=function(){openLb(+b.getAttribute("data-i"))}});
+  var BG=[["#004173","#00558f",""],["#f57c1f","#ff9a45"," o"],["#0093cf","#2aa9de",""],["#ffd23f","#ffe27a",""]];
+  function renderComic(){
+    function set(hidden){return COMIC.map(function(c,i){var b=BG[i%BG.length], r=((i*37)%5-2)*.6;
+      return '<figure class="panel-c'+b[2]+'" style="--c1:'+b[0]+';--c2:'+b[1]+';--r:'+r.toFixed(1)+'deg;--d:'+(i*.4).toFixed(1)+'s;width:calc(var(--h) * '+(c.w/c.h*1.04).toFixed(3)+')"'+(hidden?' aria-hidden="true"':'')+'>'+
+        '<span class="sfx">'+c.sfx+'</span><img src="assets/comic/'+c.n+'.webp" width="'+c.w+'" height="'+c.h+'" alt="'+(hidden?'':esc(c.alt))+'" loading="lazy" decoding="async"></figure>'}).join("")}
+    $("reel").innerHTML=set(false)+set(true);
   }
-  var lb=$("lb"), lbI=0, lbFrom=null;
-  function showLb(i){lbI=(i+PHOTOS.length)%PHOTOS.length;var p=PHOTOS[lbI];var im=$("lb-img");im.src="assets/photos/"+p.n+"-l.webp";im.alt=p.alt;$("lb-cap").textContent=(lbI+1)+" von "+PHOTOS.length+" · Foto: Marcel Mueller"}
-  function openLb(i){lbFrom=document.activeElement;showLb(i);if(lb.showModal)lb.showModal();else lb.setAttribute("open","")}
-  function closeLb(){if(lb.close)lb.close();else lb.removeAttribute("open")}
-  lb.addEventListener("close",function(){if(lbFrom&&lbFrom.focus)lbFrom.focus()});
-  $("lb-x").onclick=closeLb;$("lb-prev").onclick=function(){showLb(lbI-1)};$("lb-next").onclick=function(){showLb(lbI+1)};
-  lb.addEventListener("click",function(e){if(e.target===lb||e.target.tagName==="FIGURE")closeLb()});
-  lb.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")showLb(lbI-1);if(e.key==="ArrowRight")showLb(lbI+1)});
-  var sx=null;lb.addEventListener("pointerdown",function(e){sx=e.clientX});
-  lb.addEventListener("pointerup",function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)showLb(lbI+(dx<0?1:-1))});
-  renderGallery();
+  renderComic();
 
   function renderStand(){
     var u=new Date(DATA.updated);
@@ -879,7 +855,7 @@ footer a{color:#fff}
   function watchCounts(){if(!io)return;document.querySelectorAll("[data-count]").forEach(function(el){io.observe(el)})}
   function watchHeads(){if(!io)return;document.querySelectorAll(".sec-head").forEach(function(h){io.observe(h)})}
 
-  var secs=["start","niveau","bilder","spiele","tabellen","mitmachen"].map(function(id){return document.getElementById(id)});
+  var secs=["start","niveau","spiele","tabellen","mitmachen"].map(function(id){return document.getElementById(id)});
   var links=document.querySelectorAll("a[data-sec]");
   var rallyBall=$("rally-ball"), trackBall=$("track-ball"), trackFill=$("track-fill"), fab=$("fab"), current=-1, ticking=false;
   function hop(el){if(!el)return;el.classList.remove("hop");void el.offsetWidth;el.classList.add("hop")}
