@@ -8,6 +8,7 @@ build.py                   baut daraus site/index.html: python build.py
 site/index.html            die fertige Homepage
 site/assets/               Logo und Schrift (Archivo, SIL Open Font License)
 site/data.json             die aktuellen Daten (wird automatisch überschrieben)
+site/turniere.json         eure Turniere (von Hand gepflegt)
 scraper/fetch_clicktt.py   holt die Daten aus click-TT
 scraper/config.json        Mannschaften, Ligen, Halle, Trainingszeiten, Kontakt
 scraper/test_parser.py     Test des Abrufs
@@ -50,6 +51,26 @@ Die Werte stehen auf click-TT: Vereinsseite → „Mannschaften und Ligeneinteil
 - Lokal testen: `pip install requests beautifulsoup4`, dann `python scraper/test_parser.py` und `python scraper/fetch_clicktt.py --dry-run`.
 - GitHub pausiert Zeitpläne in Repositories ohne Aktivität nach 60 Tagen. Da der Job bei jedem neuen Ergebnis die Daten speichert, passiert das in der Saison nicht; nach der Sommerpause ggf. unter Actions wieder aktivieren.
 
-## Design und Texte ändern
+## Selbst anpassen – direkt im Browser auf GitHub
 
-Texte und Design stehen in `src/page.html`. Nach einer Änderung `python build.py` ausführen und hochladen. Die Schrift wird mit der Seite ausgeliefert und nicht von Google geladen, das ist datenschutzrechtlich unkritisch.
+Ihr braucht kein Programm. Datei auf github.com öffnen → Stift-Symbol („Edit this file“) → ändern → unten **Commit changes**. Nach ca. 1 Minute ist die Änderung online (unter **Actions** seht ihr den Lauf).
+
+| Was | Datei |
+|---|---|
+| Turnier eintragen | `site/turniere.json` – Block aus `_vorlage` kopieren und in `turniere: [ ... ]` einfügen |
+| Trainingszeiten, Ansprechpartner, E-Mail, Instagram | `scraper/config.json` → Abschnitt `club` |
+| Texte und Design | `src/page.html` (wird automatisch zu `site/index.html` gebaut) |
+
+Beispiel für `site/turniere.json` mit einem Turnier:
+
+```json
+"turniere": [
+  { "datum": "2027-03-13", "beginn": "10:00", "name": "3. Dettinger TTBW Race", "art": "TTBW Race",
+    "klassen": ["Q-TTR bis 1300", "offen"], "ort": "Uhlandhalle, Rathausplatz 2, 72581 Dettingen an der Erms",
+    "anmeldung": "https://www.mytischtennis.de/…", "ausschreibung": "", "hinweis": "" }
+]
+```
+
+Wichtig: Anführungszeichen und Kommas genau so lassen. Wenn nach dem Speichern unter Actions ein roter Lauf erscheint, ist meist ein Komma zu viel oder zu wenig. Die alte Version bleibt dann online.
+
+Die Schrift wird mit der Seite ausgeliefert und nicht von Google geladen, das ist datenschutzrechtlich unkritisch.

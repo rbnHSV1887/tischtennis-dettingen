@@ -247,6 +247,29 @@ tr.us td{background:var(--tint);font-weight:700}
 tr.us td:first-child{box-shadow:inset 4px 0 0 var(--ball)}
 .src{font-size:.88rem;color:var(--muted);margin-top:var(--s3);display:flex;gap:var(--s4);flex-wrap:wrap}
 
+/* ---------- Turniere ---------- */
+.tour{display:grid;grid-template-columns:6.2rem minmax(0,1fr);background:var(--surface);border:1px solid var(--rule);border-radius:18px;overflow:hidden;margin-bottom:var(--s4)}
+.tour .when{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1rem;background:var(--club);color:#fff;padding:var(--s4) var(--s2);text-align:center}
+.tour .when .wd{font-size:.75rem;font-weight:700;letter-spacing:.08em;color:#cfe6f5}
+.tour .when .dd{font-weight:800;font-size:2.4rem;line-height:1}
+.tour .when .mm{font-size:.85rem;color:#cfe6f5}
+.tour .what{padding:var(--s4) var(--s5);display:grid;gap:var(--s2);min-width:0}
+.tour .what h3{font-size:1.3rem}
+.tour .meta{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4);color:var(--muted);font-size:.95rem}
+.tour .chips{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.chipc{font-size:.8rem;font-weight:600;background:var(--tint);color:var(--ink);padding:.22rem .65rem;border-radius:99px}
+.tag.race{background:var(--ball);color:#1b0d00}
+.tour .acts{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s2)}
+.tour .acts .btn{padding:.6rem 1.05rem;font-size:.95rem}
+.btn-out{border:2px solid var(--club);color:var(--ink)}
+.tour.past .what{opacity:.72}
+.tour.past .when{background:var(--muted)}
+.tour-empty{background:var(--surface);border:1px dashed var(--rule);border-radius:18px;padding:var(--s5) var(--s6);display:grid;gap:var(--s3)}
+.tour-empty h3{font-size:1.3rem}
+.tour-empty p{margin:0;color:var(--muted);max-width:60ch}
+.tour-empty .acts{display:flex;flex-wrap:wrap;gap:var(--s3)}
+.past-h{margin:var(--s6) 0 var(--s3);font-size:1.05rem;color:var(--muted)}
+
 /* ---------- Mitmachen ---------- */
 .band{margin-top:var(--s8);color:var(--on-band);position:relative;overflow:hidden;background:
   radial-gradient(800px 400px at 100% 0%,#0093cf55,transparent 60%),linear-gradient(180deg,var(--club),var(--navy))}
@@ -342,6 +365,10 @@ footer a{color:#fff}
   .hcard{padding:var(--s4) var(--s5)}
   .rung{grid-template-columns:2.6rem minmax(0,1fr) auto;gap:var(--s3)}
   .rung .lvl{width:2.6rem;height:2.6rem;font-size:1.1rem}
+  .tour{grid-template-columns:4.6rem minmax(0,1fr)}
+  .tour .when .dd{font-size:1.9rem}
+  .tour .what{padding:var(--s3) var(--s4)}
+  .tour-empty{padding:var(--s4) var(--s5)}
 }
 </style>
 
@@ -355,6 +382,7 @@ footer a{color:#fff}
       <a href="#niveau" data-sec="niveau">Mannschaften</a>
       <a href="#spiele" data-sec="spiele">Spiele</a>
       <a href="#tabellen" data-sec="tabellen">Tabellen</a>
+      <a href="#turniere" data-sec="turniere">Turniere</a>
       <a href="#mitmachen" data-sec="mitmachen">Mitmachen</a>
       <a href="#mitmachen" class="nav-cta">Probetraining</a>
     </nav>
@@ -368,6 +396,7 @@ footer a{color:#fff}
     <li><a href="#niveau" data-sec="niveau"><span>Mannschaften</span></a></li>
     <li><a href="#spiele" data-sec="spiele"><span>Spiele</span></a></li>
     <li><a href="#tabellen" data-sec="tabellen"><span>Tabellen</span></a></li>
+    <li><a href="#turniere" data-sec="turniere"><span>Turniere</span></a></li>
     <li><a href="#mitmachen" data-sec="mitmachen"><span>Mitmachen</span></a></li>
   </ol>
   <span class="rb" id="rally-ball" aria-hidden="true"></span>
@@ -438,6 +467,15 @@ footer a{color:#fff}
       </div>
       <div class="tabs" role="tablist" aria-label="Mannschaften" id="tabs"></div>
       <div id="panel" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section id="turniere">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><h2><span class="drop" aria-hidden="true"></span>Turniere</h2><p>Turniere, die wir in der Uhlandhalle ausrichten, zum Beispiel TTBW-Race-Turniere. Melde dich direkt über den Link beim Turnier an.</p></div>
+      </div>
+      <div id="tourneys"><p class="muted">Turniere werden geladen …</p></div>
     </div>
   </section>
 
@@ -596,22 +634,34 @@ footer a{color:#fff}
       // Schatten der Platte auf dem Hallenboden
       ctx.save();ctx.shadowColor="rgba(0,6,16,.6)";ctx.shadowBlur=Math.max(20,40*S/600);ctx.shadowOffsetX=4000;ctx.translate(-4000,0);
       poly([[-L-6,0,-D-4],[L+6,0,-D-4],[L+10,0,D+10],[-L-10,0,D+10]],"#000");ctx.restore();
-      // Untergestell: Beine, Querstreben, Rollen
-      var steel="#1c2430", sk=function(x,y,z){return Math.max(1.5,3.2*K(x,y,z))};
-      [-1,1].forEach(function(sz){var z=sz*(D-16);
-        line([-(L-24),18,z],[L-24,18,z],sk(0,18,z)*.9,steel);
-        [-20,20].forEach(function(x){line([x,18,z],[x,7,z],sk(x,12,z)*.8,steel);var q=P(x,5,z),r=4.5*K(x,5,z);ctx.beginPath();ctx.arc(q[0],q[1],r,0,7);ctx.fillStyle="#0c1118";ctx.fill()})});
-      [-1,1].forEach(function(sx){var x=sx*(L-24);line([x,40,-(D-16)],[x,40,D-16],sk(x,40,0)*.9,steel)});
-      [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(function(v){var x=v[0]*(L-24),z=v[1]*(D-16);line([x,2,z],[x,TOP-TH-6,z],sk(x,40,z),steel);
-        var q=P(x,1,z);ctx.beginPath();ctx.ellipse(q[0],q[1],4*K(x,1,z),1.6*K(x,1,z),0,0,7);ctx.fillStyle="#0c1118";ctx.fill()});
-      // Zarge und Plattenkante
-      poly([[-L+8,TOP-TH-7,D-8],[L-8,TOP-TH-7,D-8],[L-8,TOP-TH,D-8],[-L+8,TOP-TH,D-8]],"#0b1622");
-      poly([[-L,TOP-TH,D],[L,TOP-TH,D],[L,TOP,D],[-L,TOP,D]],"#0f3462");
-      // Spielfläche
+      ctx.save();ctx.shadowColor="rgba(0,4,12,.75)";ctx.shadowBlur=Math.max(8,14*S/600);ctx.shadowOffsetX=4000;ctx.translate(-4000,0);
+      poly([[-(L-40),0,-(D-18)],[L-40,0,-(D-18)],[L-40,0,D-14],[-(L-40),0,D-14]],"#000");ctx.restore();
+      // Geschlossener Unterbau wie bei den Wettkampfplatten in der Uhlandhalle: je Hälfte ein Korpus mit schrägen Enden
+      var BZ=D-24, BT=TOP-9;
+      function lin(a,b){var p=P(a[0],a[1],a[2]),q=P(b[0],b[1],b[2]),g=ctx.createLinearGradient(p[0],p[1],q[0],q[1]);return g}
+      [-1,1].forEach(function(sx){
+        var xiT=sx*6, xoT=sx*(L-26), xiB=sx*12, xoB=sx*(L-46);
+        // Innenseite (zur Mitte) nur bei der linken Hälfte sichtbar
+        if(sx<0)poly([[xiB,2,-BZ],[xiB,2,BZ],[xiT,BT,BZ],[xiT,BT,-BZ]],"#0c1422");
+        // Außenseite nur bei der rechten Hälfte sichtbar
+        if(sx>0)poly([[xoB,2,-BZ],[xoB,2,BZ],[xoT,BT,BZ],[xoT,BT,-BZ]],"#131d30");
+        // Frontwand
+        var g=lin([0,BT,BZ],[0,2,BZ]);g.addColorStop(0,"#26365a");g.addColorStop(1,"#18233b");
+        poly([[xiB,2,BZ],[xoB,2,BZ],[xoT,BT,BZ],[xiT,BT,BZ]],g);
+        // dunkle Leiste oben und Sockel unten
+        poly([[xiT,BT-3,BZ],[xoT+sx*-1.5,BT-3,BZ],[xoT,BT,BZ],[xiT,BT,BZ]],"#0f1626");
+        poly([[xiB,2,BZ+.5],[xoB,2,BZ+.5],[xoB,6,BZ+.5],[xiB,6,BZ+.5]],"#0a0f18");
+      });
+      line([-6,BT-1.5,BZ],[6,BT-1.5,BZ],Math.max(1,2*K(0,BT,BZ)),"#0a0d12");
+      // Zarge: dicke schwarze Kante rundherum
+      poly([[L,TOP-6,-D],[L,TOP-6,D],[L,TOP,D],[L,TOP,-D]],"#0a0d12");
+      poly([[-L,TOP-6,D],[L,TOP-6,D],[L,TOP,D],[-L,TOP,D]],"#12161d");
+      line([-L,TOP-.4,D],[L,TOP-.4,D],Math.max(1,.5*K(0,TOP,D)),"rgba(255,255,255,.12)");
+      // Spielfläche: dunkles Blaugrau
       var a=P(0,TOP,-D), b=P(0,TOP,D), g=ctx.createLinearGradient(a[0],a[1],b[0],b[1]);
-      g.addColorStop(0,"#2a62a8");g.addColorStop(1,"#174a86");
+      g.addColorStop(0,"#405a7e");g.addColorStop(1,"#2b4263");
       poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,D],[-L,TOP,D]],g);
-      var c=P(-30,TOP,-25), sh=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],W*.45);sh.addColorStop(0,"rgba(255,255,255,.10)");sh.addColorStop(1,"rgba(255,255,255,0)");
+      var c=P(-30,TOP,-25), sh=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],W*.45);sh.addColorStop(0,"rgba(255,255,255,.08)");sh.addColorStop(1,"rgba(255,255,255,0)");
       poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,D],[-L,TOP,D]],sh);
       // weiße Linien: 2 cm Rand, 3 mm Mittellinie
       var wl="#f3f6fa";
@@ -627,12 +677,12 @@ footer a{color:#fff}
       if(ball[0]<0)drawBall(ball);
       // Netzgarnitur
       [-1,1].forEach(function(sz){var z=sz*NETZ;
-        poly([[-2,TOP-5,sz*D],[2,TOP-5,sz*D],[2,TOP-5,z],[-2,TOP-5,z]],"#2b323c");
-        poly([[-1.5,TOP-6,z],[1.5,TOP-6,z],[1.5,TOP+NETH+1,z],[-1.5,TOP+NETH+1,z]],"#1a1f27")});
-      poly([[0,TOP,-NETZ],[0,TOP,NETZ],[0,TOP+NETH,NETZ],[0,TOP+NETH,-NETZ]],"rgba(8,20,38,.5)");
+        poly([[-2,TOP-5,sz*D],[2,TOP-5,sz*D],[2,TOP-5,z],[-2,TOP-5,z]],"#0d1015");
+        poly([[-1.5,TOP-6,z],[1.5,TOP-6,z],[1.5,TOP+NETH+1,z],[-1.5,TOP+NETH+1,z]],"#0b0d11")});
+      poly([[0,TOP,-NETZ],[0,TOP,NETZ],[0,TOP+NETH,NETZ],[0,TOP+NETH,-NETZ]],"rgba(32,70,140,.62)");
       ctx.save();ctx.globalAlpha=.32;
-      for(var z=-NETZ;z<=NETZ;z+=2.2)line([0,TOP,z],[0,TOP+NETH-1.5,z],.6,"#9fb4cc");
-      for(var y=TOP+2;y<TOP+NETH-1.5;y+=2.2)line([0,y,-NETZ],[0,y,NETZ],.6,"#9fb4cc");
+      for(var z=-NETZ;z<=NETZ;z+=2.2)line([0,TOP,z],[0,TOP+NETH-1.5,z],.6,"#8fb0e0");
+      for(var y=TOP+2;y<TOP+NETH-1.5;y+=2.2)line([0,y,-NETZ],[0,y,NETZ],.6,"#8fb0e0");
       ctx.restore();
       poly([[0,TOP+NETH-1.5,-NETZ],[0,TOP+NETH-1.5,NETZ],[0,TOP+NETH,NETZ],[0,TOP+NETH,-NETZ]],"#f3f6fa");
       // alles vor dem Netz
@@ -765,6 +815,32 @@ footer a{color:#fff}
   }
 
 
+  /* ---------- Turniere (aus site/turniere.json) ---------- */
+  function renderTourneys(list){
+    var today=dayStart(new Date()), year=today.getFullYear();
+    var items=(list||[]).filter(function(t){return t&&t.datum&&/^\d{4}-\d{2}-\d{2}$/.test(t.datum)}).map(function(t){var p=t.datum.split("-");t._d=new Date(+p[0],p[1]-1,+p[2]);return t});
+    var up=items.filter(function(t){return t._d>=today}).sort(function(a,b){return a._d-b._d});
+    var past=items.filter(function(t){return t._d<today}).sort(function(a,b){return b._d-a._d}).slice(0,3);
+    function card(t,isPast){
+      var d=t._d, kl=(t.klassen||[]).filter(Boolean);
+      return '<article class="tour rv'+(isPast?' past':'')+'"><div class="when"><span class="wd">'+WD[d.getDay()].toUpperCase()+'</span><span class="dd num">'+d.getDate()+'</span><span class="mm">'+MONS[d.getMonth()]+' '+d.getFullYear()+'</span></div>'+
+        '<div class="what"><div class="chips">'+(t.art?'<span class="tag race">'+esc(t.art)+'</span>':'')+(isPast?'<span class="tag away">Vorbei</span>':(daysUntil(d)<15?'<span class="tag away">'+rel(d)+'</span>':''))+'</div>'+
+        '<h3>'+esc(t.name||"Turnier")+'</h3>'+
+        '<div class="meta">'+(t.beginn?'<span>Beginn '+esc(t.beginn)+' Uhr</span>':'')+(t.ort?'<span>'+esc(t.ort)+'</span>':'')+'</div>'+
+        (kl.length?'<div class="chips">'+kl.map(function(k){return '<span class="chipc">'+esc(k)+'</span>'}).join("")+'</div>':'')+
+        (t.hinweis?'<p class="muted" style="margin:0">'+esc(t.hinweis)+'</p>':'')+
+        (!isPast&&(t.anmeldung||t.ausschreibung)?'<div class="acts">'+(t.anmeldung?'<a class="btn btn-ball" href="'+esc(t.anmeldung)+'" target="_blank" rel="noopener">Zur Anmeldung</a>':'')+(t.ausschreibung?'<a class="btn btn-out" href="'+esc(t.ausschreibung)+'" target="_blank" rel="noopener">Ausschreibung</a>':'')+'</div>':'')+
+        '</div></article>';
+    }
+    var cal="https://ttbw.click-tt.de/cgi-bin/WebObjects/ClickTTVBW.woa/wa/tournamentCalendar?federation=TTBW";
+    var race="https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/tournamentCalendar?federation=TTBW&circuit="+encodeURIComponent("TTBW Race "+year);
+    var html=up.length?up.map(function(t){return card(t,false)}).join(""):
+      '<div class="tour-empty rv"><h3>Gerade ist bei uns kein Turnier geplant</h3><p>Sobald wir wieder ein TTBW-Race-Turnier oder ein anderes Turnier ausrichten, steht es hier mit Datum, Klassen und Anmeldelink. Bis dahin findest du alle Turniere in der Region im Turnierkalender des Verbands.</p>'+
+      '<div class="acts"><a class="btn btn-out" href="'+race+'" target="_blank" rel="noopener">TTBW Race '+year+'</a><a class="btn btn-out" href="'+cal+'" target="_blank" rel="noopener">Turnierkalender TTBW</a></div></div>';
+    if(past.length)html+='<h3 class="past-h">Zuletzt bei uns</h3>'+past.map(function(t){return card(t,true)}).join("");
+    $("tourneys").innerHTML=html;watch($("tourneys"));
+  }
+
   function renderStand(){
     var u=new Date(DATA.updated);
     var s=u.toLocaleString("de-DE",{timeZone:"Europe/Berlin",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
@@ -807,7 +883,7 @@ footer a{color:#fff}
   function watchCounts(){if(!io)return;document.querySelectorAll("[data-count]").forEach(function(el){io.observe(el)})}
   function watchHeads(){if(!io)return;document.querySelectorAll(".sec-head").forEach(function(h){io.observe(h)})}
 
-  var secs=["start","niveau","spiele","tabellen","mitmachen"].map(function(id){return document.getElementById(id)});
+  var secs=["start","niveau","spiele","tabellen","turniere","mitmachen"].map(function(id){return document.getElementById(id)});
   var links=document.querySelectorAll("a[data-sec]");
   var rallyBall=$("rally-ball"), trackBall=$("track-ball"), trackFill=$("track-fill"), fab=$("fab"), current=-1, ticking=false;
   function hop(el){if(!el)return;el.classList.remove("hop");void el.offsetWidth;el.classList.add("hop")}
@@ -843,6 +919,7 @@ footer a{color:#fff}
     watch();watchCounts();watchHeads();update();
   }
 
+  fetch("turniere.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){renderTourneys(j.turniere)}).catch(function(){renderTourneys([])});
   fetch("data.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
     .then(function(d){DATA=d;render()})
     .catch(function(){

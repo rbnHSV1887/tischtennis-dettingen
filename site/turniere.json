@@ -1,0 +1,15 @@
+{
+  "_anleitung": "Neues Turnier eintragen: den Block aus _vorlage kopieren, in die Liste turniere einfügen und die Werte anpassen. Datum als JJJJ-MM-TT. Felder, die ihr nicht braucht, einfach leer lassen (\"\"). Mehrere Turniere durch Komma trennen. Vergangene Turniere wandern automatisch nach unten.",
+  "_vorlage": {
+    "datum": "2027-03-13",
+    "beginn": "10:00",
+    "name": "3. Dettinger TTBW Race",
+    "art": "TTBW Race",
+    "klassen": ["Q-TTR bis 1300", "Q-TTR bis 1600", "offen"],
+    "ort": "Uhlandhalle, Rathausplatz 2, 72581 Dettingen an der Erms",
+    "anmeldung": "https://www.mytischtennis.de/",
+    "ausschreibung": "",
+    "hinweis": "Meldeschluss am Vortag um 18 Uhr."
+  },
+  "turniere": []
+}
