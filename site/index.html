@@ -102,9 +102,23 @@ nav .nav-cta::after{display:none}
 .pulse:hover{animation:none}
 @keyframes ring{0%{box-shadow:0 0 0 0 #f57c1fbb,0 10px 24px -10px #f57c1fcc}70%,100%{box-shadow:0 0 0 16px #f57c1f00,0 10px 24px -10px #f57c1fcc}}
 
-.next-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--s2);margin-bottom:var(--s5)}
+.next-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s2);margin-bottom:var(--s5)}
 .next-head .k{font-weight:700;font-size:1.1rem}
 .countdown{font-weight:800;font-size:1.1rem;color:var(--ball)}
+/* Zählgerät: Wendeblätter wie am Spieltisch, zählt Stunden und Minuten bis zum Spiel */
+.scorer{display:flex;flex-direction:column;align-items:center}
+.sc-body{display:flex;gap:6px;background:#0b0e13;border:1px solid #ffffff24;border-radius:8px;padding:6px 7px 5px;box-shadow:0 10px 20px -10px #000c}
+.sc-side{display:flex;flex-direction:column;align-items:center;gap:3px}
+.sc-cards{display:flex;gap:3px}
+.flipc{position:relative;width:1.55em;height:2.05em;font-size:1.3rem;display:grid;place-items:center;background:linear-gradient(#fff 0 49%,#e6e9ee 51%);border-radius:3px;
+  color:#c8102e;font-weight:800;font-variant-numeric:tabular-nums;line-height:1;box-shadow:inset 0 -1px 0 #0002;transform-origin:50% 50%}
+.flipc::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#0003}
+.sc-side.b .flipc{color:#16181c}
+.flipc.turn{animation:turn .5s ease-in-out}
+@keyframes turn{0%{transform:perspective(200px) rotateX(0)}49%{transform:perspective(200px) rotateX(90deg)}51%{transform:perspective(200px) rotateX(-90deg)}100%{transform:perspective(200px) rotateX(0)}}
+.sc-side small{font-size:.6rem;font-weight:700;letter-spacing:.12em;color:#cfe6f5}
+.sc-leg{width:62%;height:9px;background:linear-gradient(#1a1f27,#0b0e13);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);margin-top:-1px}
+.sc-note{font-size:.72rem;color:var(--on-band-soft);margin-top:4px}
 .stage{animation:rise .9s var(--ease) .2s both}
 /* Platte im Maßstab 274 x 152,5 cm, gezeichnet in 3D (Canvas) */
 .arena{position:relative;aspect-ratio:16/10;max-width:100%;margin-inline:-2%}
@@ -556,12 +570,40 @@ footer a{color:#fff}
     }else{
       var d=parseDate(m), home=isUs(m.h);
       function side(name,tag,cls){var us=isUs(name);return '<div class="tm'+cls+(us?'':' them')+'"><small>'+tag+'</small><b>'+esc(name)+'</b>'+(us?'<span class="lbl">'+esc(labelFor(m))+'</span>':'')+'</div>'}
-      head='<div class="next-head"><span class="k">Nächstes Spiel</span><span class="countdown">'+rel(d)+'</span></div>';
+      head='<div class="next-head"><span class="k">Nächstes Spiel</span>'+scorerHTML()+'</div>';
       board='<div class="board">'+side(m.h,"HEIM","")+'<div class="mid"><b>'+esc(m.t)+'</b><small>'+WD[d.getDay()]+' '+d.getDate()+'. '+MONS[d.getMonth()]+'</small></div>'+side(m.a,"GAST"," g")+'</div>'+
         '<div class="next-meta"><span>'+esc(leagueFor(m))+'</span><span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span></div>';
     }
     box.innerHTML=head+'<div class="arena"><img class="collage" src="assets/collage.webp" width="1400" height="856" alt="" aria-hidden="true" decoding="async"><canvas id="arena" role="img" aria-label="'+esc(label)+'"></canvas></div>'+board;
     startArena($("arena"));
+    if(m)startScorer(parseDate(m));
+  }
+
+  /* ---------- Zählgerät ---------- */
+  var scorerTimer=null;
+  function scorerHTML(){
+    return '<div class="scorer" role="timer" aria-live="off" id="scorer"><div class="sc-body">'+
+      '<div class="sc-side r"><div class="sc-cards" id="sc-h"></div><small>STD</small></div>'+
+      '<div class="sc-side b"><div class="sc-cards" id="sc-m"></div><small>MIN</small></div>'+
+      '</div><div class="sc-leg" aria-hidden="true"></div><div class="sc-note" id="sc-note"></div></div>';
+  }
+  function setCards(el,str){
+    var cur=el.children;
+    if(cur.length!==str.length){el.innerHTML=str.split("").map(function(c){return '<span class="flipc">'+c+'</span>'}).join("");return}
+    str.split("").forEach(function(c,i){var f=cur[i];if(f.textContent===c)return;
+      f.classList.remove("turn");void f.offsetWidth;f.classList.add("turn");setTimeout(function(){f.textContent=c},250)});
+  }
+  function startScorer(start){
+    if(scorerTimer)clearInterval(scorerTimer);
+    function tick(){
+      var h=$("sc-h"),mm=$("sc-m");if(!h){clearInterval(scorerTimer);return}
+      var ms=start-new Date(), live=ms<=0, mins=live?0:Math.ceil(ms/60000);
+      var hrs=Math.floor(mins/60), mi=mins%60;
+      setCards(h,(hrs<10?"0":"")+hrs);setCards(mm,(mi<10?"0":"")+mi);
+      $("sc-note").textContent=live?"Spiel läuft":"bis zum Anpfiff";
+      $("scorer").setAttribute("aria-label",live?"Das Spiel läuft":"Noch "+hrs+" Stunden und "+mi+" Minuten bis zum Spiel");
+    }
+    tick();scorerTimer=setInterval(tick,1000);
   }
 
   /* ---------- Tischtennisplatte in 3D ----------
@@ -650,20 +692,17 @@ footer a{color:#fff}
       // Geschlossener Unterbau wie bei den Wettkampfplatten in der Uhlandhalle: je Hälfte ein Korpus mit schrägen Enden
       var BZ=D-24, BT=TOP-9;
       function lin(a,b){var p=P(a[0],a[1],a[2]),q=P(b[0],b[1],b[2]),g=ctx.createLinearGradient(p[0],p[1],q[0],q[1]);return g}
-      [-1,1].forEach(function(sx){
-        var xiT=sx*6, xoT=sx*(L-26), xiB=sx*12, xoB=sx*(L-46);
-        // Innenseite (zur Mitte) nur bei der linken Hälfte sichtbar
-        if(sx<0)poly([[xiB,2,-BZ],[xiB,2,BZ],[xiT,BT,BZ],[xiT,BT,-BZ]],"#0c1422");
-        // Außenseite nur bei der rechten Hälfte sichtbar
-        if(sx>0)poly([[xoB,2,-BZ],[xoB,2,BZ],[xoT,BT,BZ],[xoT,BT,-BZ]],"#131d30");
-        // Frontwand
-        var g=lin([0,BT,BZ],[0,2,BZ]);g.addColorStop(0,"#26365a");g.addColorStop(1,"#18233b");
-        poly([[xiB,2,BZ],[xoB,2,BZ],[xoT,BT,BZ],[xiT,BT,BZ]],g);
-        // dunkle Leiste oben und Sockel unten
-        poly([[xiT,BT-3,BZ],[xoT+sx*-1.5,BT-3,BZ],[xoT,BT,BZ],[xiT,BT,BZ]],"#0f1626");
-        poly([[xiB,2,BZ+.5],[xoB,2,BZ+.5],[xoB,6,BZ+.5],[xiB,6,BZ+.5]],"#0a0f18");
-      });
-      line([-6,BT-1.5,BZ],[6,BT-1.5,BZ],Math.max(1,2*K(0,BT,BZ)),"#0a0d12");
+      var xT=L-26, xB=L-46;
+      // rechte Stirnseite (schräg) ist von der Kamera aus sichtbar
+      poly([[xB,2,-BZ],[xB,2,BZ],[xT,BT,BZ],[xT,BT,-BZ]],"#131d30");
+      // durchgehende Frontwand
+      var g=lin([0,BT,BZ],[0,2,BZ]);g.addColorStop(0,"#26365a");g.addColorStop(1,"#18233b");
+      poly([[-xB,2,BZ],[xB,2,BZ],[xT,BT,BZ],[-xT,BT,BZ]],g);
+      poly([[-xT,BT-3,BZ],[xT,BT-3,BZ],[xT,BT,BZ],[-xT,BT,BZ]],"#0f1626");
+      poly([[-xB,2,BZ+.5],[xB,2,BZ+.5],[xB,6,BZ+.5],[-xB,6,BZ+.5]],"#0a0f18");
+      // feine Fuge in der Mitte, wo die Hälften zusammenstoßen
+      line([0,6,BZ+.6],[0,BT-3,BZ+.6],Math.max(1,.5*K(0,40,BZ)),"rgba(0,0,0,.45)");
+      line([.8,6,BZ+.6],[.8,BT-3,BZ+.6],Math.max(1,.3*K(0,40,BZ)),"rgba(255,255,255,.06)");
       // Zarge: dicke schwarze Kante rundherum
       poly([[L,TOP-6,-D],[L,TOP-6,D],[L,TOP,D],[L,TOP,-D]],"#0a0d12");
       poly([[-L,TOP-6,D],[L,TOP-6,D],[L,TOP,D],[-L,TOP,D]],"#12161d");
