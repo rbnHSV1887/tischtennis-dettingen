@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T09:20:27+00:00",
+ "updated": "2026-10-28T16:36:35+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -918,9 +918,9 @@
    "d": "2026-11-06",
    "t": "20:00",
    "f": [],
-   "lg": "E KKA",
-   "h": "TSV Dettingen V",
-   "a": "SV Tübingen IV",
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TSV Riederich",
    "r": "",
    "n": "",
    "u": ""
@@ -929,9 +929,9 @@
    "d": "2026-11-06",
    "t": "20:00",
    "f": [],
-   "lg": "E BK",
-   "h": "TSV Dettingen II",
-   "a": "TSV Riederich",
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "SV Tübingen IV",
    "r": "",
    "n": "",
    "u": ""
@@ -951,9 +951,9 @@
    "d": "2026-11-14",
    "t": "18:00",
    "f": [],
-   "lg": "E KLB",
-   "h": "TB Metzingen III",
-   "a": "TSV Dettingen IV",
+   "lg": "E KLA",
+   "h": "TV Neuhausen II",
+   "a": "TSV Dettingen III",
    "r": "",
    "n": "",
    "u": ""
@@ -962,9 +962,9 @@
    "d": "2026-11-14",
    "t": "18:00",
    "f": [],
-   "lg": "E KLA",
-   "h": "TV Neuhausen II",
-   "a": "TSV Dettingen III",
+   "lg": "E KLB",
+   "h": "TB Metzingen III",
+   "a": "TSV Dettingen IV",
    "r": "",
    "n": "",
    "u": ""
@@ -1078,17 +1078,6 @@
   {
    "d": "2026-11-28",
    "t": "18:00",
-   "f": [],
-   "lg": "E BK",
-   "h": "TTC Reutlingen III",
-   "a": "TSV Dettingen II",
-   "r": "",
-   "n": "",
-   "u": ""
-  },
-  {
-   "d": "2026-11-28",
-   "t": "18:00",
    "f": [
     "t",
     "v"
@@ -1096,6 +1085,17 @@
    "lg": "E KLA",
    "h": "TSV Sickenhausen II",
    "a": "TSV Dettingen III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-11-28",
+   "t": "18:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "TTC Reutlingen III",
+   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -1196,9 +1196,9 @@
    "f": [
     "t"
    ],
-   "lg": "E BP B",
-   "h": "TV Belsen III",
-   "a": "TSV Dettingen III",
+   "lg": "E VP",
+   "h": "FC Mittelstadt",
+   "a": "TSV Dettingen",
    "r": "",
    "n": "",
    "u": ""
@@ -1209,9 +1209,9 @@
    "f": [
     "t"
    ],
-   "lg": "E VP",
-   "h": "FC Mittelstadt",
-   "a": "TSV Dettingen",
+   "lg": "E BP B",
+   "h": "TV Belsen III",
+   "a": "TSV Dettingen III",
    "r": "",
    "n": "",
    "u": ""
