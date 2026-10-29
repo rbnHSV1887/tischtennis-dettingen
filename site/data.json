@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29T19:36:51+00:00",
+ "updated": "2026-10-29T23:55:40+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -579,6 +579,17 @@
     },
     {
      "rank": 3,
+     "team": "TTC Ergenzingen",
+     "m": 4,
+     "w": 2,
+     "d": 0,
+     "l": 2,
+     "games": "16:14",
+     "diff": "+2",
+     "pts": "4:4"
+    },
+    {
+     "rank": 4,
      "team": "TSV Dettingen",
      "m": 2,
      "w": 1,
@@ -589,7 +600,7 @@
      "pts": "3:1"
     },
     {
-     "rank": 4,
+     "rank": 5,
      "team": "VfL Dettenhausen",
      "m": 3,
      "w": 1,
@@ -600,7 +611,7 @@
      "pts": "3:3"
     },
     {
-     "rank": 5,
+     "rank": 6,
      "team": "FC Mittelstadt",
      "m": 2,
      "w": 1,
@@ -611,26 +622,15 @@
      "pts": "2:2"
     },
     {
-     "rank": 6,
-     "team": "TTC Ergenzingen",
-     "m": 3,
-     "w": 1,
-     "d": 0,
-     "l": 2,
-     "games": "10:13",
-     "diff": "-3",
-     "pts": "2:4"
-    },
-    {
      "rank": 7,
      "team": "VfL Dettenhausen II",
-     "m": 4,
+     "m": 5,
      "w": 0,
      "d": 0,
-     "l": 4,
-     "games": "8:24",
-     "diff": "-16",
-     "pts": "0:8"
+     "l": 5,
+     "games": "9:30",
+     "diff": "-21",
+     "pts": "0:10"
     }
    ]
   }
