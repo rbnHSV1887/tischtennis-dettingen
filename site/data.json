@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29T23:55:40+00:00",
+ "updated": "2026-10-30T05:41:34+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -558,13 +558,13 @@
     {
      "rank": 1,
      "team": "TSV Gomaringen",
-     "m": 2,
-     "w": 2,
+     "m": 3,
+     "w": 3,
      "d": 0,
      "l": 0,
-     "games": "12:0",
-     "diff": "+12",
-     "pts": "4:0"
+     "games": "18:0",
+     "diff": "+18",
+     "pts": "6:0"
     },
     {
      "rank": 2,
@@ -590,17 +590,6 @@
     },
     {
      "rank": 4,
-     "team": "TSV Dettingen",
-     "m": 2,
-     "w": 1,
-     "d": 1,
-     "l": 0,
-     "games": "11:9",
-     "diff": "+2",
-     "pts": "3:1"
-    },
-    {
-     "rank": 5,
      "team": "VfL Dettenhausen",
      "m": 3,
      "w": 1,
@@ -608,6 +597,17 @@
      "l": 1,
      "games": "12:14",
      "diff": "-2",
+     "pts": "3:3"
+    },
+    {
+     "rank": 5,
+     "team": "TSV Dettingen",
+     "m": 3,
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "games": "11:15",
+     "diff": "-4",
      "pts": "3:3"
     },
     {
@@ -870,7 +870,7 @@
    "lg": "S40 BK",
    "h": "TSV Gomaringen",
    "a": "TSV Dettingen",
-   "r": "",
+   "r": "6:0",
    "n": "",
    "u": ""
   },
@@ -1078,13 +1078,10 @@
   {
    "d": "2026-11-28",
    "t": "18:00",
-   "f": [
-    "t",
-    "v"
-   ],
-   "lg": "E KLA",
-   "h": "TSV Sickenhausen II",
-   "a": "TSV Dettingen III",
+   "f": [],
+   "lg": "E BK",
+   "h": "TTC Reutlingen III",
+   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -1092,10 +1089,13 @@
   {
    "d": "2026-11-28",
    "t": "18:00",
-   "f": [],
-   "lg": "E BK",
-   "h": "TTC Reutlingen III",
-   "a": "TSV Dettingen II",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLA",
+   "h": "TSV Sickenhausen II",
+   "a": "TSV Dettingen III",
    "r": "",
    "n": "",
    "u": ""
