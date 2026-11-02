@@ -79,8 +79,11 @@
     "address": "Rathausplatz 2, 72581 Dettingen an der Erms",
     "maps": "https://www.google.com/maps/dir/?api=1&destination=Rathausplatz+2,72581+Dettingen,DEU",
     "contact": "Iosif Toulkeridis",
-    "email": "",
+    "email": "tischtennis@tsvdettingen-erms.de",
     "instagram": "tsvdettingentischtennis",
-    "training": []
+    "training": [
+      { "day": "Mittwoch", "time": "18:00–22:00 Uhr", "group": "Alle" },
+      { "day": "Freitag", "time": "18:00–22:00 Uhr", "group": "Alle" }
+    ]
   }
 }
