@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T17:59:28+00:00",
+ "updated": "2026-11-05T23:37:01+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -580,13 +580,13 @@
     {
      "rank": 3,
      "team": "TTC Ergenzingen",
-     "m": 4,
-     "w": 2,
+     "m": 5,
+     "w": 3,
      "d": 0,
      "l": 2,
-     "games": "16:14",
-     "diff": "+2",
-     "pts": "4:4"
+     "games": "22:18",
+     "diff": "+4",
+     "pts": "6:4"
     },
     {
      "rank": 4,
@@ -602,13 +602,13 @@
     {
      "rank": 5,
      "team": "VfL Dettenhausen",
-     "m": 4,
+     "m": 5,
      "w": 1,
      "d": 1,
-     "l": 2,
-     "games": "13:20",
-     "diff": "-7",
-     "pts": "3:5"
+     "l": 3,
+     "games": "17:26",
+     "diff": "-9",
+     "pts": "3:7"
     },
     {
      "rank": 6,
