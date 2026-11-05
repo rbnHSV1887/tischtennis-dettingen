@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T19:43:25+00:00",
+ "updated": "2026-11-05T00:53:30+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -558,13 +558,13 @@
     {
      "rank": 1,
      "team": "TSV Gomaringen",
-     "m": 3,
-     "w": 3,
+     "m": 4,
+     "w": 4,
      "d": 0,
      "l": 0,
-     "games": "18:0",
-     "diff": "+18",
-     "pts": "6:0"
+     "games": "24:1",
+     "diff": "+23",
+     "pts": "8:0"
     },
     {
      "rank": 2,
@@ -590,17 +590,6 @@
     },
     {
      "rank": 4,
-     "team": "VfL Dettenhausen",
-     "m": 3,
-     "w": 1,
-     "d": 1,
-     "l": 1,
-     "games": "12:14",
-     "diff": "-2",
-     "pts": "3:3"
-    },
-    {
-     "rank": 5,
      "team": "TSV Dettingen",
      "m": 3,
      "w": 1,
@@ -609,6 +598,17 @@
      "games": "11:15",
      "diff": "-4",
      "pts": "3:3"
+    },
+    {
+     "rank": 5,
+     "team": "VfL Dettenhausen",
+     "m": 4,
+     "w": 1,
+     "d": 1,
+     "l": 2,
+     "games": "13:20",
+     "diff": "-7",
+     "pts": "3:5"
     },
     {
      "rank": 6,
