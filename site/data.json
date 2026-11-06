@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T06:34:52+00:00",
+ "updated": "2026-11-06T15:54:31+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -1081,11 +1081,12 @@
    "d": "2026-11-27",
    "t": "20:00",
    "f": [
+    "t",
     "v"
    ],
    "lg": "E BK",
-   "h": "TTC Reutlingen II",
-   "a": "TSV Dettingen II",
+   "h": "TSV Dettingen II",
+   "a": "TTC Reutlingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -1104,13 +1105,10 @@
   {
    "d": "2026-11-28",
    "t": "18:00",
-   "f": [
-    "t",
-    "v"
-   ],
-   "lg": "E KLA",
-   "h": "TSV Sickenhausen II",
-   "a": "TSV Dettingen III",
+   "f": [],
+   "lg": "E BK",
+   "h": "TTC Reutlingen III",
+   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -1118,10 +1116,13 @@
   {
    "d": "2026-11-28",
    "t": "18:00",
-   "f": [],
-   "lg": "E BK",
-   "h": "TTC Reutlingen III",
-   "a": "TSV Dettingen II",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLA",
+   "h": "TSV Sickenhausen II",
+   "a": "TSV Dettingen III",
    "r": "",
    "n": "",
    "u": ""
