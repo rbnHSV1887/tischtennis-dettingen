@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T16:24:15+00:00",
+ "updated": "2026-11-07T21:45:43+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -30,35 +30,35 @@
     {
      "rank": 1,
      "team": "TSV Nusplingen",
-     "m": 3,
-     "w": 3,
+     "m": 4,
+     "w": 4,
      "d": 0,
      "l": 0,
-     "games": "27:7",
-     "diff": "+20",
-     "pts": "6:0"
+     "games": "36:12",
+     "diff": "+24",
+     "pts": "8:0"
     },
     {
      "rank": 2,
      "team": "TTC Grosselfingen",
-     "m": 3,
-     "w": 3,
+     "m": 4,
+     "w": 4,
      "d": 0,
      "l": 0,
-     "games": "27:18",
-     "diff": "+9",
-     "pts": "6:0"
+     "games": "36:22",
+     "diff": "+14",
+     "pts": "8:0"
     },
     {
      "rank": 3,
      "team": "TSV Dormettingen",
-     "m": 3,
+     "m": 4,
      "w": 2,
      "d": 0,
-     "l": 1,
-     "games": "21:15",
-     "diff": "+6",
-     "pts": "4:2"
+     "l": 2,
+     "games": "25:24",
+     "diff": "+1",
+     "pts": "4:4"
     },
     {
      "rank": 4,
@@ -84,14 +84,14 @@
     },
     {
      "rank": 6,
-     "team": "SV Tübingen",
-     "m": 2,
-     "w": 1,
+     "team": "TSV Dettingen",
+     "m": 5,
+     "w": 2,
      "d": 0,
-     "l": 1,
-     "games": "14:11",
-     "diff": "+3",
-     "pts": "2:2"
+     "l": 3,
+     "games": "29:30",
+     "diff": "-1",
+     "pts": "4:6"
     },
     {
      "rank": 7,
@@ -106,25 +106,25 @@
     },
     {
      "rank": 8,
-     "team": "TSV Dettingen",
-     "m": 4,
+     "team": "SV Tübingen",
+     "m": 3,
      "w": 1,
      "d": 0,
-     "l": 3,
-     "games": "20:30",
-     "diff": "-10",
-     "pts": "2:6"
+     "l": 2,
+     "games": "19:20",
+     "diff": "-1",
+     "pts": "2:4"
     },
     {
      "rank": 9,
      "team": "TTC Ergenzingen II",
-     "m": 4,
+     "m": 5,
      "w": 0,
      "d": 0,
-     "l": 4,
-     "games": "11:36",
-     "diff": "-25",
-     "pts": "0:8"
+     "l": 5,
+     "games": "11:45",
+     "diff": "-34",
+     "pts": "0:10"
     }
    ]
   },
@@ -151,24 +151,24 @@
     {
      "rank": 2,
      "team": "TSV Betzingen III",
-     "m": 4,
+     "m": 5,
      "w": 3,
-     "d": 0,
+     "d": 1,
      "l": 1,
-     "games": "32:19",
+     "games": "40:27",
      "diff": "+13",
-     "pts": "6:2"
+     "pts": "7:3"
     },
     {
      "rank": 3,
      "team": "TTC Reutlingen II",
-     "m": 3,
+     "m": 4,
      "w": 2,
-     "d": 0,
+     "d": 1,
      "l": 1,
-     "games": "24:19",
+     "games": "32:27",
      "diff": "+5",
-     "pts": "4:2"
+     "pts": "5:3"
     },
     {
      "rank": 4,
@@ -183,6 +183,17 @@
     },
     {
      "rank": 5,
+     "team": "TTC Reutlingen III",
+     "m": 3,
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "games": "21:22",
+     "diff": "-1",
+     "pts": "3:3"
+    },
+    {
+     "rank": 6,
      "team": "SV Rommelsbach II",
      "m": 2,
      "w": 1,
@@ -193,48 +204,37 @@
      "pts": "2:2"
     },
     {
-     "rank": 6,
-     "team": "TTC Reutlingen III",
+     "rank": 7,
+     "team": "TSV Riederich",
      "m": 2,
-     "w": 1,
-     "d": 0,
-     "l": 1,
-     "games": "13:14",
-     "diff": "-1",
+     "w": 0,
+     "d": 2,
+     "l": 0,
+     "games": "16:16",
+     "diff": "0",
      "pts": "2:2"
     },
     {
-     "rank": 7,
+     "rank": 8,
      "team": "TSV Grafenberg",
-     "m": 3,
+     "m": 4,
      "w": 1,
      "d": 0,
-     "l": 2,
-     "games": "16:22",
-     "diff": "-6",
-     "pts": "2:4"
-    },
-    {
-     "rank": 8,
-     "team": "TSV Riederich",
-     "m": 1,
-     "w": 0,
-     "d": 1,
-     "l": 0,
-     "games": "8:8",
-     "diff": "0",
-     "pts": "1:1"
+     "l": 3,
+     "games": "21:31",
+     "diff": "-10",
+     "pts": "2:6"
     },
     {
      "rank": 9,
      "team": "TSV Sondelfingen II",
-     "m": 5,
-     "w": 0,
+     "m": 6,
+     "w": 1,
      "d": 0,
      "l": 5,
-     "games": "17:45",
-     "diff": "-28",
-     "pts": "0:10"
+     "games": "26:50",
+     "diff": "-24",
+     "pts": "2:10"
     }
    ]
   },
@@ -261,16 +261,27 @@
     {
      "rank": 2,
      "team": "FC Mittelstadt II",
-     "m": 3,
+     "m": 4,
      "w": 3,
      "d": 0,
-     "l": 0,
-     "games": "27:11",
-     "diff": "+16",
-     "pts": "6:0"
+     "l": 1,
+     "games": "34:20",
+     "diff": "+14",
+     "pts": "6:2"
     },
     {
      "rank": 3,
+     "team": "TTV Reicheneck",
+     "m": 5,
+     "w": 3,
+     "d": 0,
+     "l": 2,
+     "games": "37:28",
+     "diff": "+9",
+     "pts": "6:4"
+    },
+    {
+     "rank": 4,
      "team": "TV Neuhausen II",
      "m": 2,
      "w": 2,
@@ -281,26 +292,15 @@
      "pts": "4:0"
     },
     {
-     "rank": 4,
-     "team": "TTV Reicheneck",
-     "m": 4,
-     "w": 2,
-     "d": 0,
-     "l": 2,
-     "games": "28:21",
-     "diff": "+7",
-     "pts": "4:4"
-    },
-    {
      "rank": 5,
      "team": "TTC Reutlingen IV",
-     "m": 2,
-     "w": 1,
+     "m": 3,
+     "w": 2,
      "d": 0,
      "l": 1,
-     "games": "9:12",
-     "diff": "-3",
-     "pts": "2:2"
+     "games": "18:18",
+     "diff": "0",
+     "pts": "4:2"
     },
     {
      "rank": 6,
@@ -327,13 +327,13 @@
     {
      "rank": 8,
      "team": "TB Metzingen II",
-     "m": 6,
+     "m": 7,
      "w": 1,
      "d": 0,
-     "l": 5,
-     "games": "26:48",
-     "diff": "-22",
-     "pts": "2:10"
+     "l": 6,
+     "games": "32:57",
+     "diff": "-25",
+     "pts": "2:12"
     },
     {
      "rank": 9,
@@ -371,13 +371,13 @@
     {
      "rank": 2,
      "team": "TSV Sondelfingen III",
-     "m": 1,
-     "w": 1,
+     "m": 2,
+     "w": 2,
      "d": 0,
      "l": 0,
-     "games": "9:1",
-     "diff": "+8",
-     "pts": "2:0"
+     "games": "18:5",
+     "diff": "+13",
+     "pts": "4:0"
     },
     {
      "rank": 3,
@@ -403,17 +403,6 @@
     },
     {
      "rank": 5,
-     "team": "TB Metzingen III",
-     "m": 2,
-     "w": 1,
-     "d": 0,
-     "l": 1,
-     "games": "9:16",
-     "diff": "-7",
-     "pts": "2:2"
-    },
-    {
-     "rank": 6,
      "team": "TSV Dettingen IV",
      "m": 3,
      "w": 1,
@@ -424,7 +413,7 @@
      "pts": "2:4"
     },
     {
-     "rank": 7,
+     "rank": 6,
      "team": "TuS Metzingen V",
      "m": 3,
      "w": 1,
@@ -432,6 +421,17 @@
      "l": 2,
      "games": "15:23",
      "diff": "-8",
+     "pts": "2:4"
+    },
+    {
+     "rank": 7,
+     "team": "TB Metzingen III",
+     "m": 3,
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "games": "13:25",
+     "diff": "-12",
      "pts": "2:4"
     },
     {
@@ -458,6 +458,28 @@
    "table": [
     {
      "rank": 1,
+     "team": "EK Lustnau II",
+     "m": 4,
+     "w": 3,
+     "d": 1,
+     "l": 0,
+     "games": "29:11",
+     "diff": "+18",
+     "pts": "7:1"
+    },
+    {
+     "rank": 2,
+     "team": "TTV Reicheneck II",
+     "m": 4,
+     "w": 3,
+     "d": 1,
+     "l": 0,
+     "games": "27:13",
+     "diff": "+14",
+     "pts": "7:1"
+    },
+    {
+     "rank": 3,
      "team": "SV Tübingen IV",
      "m": 5,
      "w": 2,
@@ -468,37 +490,15 @@
      "pts": "6:4"
     },
     {
-     "rank": 2,
-     "team": "EK Lustnau II",
-     "m": 3,
-     "w": 2,
-     "d": 1,
-     "l": 0,
-     "games": "23:7",
-     "diff": "+16",
-     "pts": "5:1"
-    },
-    {
-     "rank": 3,
-     "team": "TTV Reicheneck II",
-     "m": 3,
-     "w": 2,
-     "d": 1,
-     "l": 0,
-     "games": "21:9",
-     "diff": "+12",
-     "pts": "5:1"
-    },
-    {
      "rank": 4,
      "team": "TSV Grafenberg II",
-     "m": 3,
+     "m": 4,
      "w": 2,
      "d": 0,
-     "l": 1,
-     "games": "15:15",
-     "diff": "0",
-     "pts": "4:2"
+     "l": 2,
+     "games": "19:21",
+     "diff": "-2",
+     "pts": "4:4"
     },
     {
      "rank": 5,
@@ -513,17 +513,6 @@
     },
     {
      "rank": 6,
-     "team": "TB Metzingen IV",
-     "m": 4,
-     "w": 1,
-     "d": 0,
-     "l": 3,
-     "games": "19:21",
-     "diff": "-2",
-     "pts": "2:6"
-    },
-    {
-     "rank": 7,
      "team": "TSV Dettingen V",
      "m": 4,
      "w": 1,
@@ -534,7 +523,7 @@
      "pts": "2:6"
     },
     {
-     "rank": 8,
+     "rank": 7,
      "team": "SSV Reutlingen IV",
      "m": 4,
      "w": 1,
@@ -543,6 +532,17 @@
      "games": "7:33",
      "diff": "-26",
      "pts": "2:6"
+    },
+    {
+     "rank": 8,
+     "team": "TB Metzingen IV",
+     "m": 5,
+     "w": 1,
+     "d": 0,
+     "l": 4,
+     "games": "23:27",
+     "diff": "-4",
+     "pts": "2:8"
     }
    ]
   },
@@ -943,9 +943,9 @@
    "lg": "E BOL",
    "h": "TSV Dettingen",
    "a": "TTC Ergenzingen II",
-   "r": "",
+   "r": "9:0",
    "n": "",
-   "u": ""
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16009293&championship=SK+Bez.+AL+26%2F27&club=3939&group=529958"
   },
   {
    "d": "2026-11-11",
