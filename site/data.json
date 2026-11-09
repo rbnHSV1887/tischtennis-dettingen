@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09T09:43:41+00:00",
+ "updated": "2026-11-09T20:41:23+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -250,13 +250,13 @@
     {
      "rank": 1,
      "team": "TuS Metzingen III",
-     "m": 5,
-     "w": 5,
+     "m": 6,
+     "w": 6,
      "d": 0,
      "l": 0,
-     "games": "45:1",
-     "diff": "+44",
-     "pts": "10:0"
+     "games": "54:1",
+     "diff": "+53",
+     "pts": "12:0"
     },
     {
      "rank": 2,
@@ -283,13 +283,13 @@
     {
      "rank": 4,
      "team": "TV Neuhausen II",
-     "m": 3,
+     "m": 4,
      "w": 2,
      "d": 1,
-     "l": 0,
-     "games": "26:17",
-     "diff": "+9",
-     "pts": "5:1"
+     "l": 1,
+     "games": "26:26",
+     "diff": "0",
+     "pts": "5:3"
     },
     {
      "rank": 5,
