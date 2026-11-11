@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T09:19:47+00:00",
+ "updated": "2026-11-11T17:52:49+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -962,11 +962,11 @@
   },
   {
    "d": "2026-11-14",
-   "t": "18:00",
+   "t": "18:30",
    "f": [],
-   "lg": "E KLB",
-   "h": "TB Metzingen III",
-   "a": "TSV Dettingen IV",
+   "lg": "E BK",
+   "h": "TSV Dettingen II",
+   "a": "TSV Betzingen III",
    "r": "",
    "n": "",
    "u": ""
@@ -974,10 +974,13 @@
   {
    "d": "2026-11-14",
    "t": "18:30",
-   "f": [],
-   "lg": "E BK",
-   "h": "TSV Dettingen II",
-   "a": "TSV Betzingen III",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLB",
+   "h": "TSV Dettingen IV",
+   "a": "TB Metzingen III",
    "r": "",
    "n": "",
    "u": ""
@@ -1202,13 +1205,10 @@
   {
    "d": "2026-12-12",
    "t": "16:30",
-   "f": [
-    "t",
-    "v"
-   ],
-   "lg": "E KLB",
-   "h": "TSV Dettingen IV",
-   "a": "TSV Sondelfingen III",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "SV Tübingen",
    "r": "",
    "n": "",
    "u": ""
@@ -1216,10 +1216,13 @@
   {
    "d": "2026-12-12",
    "t": "16:30",
-   "f": [],
-   "lg": "E BOL",
-   "h": "TSV Dettingen",
-   "a": "SV Tübingen",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLB",
+   "h": "TSV Dettingen IV",
+   "a": "TSV Sondelfingen III",
    "r": "",
    "n": "",
    "u": ""
