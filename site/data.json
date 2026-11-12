@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T17:52:49+00:00",
+ "updated": "2026-11-12T00:37:38+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -956,9 +956,9 @@
    "lg": "E BP B",
    "h": "TV Belsen III",
    "a": "TSV Dettingen III",
-   "r": "",
+   "r": "0:4",
    "n": "",
-   "u": ""
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16378216&championship=Pokal+Bez+AL+26%2F27&club=3939&group=536897"
   },
   {
    "d": "2026-11-14",
@@ -1112,13 +1112,10 @@
   {
    "d": "2026-11-28",
    "t": "18:00",
-   "f": [
-    "t",
-    "v"
-   ],
-   "lg": "E KLA",
-   "h": "TSV Sickenhausen II",
-   "a": "TSV Dettingen III",
+   "f": [],
+   "lg": "E BK",
+   "h": "TTC Reutlingen III",
+   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -1126,10 +1123,13 @@
   {
    "d": "2026-11-28",
    "t": "18:00",
-   "f": [],
-   "lg": "E BK",
-   "h": "TTC Reutlingen III",
-   "a": "TSV Dettingen II",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLA",
+   "h": "TSV Sickenhausen II",
+   "a": "TSV Dettingen III",
    "r": "",
    "n": "",
    "u": ""
