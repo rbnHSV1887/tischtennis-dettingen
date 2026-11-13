@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13T16:16:39+00:00",
+ "updated": "2026-11-13T21:59:20+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -161,6 +161,17 @@
     },
     {
      "rank": 3,
+     "team": "TV Neuhausen",
+     "m": 6,
+     "w": 3,
+     "d": 0,
+     "l": 3,
+     "games": "40:38",
+     "diff": "+2",
+     "pts": "6:6"
+    },
+    {
+     "rank": 4,
      "team": "TTC Reutlingen II",
      "m": 4,
      "w": 2,
@@ -169,17 +180,6 @@
      "games": "32:27",
      "diff": "+5",
      "pts": "5:3"
-    },
-    {
-     "rank": 4,
-     "team": "TSV Riederich",
-     "m": 3,
-     "w": 1,
-     "d": 2,
-     "l": 0,
-     "games": "25:22",
-     "diff": "+3",
-     "pts": "4:2"
     },
     {
      "rank": 5,
@@ -194,14 +194,14 @@
     },
     {
      "rank": 6,
-     "team": "TV Neuhausen",
-     "m": 5,
-     "w": 2,
-     "d": 0,
-     "l": 3,
-     "games": "31:35",
-     "diff": "-4",
-     "pts": "4:6"
+     "team": "TSV Riederich",
+     "m": 4,
+     "w": 1,
+     "d": 2,
+     "l": 1,
+     "games": "28:31",
+     "diff": "-3",
+     "pts": "4:4"
     },
     {
      "rank": 7,
