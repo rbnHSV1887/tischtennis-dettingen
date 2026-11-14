@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14T11:25:44+00:00",
+ "updated": "2026-11-14T17:58:24+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -52,13 +52,13 @@
     {
      "rank": 3,
      "team": "TSV Dormettingen",
-     "m": 4,
-     "w": 2,
+     "m": 5,
+     "w": 3,
      "d": 0,
      "l": 2,
-     "games": "25:24",
-     "diff": "+1",
-     "pts": "4:4"
+     "games": "34:25",
+     "diff": "+9",
+     "pts": "6:4"
     },
     {
      "rank": 4,
@@ -107,13 +107,13 @@
     {
      "rank": 8,
      "team": "SV Tübingen",
-     "m": 3,
+     "m": 4,
      "w": 1,
      "d": 0,
-     "l": 2,
-     "games": "19:20",
-     "diff": "-1",
-     "pts": "2:4"
+     "l": 3,
+     "games": "20:29",
+     "diff": "-9",
+     "pts": "2:6"
     },
     {
      "rank": 9,
@@ -918,23 +918,23 @@
    "d": "2026-11-06",
    "t": "20:00",
    "f": [],
-   "lg": "E KKA",
-   "h": "TSV Dettingen V",
-   "a": "SV Tübingen IV",
-   "r": "0:10",
-   "n": "",
-   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=15949578&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
-  },
-  {
-   "d": "2026-11-06",
-   "t": "20:00",
-   "f": [],
    "lg": "E BK",
    "h": "TSV Dettingen II",
    "a": "TSV Riederich",
    "r": "8:8",
    "n": "",
    "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16004407&championship=SK+Bez.+AL+26%2F27&club=3939&group=528659"
+  },
+  {
+   "d": "2026-11-06",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "SV Tübingen IV",
+   "r": "0:10",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=15949578&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
   },
   {
    "d": "2026-11-07",
@@ -1205,17 +1205,6 @@
   {
    "d": "2026-12-12",
    "t": "16:30",
-   "f": [],
-   "lg": "E BOL",
-   "h": "TSV Dettingen",
-   "a": "SV Tübingen",
-   "r": "",
-   "n": "",
-   "u": ""
-  },
-  {
-   "d": "2026-12-12",
-   "t": "16:30",
    "f": [
     "t",
     "v"
@@ -1223,6 +1212,17 @@
    "lg": "E KLB",
    "h": "TSV Dettingen IV",
    "a": "TSV Sondelfingen III",
+   "r": "",
+   "n": "",
+   "u": ""
+  },
+  {
+   "d": "2026-12-12",
+   "t": "16:30",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "SV Tübingen",
    "r": "",
    "n": "",
    "u": ""
