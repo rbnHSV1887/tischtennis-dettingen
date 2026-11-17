@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T20:24:36+00:00",
+ "updated": "2026-11-17T04:28:22+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -558,24 +558,24 @@
     {
      "rank": 1,
      "team": "TSV Gomaringen",
-     "m": 5,
+     "m": 6,
      "w": 5,
-     "d": 0,
+     "d": 1,
      "l": 0,
-     "games": "30:1",
+     "games": "35:6",
      "diff": "+29",
-     "pts": "10:0"
+     "pts": "11:1"
     },
     {
      "rank": 2,
      "team": "TuS Metzingen",
-     "m": 3,
+     "m": 4,
      "w": 3,
-     "d": 0,
+     "d": 1,
      "l": 0,
-     "games": "18:6",
+     "games": "23:11",
      "diff": "+12",
-     "pts": "6:0"
+     "pts": "7:1"
     },
     {
      "rank": 3,
