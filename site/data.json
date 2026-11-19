@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T17:12:57+00:00",
+ "updated": "2026-11-19T00:19:26+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -458,6 +458,17 @@
    "table": [
     {
      "rank": 1,
+     "team": "TTV Reicheneck II",
+     "m": 5,
+     "w": 4,
+     "d": 1,
+     "l": 0,
+     "games": "35:15",
+     "diff": "+20",
+     "pts": "9:1"
+    },
+    {
+     "rank": 2,
      "team": "EK Lustnau II",
      "m": 5,
      "w": 3,
@@ -468,7 +479,7 @@
      "pts": "8:2"
     },
     {
-     "rank": 2,
+     "rank": 3,
      "team": "SV Tübingen IV",
      "m": 6,
      "w": 3,
@@ -477,17 +488,6 @@
      "games": "43:17",
      "diff": "+26",
      "pts": "8:4"
-    },
-    {
-     "rank": 3,
-     "team": "TTV Reicheneck II",
-     "m": 4,
-     "w": 3,
-     "d": 1,
-     "l": 0,
-     "games": "27:13",
-     "diff": "+14",
-     "pts": "7:1"
     },
     {
      "rank": 4,
@@ -514,13 +514,13 @@
     {
      "rank": 6,
      "team": "TSV Dettingen V",
-     "m": 4,
+     "m": 5,
      "w": 1,
      "d": 0,
-     "l": 3,
-     "games": "11:29",
-     "diff": "-18",
-     "pts": "2:6"
+     "l": 4,
+     "games": "13:37",
+     "diff": "-24",
+     "pts": "2:8"
     },
     {
      "rank": 7,
@@ -590,17 +590,28 @@
     },
     {
      "rank": 4,
-     "team": "TSV Dettingen",
-     "m": 3,
-     "w": 1,
-     "d": 1,
-     "l": 1,
-     "games": "11:15",
-     "diff": "-4",
-     "pts": "3:3"
+     "team": "FC Mittelstadt",
+     "m": 5,
+     "w": 2,
+     "d": 0,
+     "l": 3,
+     "games": "14:19",
+     "diff": "-5",
+     "pts": "4:6"
     },
     {
      "rank": 5,
+     "team": "TSV Dettingen",
+     "m": 4,
+     "w": 1,
+     "d": 1,
+     "l": 2,
+     "games": "11:21",
+     "diff": "-10",
+     "pts": "3:5"
+    },
+    {
+     "rank": 6,
      "team": "VfL Dettenhausen",
      "m": 5,
      "w": 1,
@@ -609,17 +620,6 @@
      "games": "17:26",
      "diff": "-9",
      "pts": "3:7"
-    },
-    {
-     "rank": 6,
-     "team": "FC Mittelstadt",
-     "m": 4,
-     "w": 1,
-     "d": 0,
-     "l": 3,
-     "games": "8:19",
-     "diff": "-11",
-     "pts": "2:6"
     },
     {
      "rank": 7,
@@ -1008,9 +1008,9 @@
    "lg": "S40 BK",
    "h": "FC Mittelstadt",
    "a": "TSV Dettingen",
-   "r": "",
+   "r": "6:0",
    "n": "",
-   "u": ""
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16054058&championship=SK+Bez.+AL+26%2F27&club=3939&group=528676"
   },
   {
    "d": "2026-11-18",
@@ -1019,9 +1019,9 @@
    "lg": "E KKA",
    "h": "TSV Dettingen V",
    "a": "TTV Reicheneck II",
-   "r": "",
+   "r": "2:8",
    "n": "",
-   "u": ""
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=15949570&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
   },
   {
    "d": "2026-11-20",
@@ -1205,13 +1205,10 @@
   {
    "d": "2026-12-12",
    "t": "16:30",
-   "f": [
-    "t",
-    "v"
-   ],
-   "lg": "E KLB",
-   "h": "TSV Dettingen IV",
-   "a": "TSV Sondelfingen III",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "SV Tübingen",
    "r": "",
    "n": "",
    "u": ""
@@ -1219,10 +1216,13 @@
   {
    "d": "2026-12-12",
    "t": "16:30",
-   "f": [],
-   "lg": "E BOL",
-   "h": "TSV Dettingen",
-   "a": "SV Tübingen",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLB",
+   "h": "TSV Dettingen IV",
+   "a": "TSV Sondelfingen III",
    "r": "",
    "n": "",
    "u": ""
