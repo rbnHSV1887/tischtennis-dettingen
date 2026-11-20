@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T18:59:26+00:00",
+ "updated": "2026-11-20T01:46:42+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -161,6 +161,17 @@
     },
     {
      "rank": 3,
+     "team": "TTC Reutlingen II",
+     "m": 6,
+     "w": 2,
+     "d": 2,
+     "l": 2,
+     "games": "47:44",
+     "diff": "+3",
+     "pts": "6:6"
+    },
+    {
+     "rank": 4,
      "team": "TV Neuhausen",
      "m": 6,
      "w": 3,
@@ -169,17 +180,6 @@
      "games": "40:38",
      "diff": "+2",
      "pts": "6:6"
-    },
-    {
-     "rank": 4,
-     "team": "TTC Reutlingen II",
-     "m": 5,
-     "w": 2,
-     "d": 1,
-     "l": 2,
-     "games": "39:36",
-     "diff": "+3",
-     "pts": "5:5"
     },
     {
      "rank": 5,
@@ -216,6 +216,17 @@
     },
     {
      "rank": 8,
+     "team": "TSV Grafenberg",
+     "m": 7,
+     "w": 1,
+     "d": 1,
+     "l": 5,
+     "games": "40:57",
+     "diff": "-17",
+     "pts": "3:11"
+    },
+    {
+     "rank": 9,
      "team": "TSV Sondelfingen II",
      "m": 7,
      "w": 1,
@@ -224,17 +235,6 @@
      "games": "34:58",
      "diff": "-24",
      "pts": "3:11"
-    },
-    {
-     "rank": 9,
-     "team": "TSV Grafenberg",
-     "m": 6,
-     "w": 1,
-     "d": 0,
-     "l": 5,
-     "games": "32:49",
-     "diff": "-17",
-     "pts": "2:10"
     }
    ]
   },
@@ -492,24 +492,24 @@
     {
      "rank": 4,
      "team": "TSV Sickenhausen III",
-     "m": 4,
-     "w": 2,
+     "m": 5,
+     "w": 3,
      "d": 1,
      "l": 1,
-     "games": "25:15",
-     "diff": "+10",
-     "pts": "5:3"
+     "games": "33:17",
+     "diff": "+16",
+     "pts": "7:3"
     },
     {
      "rank": 5,
      "team": "TSV Grafenberg II",
-     "m": 4,
+     "m": 5,
      "w": 2,
      "d": 0,
-     "l": 2,
-     "games": "19:21",
-     "diff": "-2",
-     "pts": "4:4"
+     "l": 3,
+     "games": "21:29",
+     "diff": "-8",
+     "pts": "4:6"
     },
     {
      "rank": 6,
