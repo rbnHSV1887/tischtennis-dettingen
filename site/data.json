@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22T06:42:16+00:00",
+ "updated": "2026-11-22T16:14:01+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -1228,7 +1228,5 @@
    "u": ""
   }
  ],
- "warnings": [
-  "4. Mannschaft: Abruf fehlgeschlagen: https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=528667"
- ]
+ "warnings": []
 }
