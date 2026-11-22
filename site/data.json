@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22T16:14:01+00:00",
+ "updated": "2026-11-22T21:47:30+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -370,6 +370,17 @@
     },
     {
      "rank": 2,
+     "team": "FC Mittelstadt III",
+     "m": 4,
+     "w": 3,
+     "d": 0,
+     "l": 1,
+     "games": "34:18",
+     "diff": "+16",
+     "pts": "6:2"
+    },
+    {
+     "rank": 3,
      "team": "TuS Metzingen V",
      "m": 5,
      "w": 3,
@@ -378,17 +389,6 @@
      "games": "33:32",
      "diff": "+1",
      "pts": "6:4"
-    },
-    {
-     "rank": 3,
-     "team": "FC Mittelstadt III",
-     "m": 3,
-     "w": 2,
-     "d": 0,
-     "l": 1,
-     "games": "25:11",
-     "diff": "+14",
-     "pts": "4:2"
     },
     {
      "rank": 4,
@@ -404,13 +404,13 @@
     {
      "rank": 5,
      "team": "TSV Sondelfingen III",
-     "m": 3,
+     "m": 4,
      "w": 2,
      "d": 0,
-     "l": 1,
-     "games": "23:14",
-     "diff": "+9",
-     "pts": "4:2"
+     "l": 2,
+     "games": "30:23",
+     "diff": "+7",
+     "pts": "4:4"
     },
     {
      "rank": 6,
@@ -1228,5 +1228,7 @@
    "u": ""
   }
  ],
- "warnings": []
+ "warnings": [
+  "Senioren 40: Abruf fehlgeschlagen: https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/groupPage?championship=SK+Bez.+AL+26%2F27&group=528676"
+ ]
 }
