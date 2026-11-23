@@ -252,6 +252,10 @@ tr.us td{animation:rowflash 1.8s ease .3s both}
 .tabs button[aria-selected="true"] .rk{color:var(--club);background:var(--bg)}
 .panel{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s7)}
 .panel.swap{animation:reveal .35s var(--ease)}
+.gsub{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 .6rem}
+.glist .gsub:not(:first-child){margin-top:var(--s5)}
+.glist .hid{display:none}
+.gmore{margin-top:var(--s2)}
 .panel-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s4);margin-bottom:var(--s3)}
 .place{font-weight:650;color:var(--ball-ink)}
 .tbox{border:1px solid var(--rule);border-radius:var(--r);overflow-x:auto}
@@ -853,7 +857,7 @@ footer a{color:#fff}
     $("results").innerHTML=list.length?list.map(function(m){return resCard(m,true)}).join(""):'<p class="muted">Noch keine Ergebnisse in dieser Saison.</p>';
   }
 
-  function selectTeam(k){activeTeam=k;try{localStorage.setItem("tt-team",k)}catch(e){}renderTabs();renderPanel(true)}
+  function selectTeam(k){activeTeam=k;gamesOpen=false;try{localStorage.setItem("tt-team",k)}catch(e){}renderTabs();renderPanel(true)}
   function renderTabs(){
     $("tabs").innerHTML=DATA.teams.map(function(t){
       var r=ourRow(t);
@@ -870,13 +874,40 @@ footer a{color:#fff}
     var me=ourRow(t);
     var rows=(t.table||[]).map(function(r){return '<tr'+(r.team===t.clicktt?' class="us"':'')+'><td>'+esc(r.rank)+'</td><td>'+esc(r.team)+'</td><td>'+esc(r.m)+'</td><td>'+esc(r.w)+'</td><td>'+esc(r.d)+'</td><td>'+esc(r.l)+'</td><td>'+esc(r.games)+'</td><td>'+esc(r.diff)+'</td><td>'+esc(r.pts)+'</td></tr>'}).join("");
     var games=DATA.matches.filter(function(m){var x=teamFor(m);return x&&x.key===t.key&&playable(m)}).sort(function(a,b){return parseDate(a)-parseDate(b)});
-    var gl=games.map(function(m){return m.r?resCard(m,false):ticket(m)}).join("").replace(/ rv/g,"");
+    var up=games.filter(function(m){return !m.r}), done=games.filter(function(m){return m.r}).reverse();
+    var gl=(up.length?'<h4 class="gsub">Als Nächstes</h4>'+up.map(ticket).join(""):'')+
+           (done.length?'<h4 class="gsub">Zuletzt gespielt</h4>'+done.map(function(m){return resCard(m,false)}).join(""):'');
+    gl=gl.replace(/ rv/g,"");
     var p=$("panel");p.setAttribute("aria-labelledby","tab-"+t.key);
     p.innerHTML='<div class="panel'+(animate?" swap":"")+'"><div><div class="panel-head"><h3>'+esc(t.league)+'</h3>'+(me&&me.m?'<span class="place">Platz '+me.rank+' von '+t.table.length+'</span>':'')+'</div>'+
       (rows?'<div class="tbox"><table><thead><tr><th>Pl.</th><th>Mannschaft</th><th title="Begegnungen">Sp.</th><th title="Siege">S</th><th title="Unentschieden">U</th><th title="Niederlagen">N</th><th>Spiele</th><th>+/-</th><th>Punkte</th></tr></thead><tbody>'+rows+'</tbody></table></div>':'<p class="muted">Tabelle noch nicht verfügbar.</p>')+
       '<div class="src"><a href="'+esc(t.clickttUrl)+'" target="_blank" rel="noopener">Liga auf click-TT</a>'+(t.myttUrl?'<a href="'+esc(t.myttUrl)+'" target="_blank" rel="noopener">Liga auf mytischtennis.de</a>':'')+'</div></div>'+
-      '<div><div class="panel-head"><h3>Spielplan '+esc(t.label)+'</h3></div>'+(gl||'<p class="muted">Noch keine Spiele angesetzt.</p>')+'</div></div>';
+      '<div><div class="panel-head"><h3>Spielplan '+esc(t.label)+'</h3></div>'+(gl?'<div class="glist">'+gl+'</div><button type="button" class="link-btn gmore" hidden></button>':'<p class="muted">Noch keine Spiele angesetzt.</p>')+'</div></div>';
+    fitGames();
   }
+  /* Spielplan neben der Tabelle: nur so viele Spiele, wie neben die Tabelle passen; anstehende zuerst */
+  var gamesOpen=false;
+  function fitGames(){
+    var p=$("panel"), list=p.querySelector(".glist"), btn=p.querySelector(".gmore");if(!list)return;
+    var els=Array.prototype.slice.call(list.children), total=list.querySelectorAll(".ticket,.res").length;
+    els.forEach(function(e){e.classList.remove("hid")});
+    if(gamesOpen){btn.hidden=false;btn.textContent="Weniger anzeigen";return}
+    var cut;
+    if(window.matchMedia("(max-width:980px)").matches){
+      var n=0;cut=els.findIndex(function(e){if(e.tagName!=="H4")n++;return n>5});
+    }else{
+      var left=p.querySelector(".panel>div:first-child"), lim=left.lastElementChild.getBoundingClientRect().bottom+2, shown=0;
+      cut=els.findIndex(function(e){var over=e.getBoundingClientRect().bottom>lim&&shown>=3;if(e.tagName!=="H4")shown++;return over});
+    }
+    if(cut>=0)els.slice(cut).forEach(function(e){e.classList.add("hid")});
+    for(var i=els.length-1;i>=0&&els[i].classList.contains("hid");i--);
+    if(i>=0&&els[i].tagName==="H4")els[i].classList.add("hid");
+    var vis=list.querySelectorAll(".ticket:not(.hid),.res:not(.hid)").length;
+    btn.hidden=vis>=total;btn.textContent="Alle "+total+" Spiele anzeigen";
+  }
+  $("panel").addEventListener("click",function(e){if(e.target.classList.contains("gmore")){gamesOpen=!gamesOpen;fitGames()}});
+  var fitT;window.addEventListener("resize",function(){clearTimeout(fitT);fitT=setTimeout(fitGames,150)});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){fitGames()});
 
   function renderWhy(){
     var n=counts().a, sen=counts().s>0;
