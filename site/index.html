@@ -60,7 +60,7 @@ nav .nav-cta:hover{background:var(--ball-hi);color:#1b0d00}
 .menu-btn[aria-expanded="true"] i::before{transform:translateY(5px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] i::after{transform:translateY(-5px) rotate(-45deg)}
 
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:center;padding-block:var(--s8) var(--s7)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s7);align-items:center;padding-block:var(--s8) var(--s7)}
 .hero h1{font-size:clamp(2.4rem,5.4vw,4rem)}
 .hero h1 .hl{color:var(--club)}
 .hero p.lead{color:var(--muted);font-size:1.15rem;max-width:44ch;margin:var(--s4) 0 var(--s5)}
@@ -73,9 +73,6 @@ nav .nav-cta:hover{background:var(--ball-hi);color:#1b0d00}
 .btn-ghost,.btn-out,.btn-line{border-color:var(--rule);color:var(--ink);background:transparent}
 .btn-ghost:hover,.btn-out:hover,.btn-line:hover{border-color:var(--club);color:var(--club)}
 .nextcard{background:var(--alt);border:1px solid var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6)}
-/* Platte im Maßstab 274 x 152,5 cm, gezeichnet in 3D (Canvas), ohne Fotos dahinter */
-.arena{position:relative;aspect-ratio:16/10;max-width:100%;margin:0 -3% var(--s3)}
-.arena canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .nx-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3)}
 .nx-head .scorer{margin-top:-2px}
 /* Zählgerät: Wendeblätter wie am Spieltisch, zählt Stunden und Minuten bis zum Spiel */
@@ -421,16 +418,30 @@ footer img{height:44px;width:auto;display:block}
     setTimeout(finish,4200); // Sicherheitsnetz
     function lerp(a,b,t){return a+(b-a)*t}
     function ease(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
-    function bat(x,y,sz,ang){ // Schläger von vorne: Blattmitte x,y; sz = Blatthöhe in px
-      ctx.save();ctx.translate(x,y);ctx.rotate(ang);var bw=sz*.475,bh=sz*.5;
-      // Griff
-      ctx.beginPath();ctx.moveTo(-bw*.17,bh*.85);ctx.lineTo(-bw*.21,bh*1.95);ctx.quadraticCurveTo(0,bh*2.08,bw*.21,bh*1.95);ctx.lineTo(bw*.17,bh*.85);ctx.closePath();
-      ctx.fillStyle="#e3c08a";ctx.fill();ctx.fillStyle="#004173";ctx.fillRect(-bw*.07,bh*1.02,bw*.14,bh*.8);
-      // Blatt: Holzkante, dann Belag
-      function shape(r){ctx.beginPath();for(var i=0;i<=40;i++){var a=i/40*Math.PI*2,c=Math.cos(a),s=Math.sin(a);var px=r*bw*Math.sign(c)*Math.pow(Math.abs(c),2/2.6),py=r*bh*Math.sign(s)*Math.pow(Math.abs(s),2/2.6);i?ctx.lineTo(px,py):ctx.moveTo(px,py)}ctx.closePath()}
-      shape(1.04);ctx.fillStyle="#d8b27a";ctx.fill();
-      shape(1);var g=ctx.createRadialGradient(-bw*.35,-bh*.4,0,0,0,bw*1.2);g.addColorStop(0,"#e8364f");g.addColorStop(1,"#a50c24");ctx.fillStyle=g;ctx.fill();
-      ctx.beginPath();ctx.moveTo(-bw*.17,bh*.86);ctx.lineTo(-bw*.06,bh*.45);ctx.lineTo(bw*.06,bh*.45);ctx.lineTo(bw*.17,bh*.86);ctx.closePath();ctx.fillStyle="#e3c08a";ctx.fill();
+    function bat(x,y,sz,ang){ // Schläger leicht schräg von vorne; x,y = Blattmitte, sz = Blatthöhe in px
+      ctx.save();ctx.translate(x,y);ctx.rotate(ang);var k=sz/158;ctx.scale(k,k);
+      var BW=75,BH=79,T=7; // halbe Blattbreite/-höhe, sichtbare Kantendicke (Holz 6 mm + Schwamm + Obergummi)
+      function blade(dx,dy){ctx.beginPath();for(var i=0;i<=48;i++){var a=i/48*Math.PI*2,c=Math.cos(a),s=Math.sin(a);
+        var px=BW*Math.sign(c)*Math.pow(Math.abs(c),2/2.45)+dx,py=BH*Math.sign(s)*Math.pow(Math.abs(s),2/2.45)+dy;i?ctx.lineTo(px,py):ctx.moveTo(px,py)}ctx.closePath()}
+      function handle(dx,dy){ctx.beginPath();ctx.moveTo(-13+dx,BH-30+dy);ctx.bezierCurveTo(-13+dx,BH+10+dy,-11.5+dx,BH+40+dy,-14+dx,BH+70+dy);
+        ctx.bezierCurveTo(-16+dx,BH+86+dy,-18+dx,BH+96+dy,-12+dx,BH+101+dy);ctx.quadraticCurveTo(0+dx,BH+105+dy,12+dx,BH+101+dy);
+        ctx.bezierCurveTo(18+dx,BH+96+dy,16+dx,BH+86+dy,14+dx,BH+70+dy);ctx.bezierCurveTo(11.5+dx,BH+40+dy,13+dx,BH+10+dy,13+dx,BH-30+dy);ctx.closePath()}
+      // Seitenflächen (Dicke): Griff, Holzkante, Schwammschicht
+      handle(T*.7,T*.55);ctx.fillStyle="#a97a45";ctx.fill();
+      blade(T*.7,T);ctx.fillStyle="#b8884f";ctx.fill();
+      blade(T*.45,T*.6);ctx.fillStyle="#d9ad6c";ctx.fill();
+      blade(T*.2,T*.25);ctx.fillStyle="#f1cf7a";ctx.fill();
+      // Obergummi rot mit mattem Glanz
+      blade(0,0);var g=ctx.createLinearGradient(-BW,-BH,BW,BH);g.addColorStop(0,"#e0233f");g.addColorStop(.55,"#c2102b");g.addColorStop(1,"#9b0b22");ctx.fillStyle=g;ctx.fill();
+      ctx.save();ctx.clip();var hl=ctx.createLinearGradient(-BW,-BH*.2,-BW*.2,-BH);hl.addColorStop(0,"rgba(255,255,255,0)");hl.addColorStop(.5,"rgba(255,255,255,.16)");hl.addColorStop(1,"rgba(255,255,255,0)");ctx.fillStyle=hl;ctx.fillRect(-BW,-BH,BW*2,BH*2);ctx.restore();
+      ctx.lineWidth=1.2/k;ctx.strokeStyle="rgba(60,0,10,.45)";ctx.stroke();
+      // Griff: Holz mit Maserung, blaue Einlage, Griffschulter ragt ins Blatt
+      handle(0,0);var hg=ctx.createLinearGradient(-15,0,15,0);hg.addColorStop(0,"#c89a5e");hg.addColorStop(.45,"#ecd09c");hg.addColorStop(1,"#c3935a");ctx.fillStyle=hg;ctx.fill();
+      ctx.lineWidth=1/k;ctx.strokeStyle="rgba(90,55,20,.5)";ctx.stroke();
+      ctx.fillStyle="#004173";ctx.beginPath();ctx.moveTo(-4.5,BH+8);ctx.lineTo(4.5,BH+8);ctx.lineTo(5.5,BH+66);ctx.lineTo(-5.5,BH+66);ctx.closePath();ctx.fill();
+      ctx.fillStyle="#ffffff";ctx.fillRect(-.8,BH+14,1.6,46);
+      ctx.strokeStyle="rgba(120,80,40,.35)";ctx.lineWidth=.8/k;
+      [-9,-6.5,7,9.5].forEach(function(gx){ctx.beginPath();ctx.moveTo(gx,BH-24);ctx.lineTo(gx*1.15,BH+92);ctx.stroke()});
       ctx.restore();
     }
     function ball(x,y,r,sq){
@@ -442,7 +453,7 @@ footer img{height:44px;width:auto;display:block}
       if(done)return;if(t0===null)t0=ts;var t=(ts-t0)/(reduce?1.4:1);
       ctx.clearRect(0,0,W,H);
       // Platte in Seitenansicht, maßstabsgetreu (274 cm lang, 76 cm hoch, Netz 15,25 cm)
-      var Lp=Math.min(W*(W<700?.6:.66),H*1.1), s=Lp/274, x0=(W-Lp)/2, ty=H*.6, fl=ty+76*s, r=Math.max(5,2*s*1.35), bs=Math.max(44,15.8*s*1.5);
+      var Lp=Math.min(W*(W<700?.6:.66),H*1.1), s=Lp/274, x0=(W-Lp)/2, ty=H*.6, fl=ty+76*s, r=Math.max(5,2*s*1.35), bs=Math.max(64,15.8*s*1.9);
       var fade=ease(t/250);ctx.globalAlpha=fade;
       ctx.fillStyle="rgba(0,0,0,.25)";ctx.beginPath();ctx.ellipse(W/2,fl,Lp*.42,6*s+3,0,0,Math.PI*2);ctx.fill();
       ctx.fillStyle="#1d2b47";ctx.beginPath();ctx.moveTo(x0+26*s,ty+7*s);ctx.lineTo(x0+Lp-26*s,ty+7*s);ctx.lineTo(x0+Lp-46*s,fl);ctx.lineTo(x0+46*s,fl);ctx.closePath();ctx.fill();
@@ -514,15 +525,14 @@ footer img{height:44px;width:auto;display:block}
   function counts(){var s=DATA.teams.filter(isSen).length;return {a:DATA.teams.length-s,s:s}}
   function renderNext(){
     var m=upcomingList()[0], box=$("next");
-    var arena='<div class="arena"><canvas id="arena" role="img" aria-label="Tischtennisplatte mit Ballwechsel"></canvas></div>';
-    if(!m){box.innerHTML=arena+'<div class="nextcard"><span class="eyebrow">Nächstes Spiel</span><p class="muted" style="margin:.75rem 0 0">Der Spielplan folgt, sobald er in click-TT steht.</p></div>';startArena($("arena"));return}
+    if(!m){box.innerHTML='<div class="nextcard"><span class="eyebrow">Nächstes Spiel</span><p class="muted" style="margin:.75rem 0 0">Der Spielplan folgt, sobald er in click-TT steht.</p></div>';return}
     var d=parseDate(m), home=isUs(m.h);
-    box.innerHTML=arena+'<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel</span>'+scorerHTML()+'</div>'+
+    box.innerHTML='<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel</span>'+scorerHTML()+'</div>'+
       '<div class="nx-teams"><b>'+esc(m.h)+'</b><span>gegen</span><b>'+esc(m.a)+'</b></div>'+
       '<div class="nx-meta"><span class="num">'+WDL[d.getDay()]+', '+d.getDate()+'. '+MON[d.getMonth()]+', '+esc(m.t)+' Uhr</span>'+
       '<span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span>'+
       '<span>'+esc(labelFor(m))+', '+esc(leagueFor(m))+'</span></div></div>';
-    startArena($("arena"));startScorer(d);
+    startScorer(d);
   }
 
   /* ---------- Zählgerät ---------- */
@@ -550,181 +560,6 @@ footer img{height:44px;width:auto;display:block}
       $("scorer").setAttribute("aria-label",live?"Das Spiel läuft":"Noch "+hrs+" Stunden und "+mi+" Minuten bis zum Spiel");
     }
     tick();scorerTimer=setInterval(tick,1000);
-  }
-
-  /* ---------- Tischtennisplatte in 3D ----------
-     Maße nach ITTF in cm: Platte 274 x 152,5, Höhe 76, Netz 15,25 hoch und 15,25 über die Seitenlinie hinaus,
-     Randlinien 2 cm, Mittellinie 3 mm, Ball 40 mm. */
-  var arenaStop=null;
-  function startArena(cv){
-    if(arenaStop)arenaStop();
-    if(!cv||!cv.getContext)return;
-    var ctx=cv.getContext("2d"), W=0,H=0,S=1,OX=0,OY=0, raf=0, onScreen=true, last=0, clock=.35;
-    var L=137, D=76.25, TOP=76, TH=2.5, NETH=15.25, NETZ=D+15.25;
-    var speed=(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?.7:1;
-    var eye=[150,345,600], tgt=[0,50,0];
-    function sub(a,b){return[a[0]-b[0],a[1]-b[1],a[2]-b[2]]}
-    function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
-    function cross(a,b){return[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}
-    function nrm(a){var l=Math.hypot(a[0],a[1],a[2]);return[a[0]/l,a[1]/l,a[2]/l]}
-    var F=nrm(sub(tgt,eye)), R=nrm(cross(F,[0,1,0])), U=cross(R,F);
-    function raw(x,y,z){var d=[x-eye[0],y-eye[1],z-eye[2]],zz=dot(d,F);return[dot(d,R)/zz,-dot(d,U)/zz,zz]}
-    function P(x,y,z){var q=raw(x,y,z);return[OX+q[0]*S,OY+q[1]*S]}
-    function K(x,y,z){return S/raw(x,y,z)[2]}
-    function fit(){
-      var r=cv.getBoundingClientRect(), dpr=Math.min(2,window.devicePixelRatio||1);
-      W=r.width;H=r.height;if(!W||!H)return;
-      cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
-      var pts=[[-L-60,TOP+40,0],[L+60,TOP+40,0],[-L,0,D],[L,0,D],[-L,TOP,-D],[L,TOP,-D],[0,TOP+NETH,-NETZ],[0,0,D+10],[-L-55,TOP,-30],[L+55,TOP,30]];
-      var mnx=1e9,mxx=-1e9,mny=1e9,mxy=-1e9;
-      pts.forEach(function(p){var q=raw(p[0],p[1],p[2]);mnx=Math.min(mnx,q[0]);mxx=Math.max(mxx,q[0]);mny=Math.min(mny,q[1]);mxy=Math.max(mxy,q[1])});
-      var m=6;S=Math.min((W-2*m)/(mxx-mnx),(H-2*m)/(mxy-mny));
-      OX=W/2-(mnx+mxx)/2*S;OY=H/2-(mny+mxy)/2*S;
-    }
-    function poly(list,fill){ctx.beginPath();list.forEach(function(p,i){var q=P(p[0],p[1],p[2]);if(i)ctx.lineTo(q[0],q[1]);else ctx.moveTo(q[0],q[1])});ctx.closePath();ctx.fillStyle=fill;ctx.fill()}
-    function line(a,b,w,col){var p=P(a[0],a[1],a[2]),q=P(b[0],b[1],b[2]);ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.lineWidth=w;ctx.strokeStyle=col;ctx.stroke()}
-    function lerp(a,b,t){return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t]}
-    function ease(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
-
-    /* Ballwechsel: jeder Schlag fliegt übers Netz, springt einmal auf der Gegenseite auf und wird zurückgespielt */
-    var TF=.62, TB=.38, HALF=TF+TB, ZS=[-28,24,-6,38,-40,12,30,-18];
-    function hit(i){var s=(i%2===0)?-1:1;return[s*(L+26),TOP+16+(i*7%5),ZS[((i%ZS.length)+ZS.length)%ZS.length]]}
-    function ballAt(t){
-      var n=Math.floor(t/HALF), u=t-n*HALF, A=hit(n), B=hit(n+1), s=(n%2===0)?1:-1;
-      var bn=[s*L*.56,TOP+2,A[2]+(B[2]-A[2])*.62], p, y;
-      if(u<TF){var v=u/TF;p=lerp(A,bn,v);p[1]=A[1]+(bn[1]-A[1])*v+30*4*v*(1-v);}
-      else{var w=(u-TF)/TB;p=lerp(bn,B,w);p[1]=bn[1]+(B[1]-bn[1])*w+20*4*w*(1-w);}
-      return p;
-    }
-    function racketAt(t,s){
-      var par=s<0?0:1, i=par+2*Math.round((t/HALF-par)/2), dt=t-i*HALF, H=hit(i);
-      H=[H[0]+s*3,H[1]-1,H[2]];
-      var rest=[s*(L+48),TOP+4,s*12], back=[H[0]+s*18,H[1]-9,H[2]], fol=[H[0]-s*30,H[1]+24,H[2]-s*4], p, open=0;
-      if(dt<-.5||dt>.8)p=rest;
-      else if(dt<-.12)p=lerp(rest,back,ease((dt+.5)/.38));
-      else if(dt<0){p=lerp(back,H,(dt+.12)/.12);open=1}
-      else if(dt<.25){p=lerp(H,fol,ease(dt/.25));open=1-dt/.25}
-      else p=lerp(fol,rest,ease((dt-.25)/.55));
-      return{p:p,open:open};
-    }
-    /* Schläger nach echtem Vorbild: Holzblatt ca. 15,0 x 15,8 cm, 6 mm Holz + je 2 mm Belag (rot/schwarz),
-       konkaver Griff 10 cm, oben 2,5 cm, unten 3,2 cm breit, 2,3 cm dick, Griffzunge reicht ins Blatt */
-    var BW=7.5, BH=7.9, SE=2.6;
-    function bladePt(a){var c=Math.cos(a),s=Math.sin(a);return[BW*Math.sign(c)*Math.pow(Math.abs(c),2/SE),BH*Math.sign(s)*Math.pow(Math.abs(s),2/SE)]}
-    var OUT=[];for(var i=0;i<40;i++)OUT.push(bladePt(i/40*Math.PI*2));
-    var HND=[[-1.25,-BH+.2],[-1.32,-BH-3],[-1.45,-BH-7],[-1.62,-BH-9.4],[-1.2,-BH-10.1],[0,-BH-10.3],[1.2,-BH-10.1],[1.62,-BH-9.4],[1.45,-BH-7],[1.32,-BH-3],[1.25,-BH+.2],[.45,-BH+3.4],[-.45,-BH+3.4]];
-    function drawRacket(st,s){
-      var c=st.p, a=.95+.35*st.open, roll=-s*(.32-.2*st.open);
-      // Belagfläche zeigt zum Netz und leicht zur Kamera; Blatt oben zum Netz, Griff nach außen geneigt
-      var n=nrm([-s*Math.cos(a),0,Math.sin(a)]), e2=nrm(cross([0,1,0],n));
-      var e1=nrm([e2[0]*Math.sin(roll),Math.cos(roll),e2[2]*Math.sin(roll)]);
-      e2=nrm(cross(e1,n));
-      // Darstellung 1,45-fach vergrößert, damit Belag, Holzkante und Griff auf der kleinen Platte erkennbar bleiben
-      function W(u,v,w){u*=1.45;v*=1.45;w*=1.45;return[c[0]+e2[0]*u+e1[0]*v+n[0]*w,c[1]+e2[1]*u+e1[1]*v+n[1]*w,c[2]+e2[2]*u+e1[2]*v+n[2]*w]}
-      function face(pts,w,col){poly(pts.map(function(p){return W(p[0],p[1],w)}),col)}
-      var front=dot(n,sub(eye,c))>0, sF=front?1:-1;
-      // Belagfarben: Netzseite des linken Schlägers rot, des rechten schwarz
-      var colPos=(s<0)?"#c8102e":"#16181c", colNeg=(s<0)?"#16181c":"#c8102e";
-      var nearCol=front?colPos:colNeg, farCol=front?colNeg:colPos;
-      // hintere Seite
-      face(HND,-sF*1.15,"#b88a52");
-      face(OUT,-sF*.5,farCol);
-      // Kante: Holzlagen sichtbar
-      for(var i=0;i<OUT.length;i++){var p=OUT[i],q=OUT[(i+1)%OUT.length];
-        poly([W(p[0],p[1],-.5),W(q[0],q[1],-.5),W(q[0],q[1],.5),W(p[0],p[1],.5)],"#d8b27a");}
-      for(var i=0;i<OUT.length;i++){var p=OUT[i],q=OUT[(i+1)%OUT.length];
-        line(W(p[0],p[1],0),W(q[0],q[1],0),Math.max(.6,.18*K(c[0],c[1],c[2])),"rgba(120,80,40,.55)");}
-      // vordere Belagseite mit leichtem Glanz
-      face(OUT,sF*.5,nearCol);
-      var hi=P.apply(null,W(-2.5,3,sF*.5)), k=K(c[0],c[1],c[2]), gl=ctx.createRadialGradient(hi[0],hi[1],0,hi[0],hi[1],9*k);
-      gl.addColorStop(0,"rgba(255,255,255,.28)");gl.addColorStop(1,"rgba(255,255,255,0)");
-      face(OUT,sF*.5,gl);
-      // Griff: Seitenflächen, dann Vorderseite mit Holzmaserung und blauer Einlage
-      for(var i=0;i<HND.length;i++){var p=HND[i],q=HND[(i+1)%HND.length];
-        poly([W(p[0],p[1],-1.15),W(q[0],q[1],-1.15),W(q[0],q[1],1.15),W(p[0],p[1],1.15)],"#c49660");}
-      face(HND,sF*1.15,"#e3c08a");
-      poly([W(-.55,-BH-.6,sF*1.16),W(.55,-BH-.6,sF*1.16),W(.7,-BH-8.8,sF*1.16),W(-.7,-BH-8.8,sF*1.16)],"#004173");
-      line(W(-1.05,-BH-.5,sF*1.17),W(-1.3,-BH-9,sF*1.17),Math.max(.5,.12*k),"rgba(140,95,50,.6)");
-      line(W(1.05,-BH-.5,sF*1.17),W(1.3,-BH-9,sF*1.17),Math.max(.5,.12*k),"rgba(140,95,50,.6)");
-    }
-    function drawBall(b){
-      var q=P(b[0],b[1],b[2]), r=Math.max(3,2.3*K(b[0],b[1],b[2]));
-      var g=ctx.createRadialGradient(q[0]-r*.35,q[1]-r*.4,r*.1,q[0],q[1],r);
-      g.addColorStop(0,"#ffd1a3");g.addColorStop(.45,"#f78a34");g.addColorStop(1,"#c3570b");
-      ctx.beginPath();ctx.arc(q[0],q[1],r,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
-    }
-    function shadowOf(b){
-      var onTable=Math.abs(b[0])<=L&&Math.abs(b[2])<=D, y=onTable?TOP+.05:0, h=b[1]-y, l=[];
-      var rad=2.4+h*.05, a=onTable?Math.max(.08,.5-h*.009):.18;
-      for(var i=0;i<16;i++){var g=i/16*Math.PI*2;l.push([b[0]+Math.cos(g)*rad*1.2,y,b[2]+Math.sin(g)*rad])}
-      poly(l,"rgba(0,10,25,"+a.toFixed(3)+")");
-    }
-    function frame(t){
-      ctx.clearRect(0,0,W,H);
-      // Schatten der Platte auf dem Hallenboden
-      ctx.save();ctx.shadowColor="rgba(0,6,16,.6)";ctx.shadowBlur=Math.max(20,40*S/600);ctx.shadowOffsetX=4000;ctx.translate(-4000,0);
-      poly([[-L-6,0,-D-4],[L+6,0,-D-4],[L+10,0,D+10],[-L-10,0,D+10]],"#000");ctx.restore();
-      ctx.save();ctx.shadowColor="rgba(0,4,12,.75)";ctx.shadowBlur=Math.max(8,14*S/600);ctx.shadowOffsetX=4000;ctx.translate(-4000,0);
-      poly([[-(L-40),0,-(D-18)],[L-40,0,-(D-18)],[L-40,0,D-14],[-(L-40),0,D-14]],"#000");ctx.restore();
-      // Geschlossener Unterbau wie bei den Wettkampfplatten in der Uhlandhalle: je Hälfte ein Korpus mit schrägen Enden
-      var BZ=D-24, BT=TOP-9;
-      function lin(a,b){var p=P(a[0],a[1],a[2]),q=P(b[0],b[1],b[2]),g=ctx.createLinearGradient(p[0],p[1],q[0],q[1]);return g}
-      var xT=L-26, xB=L-46;
-      // rechte Stirnseite (schräg) ist von der Kamera aus sichtbar
-      poly([[xB,2,-BZ],[xB,2,BZ],[xT,BT,BZ],[xT,BT,-BZ]],"#131d30");
-      // durchgehende Frontwand
-      var g=lin([0,BT,BZ],[0,2,BZ]);g.addColorStop(0,"#26365a");g.addColorStop(1,"#18233b");
-      poly([[-xB,2,BZ],[xB,2,BZ],[xT,BT,BZ],[-xT,BT,BZ]],g);
-      poly([[-xT,BT-3,BZ],[xT,BT-3,BZ],[xT,BT,BZ],[-xT,BT,BZ]],"#0f1626");
-      poly([[-xB,2,BZ+.5],[xB,2,BZ+.5],[xB,6,BZ+.5],[-xB,6,BZ+.5]],"#0a0f18");
-      // Zarge: dicke schwarze Kante rundherum
-      poly([[L,TOP-6,-D],[L,TOP-6,D],[L,TOP,D],[L,TOP,-D]],"#0a0d12");
-      poly([[-L,TOP-6,D],[L,TOP-6,D],[L,TOP,D],[-L,TOP,D]],"#12161d");
-      line([-L,TOP-.4,D],[L,TOP-.4,D],Math.max(1,.5*K(0,TOP,D)),"rgba(255,255,255,.12)");
-      // Spielfläche: dunkles Blaugrau
-      var a=P(0,TOP,-D), b=P(0,TOP,D), g=ctx.createLinearGradient(a[0],a[1],b[0],b[1]);
-      g.addColorStop(0,"#405a7e");g.addColorStop(1,"#2b4263");
-      poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,D],[-L,TOP,D]],g);
-      var c=P(-30,TOP,-25), sh=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],W*.45);sh.addColorStop(0,"rgba(255,255,255,.08)");sh.addColorStop(1,"rgba(255,255,255,0)");
-      poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,D],[-L,TOP,D]],sh);
-      // weiße Linien: 2 cm Rand, 3 mm Mittellinie
-      var wl="#f3f6fa";
-      poly([[-L,TOP,-D],[L,TOP,-D],[L,TOP,-D+2],[-L,TOP,-D+2]],wl);
-      poly([[-L,TOP,D-2],[L,TOP,D-2],[L,TOP,D],[-L,TOP,D]],wl);
-      poly([[-L,TOP,-D],[-L+2,TOP,-D],[-L+2,TOP,D],[-L,TOP,D]],wl);
-      poly([[L-2,TOP,-D],[L,TOP,-D],[L,TOP,D],[L-2,TOP,D]],wl);
-      line([-L,TOP,0],[L,TOP,0],Math.max(1,.3*K(0,TOP,0)),"rgba(243,246,250,.9)");
-      var ball=ballAt(t), rl=racketAt(t,-1), rr=racketAt(t,1);
-      shadowOf(ball);
-      // alles hinter dem Netz zuerst
-      if(rl.p[0]<0)drawRacket(rl,-1);
-      if(ball[0]<0)drawBall(ball);
-      // Netzgarnitur
-      [-1,1].forEach(function(sz){var z=sz*NETZ;
-        poly([[-2,TOP-5,sz*D],[2,TOP-5,sz*D],[2,TOP-5,z],[-2,TOP-5,z]],"#0d1015");
-        poly([[-1.5,TOP-6,z],[1.5,TOP-6,z],[1.5,TOP+NETH+1,z],[-1.5,TOP+NETH+1,z]],"#0b0d11")});
-      poly([[0,TOP,-NETZ],[0,TOP,NETZ],[0,TOP+NETH,NETZ],[0,TOP+NETH,-NETZ]],"rgba(32,70,140,.62)");
-      ctx.save();ctx.globalAlpha=.32;
-      for(var z=-NETZ;z<=NETZ;z+=2.2)line([0,TOP,z],[0,TOP+NETH-1.5,z],.6,"#8fb0e0");
-      for(var y=TOP+2;y<TOP+NETH-1.5;y+=2.2)line([0,y,-NETZ],[0,y,NETZ],.6,"#8fb0e0");
-      ctx.restore();
-      poly([[0,TOP+NETH-1.5,-NETZ],[0,TOP+NETH-1.5,NETZ],[0,TOP+NETH,NETZ],[0,TOP+NETH,-NETZ]],"#f3f6fa");
-      // alles vor dem Netz
-      if(ball[0]>=0)drawBall(ball);
-      if(rl.p[0]>=0)drawRacket(rl,-1);
-      drawRacket(rr,1);
-    }
-    function loop(ts){
-      raf=0;if(!onScreen||document.hidden){last=0;return}
-      if(last)clock+=Math.min(.05,(ts-last)/1000)*speed;last=ts;
-      frame(clock);raf=requestAnimationFrame(loop);
-    }
-    function kick(){if(!raf&&onScreen&&!document.hidden){last=0;raf=requestAnimationFrame(loop)}}
-    fit();frame(clock);kick();
-    var ro=window.ResizeObserver?new ResizeObserver(function(){fit();frame(clock)}):null;if(ro)ro.observe(cv);
-    var vis=window.IntersectionObserver?new IntersectionObserver(function(es){onScreen=es[0].isIntersecting;kick()}):null;if(vis)vis.observe(cv);
-    function onVis(){kick()}document.addEventListener("visibilitychange",onVis);
-    arenaStop=function(){if(raf)cancelAnimationFrame(raf);if(ro)ro.disconnect();if(vis)vis.disconnect();document.removeEventListener("visibilitychange",onVis)};
   }
 
   function renderTrain(){
