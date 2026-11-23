@@ -484,57 +484,6 @@ footer img{height:44px;width:auto;display:block}
     setTimeout(finish,4200); // Sicherheitsnetz
     function lerp(a,b,t){return a+(b-a)*t}
     function ease(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
-    function bat(x,y,sz,ang){ // Schläger leicht schräg von vorne; x,y = Blattmitte, sz = Blatthöhe in px; ohne Marken
-      ctx.save();ctx.translate(x,y);ctx.rotate(ang);var k=sz/158;ctx.scale(k,k);
-      var BW=75,BH=79,T=7; // Blatt 150 x 158 mm, Kante: Holzlagen + Schwamm + Obergummi
-      // ovales Blatt: oben fast kreisrund, nach unten zum Griff hin schmaler (Eiform wie bei echten Hölzern)
-      function blade(dx,dy){ctx.beginPath();for(var i=0;i<=72;i++){var a=i/72*Math.PI*2,c=Math.cos(a),s=Math.sin(a);
-        var px=BW*Math.sign(c)*Math.pow(Math.abs(c),2/2.08),py=BH*Math.sign(s)*Math.pow(Math.abs(s),2/2.08);
-        if(py>0)px*=1-.34*Math.pow(py/BH,1.7);
-        i?ctx.lineTo(px+dx,py+dy):ctx.moveTo(px+dx,py+dy)}ctx.closePath()}
-      // gerader Griff (ST), 100 mm, oben 25 mm, unten 27 mm breit
-      function handle(dx,dy){ctx.beginPath();ctx.moveTo(-12.5+dx,BH+4+dy);ctx.lineTo(-13.5+dx,BH+97+dy);ctx.quadraticCurveTo(-13.5+dx,BH+101+dy,-9+dx,BH+101+dy);
-        ctx.lineTo(9+dx,BH+101+dy);ctx.quadraticCurveTo(13.5+dx,BH+101+dy,13.5+dx,BH+97+dy);ctx.lineTo(12.5+dx,BH+4+dy);ctx.closePath()}
-      // Holzhals: sichtbares Blattholz zwischen Belagunterkante und Griff, liegt unter dem Belag
-      function neck(dx,dy){ctx.beginPath();ctx.moveTo(-24+dx,BH-22+dy);ctx.quadraticCurveTo(-13+dx,BH-4+dy,-12.5+dx,BH+8+dy);ctx.lineTo(12.5+dx,BH+8+dy);ctx.quadraticCurveTo(13+dx,BH-4+dy,24+dx,BH-22+dy);ctx.closePath()}
-      // Seitenflächen: Griffkante, Holzlagen, Schwamm
-      handle(T*.7,T*.55);ctx.fillStyle="#1f2329";ctx.fill();
-      blade(T*.75,T);ctx.fillStyle="#a67a44";ctx.fill();
-      blade(T*.55,T*.72);ctx.fillStyle="#e9d2a3";ctx.fill();
-      blade(T*.42,T*.55);ctx.fillStyle="#b88d55";ctx.fill();
-      blade(T*.3,T*.4);ctx.fillStyle="#efd9ae";ctx.fill();
-      blade(T*.14,T*.2);ctx.fillStyle="#f2b13c";ctx.fill();
-      neck(T*.6,T*.5);ctx.fillStyle="#a67a44";ctx.fill();
-      neck(0,0);var nk=ctx.createLinearGradient(-20,0,20,0);nk.addColorStop(0,"#cfa66b");nk.addColorStop(.5,"#ecd3a2");nk.addColorStop(1,"#c99f63");ctx.fillStyle=nk;ctx.fill();
-      ctx.lineWidth=.8/k;ctx.strokeStyle="rgba(120,80,40,.5)";ctx.stroke();
-      // Griff: anthrazit mit Maserung, geschwungener Übergang in blauen Verlauf
-      handle(0,0);ctx.save();ctx.clip();
-      var an=ctx.createLinearGradient(-14,0,14,0);an.addColorStop(0,"#2b2f36");an.addColorStop(.5,"#4a5059");an.addColorStop(1,"#2a2e34");ctx.fillStyle=an;ctx.fillRect(-15,BH,30,105);
-      ctx.strokeStyle="rgba(255,255,255,.07)";ctx.lineWidth=.9/k;[-8,-3,2,7].forEach(function(gx){ctx.beginPath();ctx.moveTo(gx,BH+6);ctx.lineTo(gx+1.2,BH+46);ctx.stroke()});
-      ctx.beginPath();ctx.moveTo(-15,BH+46);ctx.quadraticCurveTo(-2,BH+30,15,BH+22);ctx.lineTo(15,BH+105);ctx.lineTo(-15,BH+105);ctx.closePath();
-      var bl=ctx.createLinearGradient(0,BH+22,0,BH+101);bl.addColorStop(0,"#163f78");bl.addColorStop(1,"#5c9ad6");ctx.fillStyle=bl;ctx.fill();
-      var sh=ctx.createLinearGradient(-14,0,14,0);sh.addColorStop(0,"rgba(0,0,0,.25)");sh.addColorStop(.42,"rgba(255,255,255,.22)");sh.addColorStop(.6,"rgba(255,255,255,0)");sh.addColorStop(1,"rgba(0,0,0,.25)");ctx.fillStyle=sh;ctx.fillRect(-15,BH+20,30,85);
-      // silberne Ovaleinlage (ohne Schrift) und Endkappe
-      var sv=ctx.createLinearGradient(0,BH+52,0,BH+82);sv.addColorStop(0,"#f4f6f9");sv.addColorStop(.5,"#b9c3ce");sv.addColorStop(1,"#eef1f5");
-      ctx.beginPath();ctx.ellipse(0,BH+67,7.2,14.5,0,0,Math.PI*2);ctx.fillStyle=sv;ctx.fill();ctx.lineWidth=1/k;ctx.strokeStyle="rgba(40,60,90,.55)";ctx.stroke();
-      ctx.fillStyle="#d9dee5";ctx.fillRect(-15,BH+96.5,30,5);ctx.fillStyle="#c9a46b";ctx.fillRect(-15,BH+95.5,30,1.2);
-      ctx.restore();
-      handle(0,0);ctx.lineWidth=1/k;ctx.strokeStyle="rgba(0,0,0,.5)";ctx.stroke();
-      // roter Vorhandbelag mit Glanz
-      blade(0,0);var g=ctx.createLinearGradient(-BW,-BH,BW,BH);g.addColorStop(0,"#e3243f");g.addColorStop(.55,"#c4102b");g.addColorStop(1,"#930a20");ctx.fillStyle=g;ctx.fill();
-      ctx.save();ctx.clip();var hl=ctx.createLinearGradient(-BW,-BH*.1,-BW*.1,-BH);hl.addColorStop(0,"rgba(255,255,255,0)");hl.addColorStop(.5,"rgba(255,255,255,.18)");hl.addColorStop(1,"rgba(255,255,255,0)");ctx.fillStyle=hl;ctx.fillRect(-BW,-BH,BW*2,BH*2);ctx.restore();
-      ctx.lineWidth=1.2/k;ctx.strokeStyle="rgba(60,0,10,.45)";ctx.stroke();
-      ctx.restore();
-    }
-    // Schwung um das Handgelenk: Ausholen, beschleunigen, treffen, durchziehen
-    function pose(t,C,bs){ // Schulter als Drehpunkt; Winkel a in Grad (0 = rechts, 90 = oben)
-      var R=bs*(W<700?.85:1.25), D=Math.PI/180, aHit=350, H=[C[0]-bs*.42,C[1]];
-      var P=[H[0]-R*Math.cos(aHit*D),H[1]+R*Math.sin(aHit*D)], a;
-      if(t<450)a=lerp(205,240,ease(t/450));
-      else if(t<600){var u=(t-450)/150;a=lerp(240,aHit,u*u)}
-      else a=lerp(aHit,440,1-Math.pow(1-Math.min(1,(t-600)/420),3));
-      return{x:P[0]+R*Math.cos(a*D),y:P[1]-R*Math.sin(a*D),a:(90-a)*D};
-    }
     function trail(pts,w,core){ // leuchtender blauer Schweif, dünn auslaufend
       if(pts.length<2)return;ctx.save();ctx.globalCompositeOperation="lighter";ctx.lineCap="round";
       ctx.shadowColor="#2f8fff";ctx.shadowBlur=18;
@@ -545,11 +494,11 @@ footer img{height:44px;width:auto;display:block}
       ctx.restore();
     }
     var logo=new Image();logo.src="assets/logo.png";
-    function ball(x,y,r,sq,spin){ // weißer Wettkampfball mit aufgedrucktem Vereinslogo
+    function ball(x,y,r,sq,spin,lg){ // weißer Wettkampfball mit aufgedrucktem Vereinslogo
       ctx.save();ctx.translate(x,y);ctx.scale(1+sq,1-sq);
       ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fillStyle="#f7f8fa";ctx.fill();
       ctx.save();ctx.clip();
-      if(logo.complete&&logo.naturalWidth){var lw=Math.min(r*1.15,Math.max(420,logo.naturalWidth*1.6)),lh=lw*logo.naturalHeight/logo.naturalWidth;ctx.rotate(spin||0);ctx.globalAlpha=.95;ctx.drawImage(logo,-lw/2,-lh/2,lw,lh);ctx.globalAlpha=1;ctx.rotate(-(spin||0))}
+      if(lg>0&&logo.complete&&logo.naturalWidth){var lw=Math.min(r*1.15,Math.max(420,logo.naturalWidth*1.6)),lh=lw*logo.naturalHeight/logo.naturalWidth;ctx.rotate(spin||0);ctx.globalAlpha=.95*lg;ctx.drawImage(logo,-lw/2,-lh/2,lw,lh);ctx.globalAlpha=1;ctx.rotate(-(spin||0))}
       var g=ctx.createRadialGradient(-r*.35,-r*.4,r*.05,0,0,r);g.addColorStop(0,"rgba(255,255,255,.75)");g.addColorStop(.35,"rgba(255,255,255,0)");g.addColorStop(.8,"rgba(120,135,155,.18)");g.addColorStop(1,"rgba(60,75,95,.45)");
       ctx.fillStyle=g;ctx.fillRect(-r,-r,2*r,2*r);ctx.restore();ctx.restore();
     }
@@ -557,7 +506,7 @@ footer img{height:44px;width:auto;display:block}
       if(done)return;if(t0===null)t0=ts;var t=(ts-t0)/(reduce?1.4:1);
       ctx.clearRect(0,0,W,H);
       // Platte in Seitenansicht, maßstabsgetreu (274 cm lang, 76 cm hoch, Netz 15,25 cm)
-      var Lp=Math.min(W*(W<700?.6:.58),H*1.05), s=Lp/274, x0=W<700?W-Lp-14:(W-Lp)/2+W*.07, xc=x0+Lp/2, ty=H*.6, fl=ty+76*s, r=Math.max(5,2*s*1.35), bs=Math.max(64,15.8*s*1.9);
+      var Lp=Math.min(W*(W<700?.82:.62),H*1.1), s=Lp/274, x0=(W-Lp)/2, xc=x0+Lp/2, ty=H*.6, fl=ty+76*s, r=Math.max(5,2*s*1.35), bs=Math.max(64,15.8*s*1.9);
       var fade=ease(t/250);ctx.globalAlpha=fade;
       ctx.fillStyle="rgba(0,0,0,.25)";ctx.beginPath();ctx.ellipse(xc,fl,Lp*.42,6*s+3,0,0,Math.PI*2);ctx.fill();
       ctx.fillStyle="#1d2b47";ctx.beginPath();ctx.moveTo(x0+26*s,ty+7*s);ctx.lineTo(x0+Lp-26*s,ty+7*s);ctx.lineTo(x0+Lp-46*s,fl);ctx.lineTo(x0+46*s,fl);ctx.closePath();ctx.fill();
@@ -568,28 +517,26 @@ footer img{height:44px;width:auto;display:block}
       ctx.fillStyle="rgba(140,175,230,.55)";ctx.fillRect(xc-nw/2,ty-nh,nw,nh);
       ctx.fillStyle="#f3f6fa";ctx.fillRect(xc-nw/2,ty-nh,nw,Math.max(2,1.5*s));
       ctx.fillStyle="#0b0e13";ctx.fillRect(xc-nw/2-1,ty-nh-2,nw+2,3);
-      // Zeitplan: Hochwurf 0–600 ms, Schlag bei 600, Flug bis 1200, Aufsprung, dann Ball zur Kamera bis 1850
-      var C=[x0-8*s,ty-30*s];                     // Treffpunkt
-      var B=[x0+Lp*.76,ty-r];                     // Aufsprung auf der Gegenseite
-      var bx,by,br=r,sq=0;
-      if(t<600){var u=t/600;bx=C[0];by=lerp(ty-12*s,C[1],u)-Math.sin(u*Math.PI)*42*s}
-      else if(t<1200){var u=(t-600)/600;bx=lerp(C[0],B[0],u);by=lerp(C[1],B[1],u)-4*u*(1-u)*58*s}
-      else{var u=Math.min(1,(t-1200)/650);
-        if(t<1260)sq=.22*(1-(t-1200)/60);
-        var ue=u*u;bx=lerp(B[0],W/2,ease(u));by=lerp(B[1],H*.45,ease(u))-Math.sin(Math.min(1,u*1.6)*Math.PI)*30*s*(1-u);
+      // Ablauf ohne Schläger: Ball fällt auf die eigene Hälfte (550 ms), springt übers Netz auf die Gegenseite (1150 ms),
+      // springt von dort auf dich zu und füllt den Bildschirm (bis 1850 ms)
+      var A0=[x0+Lp*.08,-r*2], B1=[x0+Lp*.27,ty-r], B2=[x0+Lp*.74,ty-r];
+      function path(q){ // Ballposition zum Zeitpunkt q (nur Flugphasen bis zum 2. Aufsprung)
+        if(q<550){var u=q/550;return[lerp(A0[0],B1[0],u),lerp(A0[1],B1[1],u*u)]}
+        var u=Math.min(1,(q-550)/600);return[lerp(B1[0],B2[0],u),B1[1]-4*u*(1-u)*62*s];
+      }
+      var bx,by,br=r,sq=0,pp;
+      if(t<1150){pp=path(t);bx=pp[0];by=pp[1];if(t>520&&t<600)sq=.25*(1-Math.abs(t-550)/50)}
+      else{var u=Math.min(1,(t-1150)/700);
+        if(t<1210)sq=.25*(1-(t-1150)/60);
+        var ue=u*u;bx=lerp(B2[0],W/2,ease(u));by=lerp(B2[1],H*.45,ease(u))-Math.sin(Math.min(1,u*1.6)*Math.PI)*34*s*(1-u);
         br=r*Math.exp(Math.log(Math.hypot(W,H)/r)*ue);}
-      // Schläger: Ausholen, Schlag, Durchschwung, dazu blauer Schweif hinter dem Schlag
-      if(t>380&&t<1250){var tp=[],fade=t>950?1-(t-950)/300:1;
-        for(var q=Math.max(380,t-170);q<=t;q+=10){var o=pose(q,C,bs);tp.push([o.x+Math.sin(o.a)*bs*.32,o.y-Math.cos(o.a)*bs*.32])}
-        ctx.save();ctx.globalAlpha=Math.max(0,fade);trail(tp,bs*.42,true);ctx.restore()}
-      if(t>600&&t<1350){var bp=[];for(var q=Math.max(600,t-110);q<=t;q+=10){var u=(q-600)/600;if(u>1)break;bp.push([lerp(C[0],B[0],u),lerp(C[1],B[1],u)-4*u*(1-u)*58*s])}
-        ctx.save();ctx.globalAlpha=t>1200?Math.max(0,1-(t-1200)/150):1;trail(bp,r*1.6,false);ctx.restore()}
-      var ps=pose(t,C,bs);
-      bat(ps.x,ps.y,bs,ps.a);
-      if(by<ty-r&&bx>x0&&bx<x0+Lp&&t<1400){ctx.fillStyle="rgba(0,0,0,.28)";ctx.beginPath();ctx.ellipse(bx,ty-1.5*s,r*1.1*(1-(ty-by)/(160*s)),r*.35,0,0,Math.PI*2);ctx.fill()}
+      // blauer Schweif hinter dem Ball
+      if(t>80&&t<1300){var bp=[];for(var q=Math.max(0,t-120);q<=Math.min(t,1150);q+=10)bp.push(path(q));
+        ctx.save();ctx.globalAlpha=t>1150?Math.max(0,1-(t-1150)/150):1;trail(bp,r*1.7,true);ctx.restore()}
+      if(by<ty-r*.5&&bx>x0&&bx<x0+Lp&&t<1300){ctx.fillStyle="rgba(0,0,0,.28)";ctx.beginPath();ctx.ellipse(bx,ty-1.5*s,Math.max(1,r*1.1*(1-(ty-by)/(200*s))),r*.35,0,0,Math.PI*2);ctx.fill()}
       ctx.globalAlpha=1;
-      var spin=t<1200?t/90:(t<1850?(1-ease((t-1200)/650))*(1200/90)%(Math.PI*2):0);
-      ball(bx,by,br,sq,spin);
+      var lg=t<1350?0:Math.min(1,(t-1350)/300);   // Logo erst sichtbar, wenn der Ball groß wird
+      ball(bx,by,br,sq,0,lg);
       if(t>=1850){finish();return}
       raf=requestAnimationFrame(frame);
     }
