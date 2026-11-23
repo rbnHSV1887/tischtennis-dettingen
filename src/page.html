@@ -487,8 +487,11 @@ footer img{height:44px;width:auto;display:block}
     function bat(x,y,sz,ang){ // Schläger leicht schräg von vorne; x,y = Blattmitte, sz = Blatthöhe in px; ohne Marken
       ctx.save();ctx.translate(x,y);ctx.rotate(ang);var k=sz/158;ctx.scale(k,k);
       var BW=75,BH=79,T=7; // Blatt 150 x 158 mm, Kante: Holzlagen + Schwamm + Obergummi
-      function blade(dx,dy){ctx.beginPath();for(var i=0;i<=48;i++){var a=i/48*Math.PI*2,c=Math.cos(a),s=Math.sin(a);
-        var px=BW*Math.sign(c)*Math.pow(Math.abs(c),2/2.45)+dx,py=BH*Math.sign(s)*Math.pow(Math.abs(s),2/2.45)+dy;i?ctx.lineTo(px,py):ctx.moveTo(px,py)}ctx.closePath()}
+      // ovales Blatt: oben fast kreisrund, nach unten zum Griff hin schmaler (Eiform wie bei echten Hölzern)
+      function blade(dx,dy){ctx.beginPath();for(var i=0;i<=72;i++){var a=i/72*Math.PI*2,c=Math.cos(a),s=Math.sin(a);
+        var px=BW*Math.sign(c)*Math.pow(Math.abs(c),2/2.08),py=BH*Math.sign(s)*Math.pow(Math.abs(s),2/2.08);
+        if(py>0)px*=1-.34*Math.pow(py/BH,1.7);
+        i?ctx.lineTo(px+dx,py+dy):ctx.moveTo(px+dx,py+dy)}ctx.closePath()}
       // gerader Griff (ST), 100 mm, oben 25 mm, unten 27 mm breit
       function handle(dx,dy){ctx.beginPath();ctx.moveTo(-12.5+dx,BH-26+dy);ctx.lineTo(-13.5+dx,BH+97+dy);ctx.quadraticCurveTo(-13.5+dx,BH+101+dy,-9+dx,BH+101+dy);
         ctx.lineTo(9+dx,BH+101+dy);ctx.quadraticCurveTo(13.5+dx,BH+101+dy,13.5+dx,BH+97+dy);ctx.lineTo(12.5+dx,BH-26+dy);ctx.closePath()}
