@@ -116,7 +116,7 @@ def table_mark(tr):
             bits.append(" ".join(el.get("class", [])))
     raw = " ".join(b for b in bits if b).lower()
     if "relegation" in raw or "releg" in raw:
-        return ("rdown" if ("ab" in raw.split("relegation")[-1][:12] or "down" in raw) else "rup"), raw
+        return ("rdown" if "down" in raw or "abstieg" in raw else "rup"), raw
     if "aufsteig" in raw or re.search(r"\bup[_.\-]|\bup\b|arrow-up|aufstieg", raw):
         return "up", raw
     if "absteig" in raw or re.search(r"\bdown[_.\-]|\bdown\b|arrow-down|abstieg", raw):
@@ -157,8 +157,6 @@ def parse_table(html):
         mark, raw = table_mark(tr)
         if mark:
             row["mark"] = mark
-        if raw.strip():
-            row["_raw"] = raw[:160]  # vorübergehend: zeigt, was click-TT an Symbolen liefert
         rows.append(row)
     return rows
 

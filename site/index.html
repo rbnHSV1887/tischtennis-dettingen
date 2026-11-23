@@ -73,25 +73,20 @@ nav .nav-cta:hover{background:var(--ball-hi);color:#1b0d00}
 .btn-ghost,.btn-out,.btn-line{border-color:var(--rule);color:var(--ink);background:transparent}
 .btn-ghost:hover,.btn-out:hover,.btn-line:hover{border-color:var(--club);color:var(--club)}
 .nextcard{background:var(--alt);border:1px solid var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6)}
-/* Zählgerät wie an der Platte, leicht räumlich: links Tage, oben in der Mitte Sätze 0:0, rechts Stunden */
-.pointer{width:300px;max-width:100%;margin:var(--s5) 0 var(--s2)}
-.pt-scene{position:relative;width:300px;height:186px}
-.pt-scene svg{position:absolute;inset:0;width:300px;height:186px;overflow:visible}
-.pt-cards{position:absolute;left:27px;top:22px;width:224px;display:flex;align-items:flex-start;justify-content:space-between}
-.pt-card{position:relative;display:grid;place-items:center;color:#fff;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em;
-  background:linear-gradient(180deg,#2b2e34,#121316 55%,#18191d);border-radius:3px;box-shadow:0 1px 0 #000,0 6px 10px -6px #000;transform-origin:50% 0}
-.pt-card.big{width:76px;height:100px;font-size:3.5rem}
-.pt-card.big.two{font-size:2.6rem}
-.pt-card.set{width:27px;height:42px;font-size:1.4rem}
-.pt-mid{display:flex;gap:6px}
-.pt-card.flip{animation:ptflip .42s ease-in-out}
-.pt-card.fast{animation:ptflip .14s linear}
-@keyframes ptflip{0%{transform:perspective(400px) rotateX(0)}50%{transform:perspective(400px) rotateX(-88deg);filter:brightness(1.6)}100%{transform:perspective(400px) rotateX(0)}}
-.pt-legend{position:relative;width:300px;height:1.1rem;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.pt-legend span{position:absolute;top:0;width:90px;text-align:center}
-.pt-legend span:first-child{left:20px}.pt-legend span:last-child{left:168px}
-.pt-note{width:300px;max-width:100%;font-size:.8rem;color:var(--muted);text-align:center;margin-top:2px}
-@media (prefers-reduced-motion:reduce){.pt-card.flip,.pt-card.fast{animation:none}}
+/* Fortschrittsring: füllt sich, je näher der Anpfiff rückt */
+.nx-main{display:flex;align-items:center;gap:var(--s5);margin:var(--s4) 0}
+.ring{position:relative;flex:none;width:118px;height:118px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .trk{fill:none;stroke:var(--tint);stroke-width:10}
+.ring .bar{fill:none;stroke:var(--ball);stroke-width:10;stroke-linecap:round;stroke-dasharray:301.6;stroke-dashoffset:301.6;transition:stroke-dashoffset 1.4s var(--ease)}
+.ring .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;text-align:center}
+.ring .in b{font-size:2.3rem;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.ring .in span{font-size:.78rem;font-weight:600;color:var(--muted);margin-top:.2rem}
+.ring .in small{font-size:.66rem;color:var(--muted);margin-top:.15rem}
+.ring.live .bar{stroke:var(--win)}
+.nx-main .nx-teams{margin:0;min-width:0}
+@media (max-width:400px){.ring{width:100px;height:100px}.ring .in b{font-size:1.9rem}}
+@media (prefers-reduced-motion:reduce){.ring .bar{transition:none}}
 .nx-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3)}
 
 /* ---------- Intro ---------- */
@@ -486,6 +481,27 @@ footer a{color:#fff}
   .season-card{padding:var(--s4) var(--s5)}
   .ticket,.res{padding:var(--s3) var(--s4)}
 }
+/* Auf- und Abstieg wie in click-TT: grüner Pfeil Aufstieg, gelber Pfeil Relegation, roter Pfeil Abstieg */
+.mk{display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;margin-right:.35rem;vertical-align:middle;position:relative;top:-1px}
+.mk.up,.mk.rup{border-bottom:7px solid var(--win)}
+.mk.rup{border-bottom-color:#d39a12}
+.mk.rdown{border-top:7px solid #d39a12}
+.mk.down{border-top:7px solid var(--loss)}
+tr.mk-up td{background:color-mix(in srgb,var(--win) 7%,transparent)}
+tr.mk-down td{background:color-mix(in srgb,var(--loss) 6%,transparent)}
+tr.mk-rup td,tr.mk-rdown td{background:color-mix(in srgb,#d39a12 7%,transparent)}
+tr.mk-up td:first-child{box-shadow:inset 4px 0 0 var(--win)}
+tr.mk-down td:first-child{box-shadow:inset 4px 0 0 var(--loss)}
+tr.mk-rup td:first-child,tr.mk-rdown td:first-child{box-shadow:inset 4px 0 0 #d39a12}
+tr.us td{background:color-mix(in srgb,var(--ball) 14%,transparent)}
+th:first-child,td:first-child{width:3.2rem}
+.mk-legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:var(--s3);font-size:.85rem;color:var(--muted)}
+.mk-legend span{display:inline-flex;align-items:center}
+.zone{font-size:.75rem;font-weight:700;padding:.2rem .6rem;border-radius:99px}
+.zone.up{background:var(--win-bg);color:var(--win)}
+.zone.rup,.zone.rdown{background:#f8ecc9;color:#7a5600}
+.zone.down{background:var(--loss-bg);color:var(--loss)}
+@media (prefers-color-scheme:dark){.zone.rup,.zone.rdown{background:#3a2e12;color:#f0c75e}}
 </style>
 
 </head>
@@ -744,62 +760,48 @@ footer a{color:#fff}
     if(!m){box.innerHTML='<div class="nextcard"><span class="eyebrow">Nächstes Spiel</span><p class="muted" style="margin:.75rem 0 0">Der Spielplan folgt, sobald er in click-TT steht.</p></div>';return}
     var d=parseDate(m), home=isUs(m.h);
     var nd=daysUntil(d), pill=nd<=0?'<span class="when-pill today"><i></i>Heute!</span>':(nd<=7?'<span class="when-pill"><i></i>'+rel(d)+'</span>':'');
-    box.innerHTML='<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel'+pill+'</span></div>'+scorerHTML()+
-      '<div class="nx-teams"><b>'+esc(m.h)+'</b><span>gegen</span><b>'+esc(m.a)+'</b></div>'+
+    box.innerHTML='<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel'+pill+'</span></div>'+
+      '<div class="nx-main">'+scorerHTML()+'<div class="nx-teams"><b>'+esc(m.h)+'</b><span>gegen</span><b>'+esc(m.a)+'</b></div></div>'+
       '<div class="nx-meta"><span class="num">'+WDL[d.getDay()]+', '+d.getDate()+'. '+MON[d.getMonth()]+', '+esc(m.t)+' Uhr</span>'+
       '<span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span>'+
       '<span>'+esc(labelFor(m))+', '+esc(leagueFor(m))+'</span></div></div>';
     startScorer(d);
   }
 
-  /* ---------- Zählgerät: Tage und Stunden bis zum Anpfiff ---------- */
-  var scorerTimer=null;
+  /* ---------- Fortschrittsring: Tage (am Spieltag Stunden, zuletzt Minuten) bis zum Anpfiff ---------- */
+  var scorerTimer=null, RING=301.6, WINDOW=14*864e5;
   function scorerHTML(){
-    return '<div class="pointer" role="timer" aria-live="off" id="scorer">'+
-      '<div class="pt-scene" aria-hidden="true"><svg viewBox="0 0 300 186">'+
-      '<defs><linearGradient id="ptF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2e35"/><stop offset=".3" stop-color="#15171b"/><stop offset="1" stop-color="#0a0b0d"/></linearGradient>'+
-      '<linearGradient id="ptS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#262a30"/><stop offset="1" stop-color="#050607"/></linearGradient>'+
-      '<linearGradient id="ptB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdd2d8"/><stop offset=".55" stop-color="#959ba3"/><stop offset="1" stop-color="#6a6f77"/></linearGradient>'+
-      '<filter id="ptBlur" x="-10%" y="-200%" width="120%" height="500%"><feGaussianBlur stdDeviation="5"/></filter></defs>'+
-      '<ellipse cx="150" cy="178" rx="146" ry="7" fill="#0f1c2e" opacity=".28" filter="url(#ptBlur)"/>'+
-      '<polygon points="2,164 272,164 290,154 20,154" fill="#aab0b8"/>'+
-      '<polygon points="250,8 256,8 280,152 262,158 250,158" fill="url(#ptS)"/>'+
-      '<polygon points="14,158 262,158 256,8 22,8" fill="url(#ptF)"/>'+
-      '<polygon points="2,164 272,164 272,176 2,176" fill="url(#ptB)"/>'+
-      '<polygon points="272,164 290,154 290,166 272,176" fill="#7c828a"/>'+
-      '</svg>'+
-      '<div class="pt-cards"><span class="pt-card big" id="pt-d">0</span><span class="pt-mid"><span class="pt-card set">0</span><span class="pt-card set">0</span></span><span class="pt-card big" id="pt-h">0</span></div>'+
-      '</div>'+
-      '<div class="pt-legend" aria-hidden="true"><span>Tage</span><span>Stunden</span></div>'+
-      '<div class="pt-note" id="sc-note">bis zum Anpfiff</div></div>';
-  }
-  function setCard(el,v,cls){
-    if(!el)return;v=String(v);
-    el.classList.toggle("two",v.length>1);
-    if(el.textContent===v)return;
-    el.classList.remove("flip","fast");void el.offsetWidth;el.classList.add(cls||"flip");
-    setTimeout(function(){el.textContent=v;el.classList.toggle("two",v.length>1)},cls==="fast"?60:200);
+    return '<div class="ring" role="timer" aria-live="off" id="scorer"><svg viewBox="0 0 110 110" aria-hidden="true"><circle class="trk" cx="55" cy="55" r="48"/><circle class="bar" id="ring-bar" cx="55" cy="55" r="48"/></svg>'+
+      '<div class="in" aria-hidden="true"><b id="ring-n">0</b><span id="ring-u">Tage</span><small id="sc-note">bis Anpfiff</small></div></div>';
   }
   function timeLeft(start){
-    var ms=start-new Date();if(ms<=0)return {live:true,d:0,h:0};
-    return {live:false,d:Math.floor(ms/864e5),h:Math.floor(ms%864e5/36e5)};
+    var ms=start-new Date();
+    if(ms<=0)return {live:true,n:0,u:"",ms:0};
+    if(ms>=864e5){var d=Math.floor(ms/864e5);return {n:d,u:d===1?"Tag":"Tage",ms:ms}}
+    if(ms>=36e5){var h=Math.floor(ms/36e5);return {n:h,u:h===1?"Stunde":"Stunden",ms:ms}}
+    var mi=Math.max(1,Math.ceil(ms/6e4));return {n:mi,u:"Min",ms:ms};
+  }
+  function paintRing(x,countUp){
+    var el=$("scorer");if(!el)return false;
+    el.classList.toggle("live",!!x.live);
+    var frac=x.live?1:Math.max(.04,1-Math.min(x.ms,WINDOW)/WINDOW);
+    $("ring-bar").style.strokeDashoffset=String(RING*(1-frac));
+    $("ring-u").textContent=x.live?"":x.u;
+    $("sc-note").textContent=x.live?"Spiel läuft":"bis Anpfiff";
+    el.setAttribute("aria-label",x.live?"Das Spiel läuft":"Noch "+x.n+" "+(x.u==="Min"?"Minuten":x.u)+" bis zum Anpfiff");
+    var nEl=$("ring-n"), target=x.live?"Live":String(x.n);
+    if(countUp&&!x.live&&x.n>1){var k=0,steps=Math.min(x.n,24);(function up(){k++;nEl.textContent=String(Math.round(x.n*k/steps));if(k<steps)setTimeout(up,1100/steps)})()}
+    else nEl.textContent=target;
+    return true;
   }
   function startScorer(start){
     if(scorerTimer)clearInterval(scorerTimer);
-    function label(x){
-      $("sc-note").textContent=x.live?"Spiel läuft":"bis zum Anpfiff";
-      $("scorer").setAttribute("aria-label",x.live?"Das Spiel läuft":"Noch "+x.d+(x.d===1?" Tag":" Tage")+" und "+x.h+(x.h===1?" Stunde":" Stunden")+" bis zum Spiel");
-    }
-    function tick(){if(!$("pt-d")){clearInterval(scorerTimer);return}var x=timeLeft(start);setCard($("pt-d"),x.d);setCard($("pt-h"),x.h);label(x)}
-    var x0=timeLeft(start);label(x0);
+    var x0=timeLeft(start);
+    $("ring-u").textContent=x0.live?"":x0.u;
     whenOpen(function(){
-      setTimeout(function(){roll($("pt-d"),x0.d);roll($("pt-h"),x0.h)},650);
-      setTimeout(function(){tick();scorerTimer=setInterval(tick,30000)},2400);
+      setTimeout(function(){paintRing(x0,true)},500);
+      scorerTimer=setInterval(function(){if(!paintRing(timeLeft(start),false))clearInterval(scorerTimer)},30000);
     });
-  }
-  function roll(el,to){ // Blätter klappen schnell von 0 bis zum Wert hoch, wie beim Umblättern an der Platte
-    if(!el||!to)return;var n=0, gap=Math.max(45,Math.min(150,1400/to));
-    (function step(){if(n>=to)return;n++;setCard(el,n,"fast");setTimeout(step,gap)})();
   }
 
   function renderTrain(){
@@ -885,15 +887,18 @@ footer a{color:#fff}
   function renderPanel(animate){
     var t=DATA.teams.filter(function(x){return x.key===activeTeam})[0];if(!t)return;
     var me=ourRow(t);
-    var rows=(t.table||[]).map(function(r){return '<tr'+(r.team===t.clicktt?' class="us"':'')+'><td>'+esc(r.rank)+'</td><td>'+esc(r.team)+'</td><td>'+esc(r.m)+'</td><td>'+esc(r.w)+'</td><td>'+esc(r.d)+'</td><td>'+esc(r.l)+'</td><td>'+esc(r.games)+'</td><td>'+esc(r.diff)+'</td><td>'+esc(r.pts)+'</td></tr>'}).join("");
+    var MK={up:"Aufstieg",rup:"Relegation um den Aufstieg",rdown:"Relegation gegen den Abstieg",down:"Abstieg"}, seen={};
+    var rows=(t.table||[]).map(function(r){var mk=MK[r.mark]?r.mark:"";if(mk)seen[mk]=1;var cl=[r.team===t.clicktt?"us":"",mk?"mk-"+mk:""].join(" ").trim();
+      return '<tr'+(cl?' class="'+cl+'"':'')+'><td>'+(mk?'<i class="mk '+mk+'" title="'+MK[mk]+'"></i>':'')+esc(r.rank)+'</td><td>'+esc(r.team)+'</td><td>'+esc(r.m)+'</td><td>'+esc(r.w)+'</td><td>'+esc(r.d)+'</td><td>'+esc(r.l)+'</td><td>'+esc(r.games)+'</td><td>'+esc(r.diff)+'</td><td>'+esc(r.pts)+'</td></tr>'}).join("");
     var games=DATA.matches.filter(function(m){var x=teamFor(m);return x&&x.key===t.key&&playable(m)}).sort(function(a,b){return parseDate(a)-parseDate(b)});
     var up=games.filter(function(m){return !m.r}), done=games.filter(function(m){return m.r}).reverse();
     var gl=(up.length?'<h4 class="gsub">Als Nächstes</h4>'+up.map(ticket).join(""):'')+
            (done.length?'<h4 class="gsub">Zuletzt gespielt</h4>'+done.map(function(m){return resCard(m,false)}).join(""):'');
     gl=gl.replace(/ rv/g,"");
     var p=$("panel");p.setAttribute("aria-labelledby","tab-"+t.key);
-    p.innerHTML='<div class="panel'+(animate?" swap":"")+'"><div><div class="panel-head"><h3>'+esc(t.league)+'</h3>'+(me&&me.m?'<span class="place">Platz '+me.rank+' von '+t.table.length+'</span>':'')+'</div>'+
+    p.innerHTML='<div class="panel'+(animate?" swap":"")+'"><div><div class="panel-head"><h3>'+esc(t.league)+'</h3>'+(me&&me.m?'<span class="place">Platz '+me.rank+' von '+t.table.length+'</span>'+(MK[me.mark]?'<span class="zone '+me.mark+'">'+{up:"Aufstiegsplatz",rup:"Relegationsplatz",rdown:"Relegationsplatz",down:"Abstiegsplatz"}[me.mark]+'</span>':''):'')+'</div>'+
       (rows?'<div class="tbox"><table><thead><tr><th>Pl.</th><th>Mannschaft</th><th title="Begegnungen">Sp.</th><th title="Siege">S</th><th title="Unentschieden">U</th><th title="Niederlagen">N</th><th>Spiele</th><th>+/-</th><th>Punkte</th></tr></thead><tbody>'+rows+'</tbody></table></div>':'<p class="muted">Tabelle noch nicht verfügbar.</p>')+
+      (Object.keys(seen).length?'<div class="mk-legend">'+["up","rup","rdown","down"].filter(function(k){return seen[k]}).map(function(k){return '<span><i class="mk '+k+'"></i>'+MK[k]+'</span>'}).join("")+'</div>':'')+
       '<div class="src"><a href="'+esc(t.clickttUrl)+'" target="_blank" rel="noopener">Liga auf click-TT</a>'+(t.myttUrl?'<a href="'+esc(t.myttUrl)+'" target="_blank" rel="noopener">Liga auf mytischtennis.de</a>':'')+'</div></div>'+
       '<div><div class="panel-head"><h3>Spielplan '+esc(t.label)+'</h3></div>'+(gl?'<div class="glist">'+gl+'</div><button type="button" class="link-btn gmore" hidden></button>':'<p class="muted">Noch keine Spiele angesetzt.</p>')+'</div></div>';
     fitGames();

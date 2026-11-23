@@ -144,7 +144,7 @@ if __name__ == "__main__":
     assert matches[14]["r"] == "" and matches[0]["u"].startswith(base)
     tables = {g: fc.parse_table(table_html(t)) for g, t in TABLES.items()}
     bol = tables["529958"]
-    assert bol[3].pop("mark") == "up" and bol[3].pop("_raw", None) is not None
+    assert bol[3].pop("mark") == "up"
     assert bol[3] == {"rank": 4, "team": "TSV Dettingen", "m": 2, "w": 1, "d": 0, "l": 1,
                       "games": "16:12", "diff": "+4", "pts": "2:2"}, bol[3]
     print("Parser-Tests bestanden:", len(matches), "Spiele,", sum(map(len, tables.values())), "Tabellenzeilen")
