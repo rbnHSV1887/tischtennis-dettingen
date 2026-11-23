@@ -73,26 +73,33 @@ nav .nav-cta:hover{background:var(--ball-hi);color:#1b0d00}
 .btn-ghost,.btn-out,.btn-line{border-color:var(--rule);color:var(--ink);background:transparent}
 .btn-ghost:hover,.btn-out:hover,.btn-line:hover{border-color:var(--club);color:var(--club)}
 .nextcard{background:var(--alt);border:1px solid var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6)}
-/* Zählgerät wie an der Platte: links Tage, Mitte Sätze 0:0, rechts Stunden */
-.pointer{width:min(100%,290px);margin:var(--s4) 0 var(--s2)}
-.pt-body{position:relative;padding:16px 16px 0;background:linear-gradient(180deg,#30343b 0,#16181c 18%,#0c0d10 100%);clip-path:polygon(3.5% 0,96.5% 0,100% 100%,0 100%);border-radius:6px 6px 0 0}
-.pt-rings{position:absolute;top:5px;left:0;right:0;display:flex;justify-content:space-around;padding-inline:12%}
-.pt-rings i{width:16px;height:7px;border-radius:4px;background:linear-gradient(#f2f4f7,#9aa1ab);box-shadow:0 1px 1px #0008}
-.pt-cards{display:flex;align-items:flex-end;justify-content:center;gap:7px;perspective:500px}
+/* Zählgerät wie an der Platte, dreidimensional: links Tage, oben in der Mitte Sätze 0:0, rechts Stunden */
+.pointer{--W:260px;--H:172px;--h:162px;--D:106px;--a:19deg;width:var(--W);max-width:100%;margin:var(--s5) 0 var(--s2)}
+.pt-scene{perspective:900px;perspective-origin:50% 0;height:calc(var(--h) + 58px);display:flex;justify-content:center;padding-top:8px}
+.pt-prism{position:relative;width:var(--W);height:var(--h);transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(-18deg)}
+.pt-prism>div{position:absolute;backface-visibility:hidden}
+.pt-front,.pt-back{left:0;top:calc(var(--h) - var(--H));width:var(--W);height:var(--H);transform-origin:50% 100%}
+.pt-front{transform:translateZ(calc(var(--D) / 2)) rotateX(var(--a));background:linear-gradient(180deg,#24272d 0,#131418 35%,#0b0c0e 100%);box-shadow:inset 0 2px 0 #3d424a;padding:12px 10px 0}
+.pt-back{transform:translateZ(calc(var(--D) / -2)) rotateY(180deg) rotateX(var(--a));background:#08090b}
+.pt-side{top:0;width:var(--D);height:var(--h);clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(160deg,#2c3037,#0d0e11 70%)}
+.pt-side.l{left:calc(var(--D) / -2);transform:rotateY(-90deg)}
+.pt-side.r{left:calc(var(--W) - var(--D) / 2);transform:rotateY(90deg);background:linear-gradient(200deg,#1c1f24,#050607 75%)}
+.pt-foot{left:-4px;width:calc(var(--W) + 8px);height:14px;top:calc(var(--h) - 14px);transform:translateZ(calc(var(--D) / 2 + 6px));background:linear-gradient(180deg,#c3c8cf,#8a9098 55%,#62676f);border-radius:2px}
+.pt-foot.top{height:calc(var(--D) + 12px);top:calc(var(--h) - 14px - (var(--D) + 12px) / 2);transform:rotateX(90deg);background:#8d939b;backface-visibility:visible}
+.pt-foot.side{width:calc(var(--D) + 12px);left:calc(var(--W) + 4px - (var(--D) + 12px) / 2);transform:rotateY(90deg);background:linear-gradient(180deg,#8a9098,#4a4f56)}
+.pt-shadow{left:-8%;width:116%;height:var(--D);top:calc(var(--h) - var(--D) / 2);transform:rotateX(90deg) translateZ(-1px);background:radial-gradient(closest-side,#0006,transparent);filter:blur(6px)}
+.pt-cards{display:flex;align-items:flex-start;justify-content:center;gap:6px;perspective:400px}
 .pt-card{position:relative;display:grid;place-items:center;color:#fff;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em;
-  background:linear-gradient(180deg,#25282e,#0f1013 55%,#141519);border:1px solid #33373e;border-radius:3px;
-  box-shadow:0 2px 0 #1b1d21,0 3px 0 #3a3e45,0 5px 0 #1b1d21,0 6px 0 #3a3e45;transform-origin:50% 0;backface-visibility:hidden}
-.pt-card.big{width:37%;aspect-ratio:4/5;font-size:4rem}
-.pt-card.big.two{font-size:3rem}
-.pt-card.set{width:12%;aspect-ratio:3/5;font-size:1.65rem;margin-bottom:4px}
+  background:linear-gradient(180deg,#2a2d33,#111215 55%,#17181c);border-radius:3px;
+  box-shadow:0 6px 10px -6px #000;transform-origin:50% 0}
+.pt-card.big{width:80px;height:104px;font-size:3.6rem}
+.pt-card.big.two{font-size:2.7rem}
+.pt-card.set{width:27px;height:44px;font-size:1.45rem}
 .pt-card.flip{animation:ptflip .42s ease-in-out}
 .pt-card.fast{animation:ptflip .14s linear}
 @keyframes ptflip{0%{transform:rotateX(0)}50%{transform:rotateX(-88deg);filter:brightness(1.6)}100%{transform:rotateX(0)}}
-.pt-base{height:14px;margin:14px -16px 0;background:linear-gradient(180deg,#b9bec5,#7d838b 60%,#5d626a);position:relative}
-.pt-base::before,.pt-base::after{content:"";position:absolute;bottom:2px;width:22px;height:9px;border-radius:2px;background:linear-gradient(#f4f6f8,#a4abb4);box-shadow:inset 0 -1px 0 #0004}
-.pt-base::before{left:8%}.pt-base::after{right:8%}
-.pt-legend{display:flex;justify-content:center;gap:7px;margin-top:8px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.pt-legend span{width:37%;text-align:center}.pt-legend span.m{width:calc(24% + 7px)}
+.pt-legend{display:flex;justify-content:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.pt-legend span{width:86px;text-align:center}.pt-legend span.m{width:60px}
 .pt-note{font-size:.8rem;color:var(--muted);text-align:center;margin-top:2px}
 @media (prefers-reduced-motion:reduce){.pt-card.flip,.pt-card.fast{animation:none}}
 .nx-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3)}
@@ -759,9 +766,11 @@ footer a{color:#fff}
   var scorerTimer=null;
   function scorerHTML(){
     return '<div class="pointer" role="timer" aria-live="off" id="scorer">'+
-      '<div class="pt-body" aria-hidden="true"><div class="pt-rings"><i></i><i></i><i></i><i></i></div>'+
-      '<div class="pt-cards"><span class="pt-card big" id="pt-d">0</span><span class="pt-card set">0</span><span class="pt-card set">0</span><span class="pt-card big" id="pt-h">0</span></div>'+
-      '<div class="pt-base"></div></div>'+
+      '<div class="pt-scene" aria-hidden="true"><div class="pt-prism">'+
+      '<div class="pt-shadow"></div><div class="pt-back"></div><div class="pt-side l"></div><div class="pt-side r"></div>'+
+      '<div class="pt-front"><div class="pt-cards"><span class="pt-card big" id="pt-d">0</span><span class="pt-card set">0</span><span class="pt-card set">0</span><span class="pt-card big" id="pt-h">0</span></div></div>'+
+      '<div class="pt-foot top"></div><div class="pt-foot side"></div><div class="pt-foot"></div>'+
+      '</div></div>'+
       '<div class="pt-legend" aria-hidden="true"><span>Tage</span><span class="m">Sätze</span><span>Stunden</span></div>'+
       '<div class="pt-note" id="sc-note">bis zum Anpfiff</div></div>';
   }
