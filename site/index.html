@@ -126,7 +126,7 @@ section{padding-block:var(--s8) 0}
 :root{--spring:cubic-bezier(.34,1.56,.64,1)}
 .hero h1 .w{display:inline-block}
 .hball{display:inline-block;width:.19em;height:.19em;border-radius:50%;margin-left:.05em;vertical-align:baseline;
-  background:radial-gradient(circle at 35% 30%,#fff 0 22%,transparent 24%),var(--ball);box-shadow:0 .03em .05em #0003}
+  background:radial-gradient(circle at 35% 30%,#ffffff 0 38%,#eef1f5 62%,#c6cfda 100%);box-shadow:0 0 0 .012em #0000002e,0 .03em .05em #0003}
 html.anim:not(.opened) .hero h1 .w,html.anim:not(.opened) .hball,html.anim:not(.opened) .hero .lead,html.anim:not(.opened) .hero-train,html.anim:not(.opened) .hero .cta,html.anim:not(.opened) #next{opacity:0}
 html.opened .hero h1 .w{animation:rise .7s var(--ease) both;animation-delay:calc(var(--i) * 85ms)}
 html.opened .hball{animation:bounceIn 1.2s cubic-bezier(.3,0,.3,1) .45s both}
@@ -485,7 +485,7 @@ footer img{height:44px;width:auto;display:block}
     var ov=document.createElement("div");ov.className="intro";ov.setAttribute("aria-hidden","true");
     ov.innerHTML='<canvas></canvas><img class="intro-logo" src="assets/logo.png" alt=""><button type="button" class="intro-skip">Überspringen</button>';
     document.body.appendChild(ov);document.documentElement.classList.add("intro-on");
-    var cv=ov.querySelector("canvas"), ctx=cv.getContext("2d"), W, H, dpr, t0=null, done=false, raf;
+    var topLogo=ov.querySelector(".intro-logo"), cv=ov.querySelector("canvas"), ctx=cv.getContext("2d"), W, H, dpr, t0=null, done=false, raf;
     function size(){dpr=Math.min(2,window.devicePixelRatio||1);W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
     size();window.addEventListener("resize",size);
     window.__ttIntro=true;
@@ -547,6 +547,7 @@ footer img{height:44px;width:auto;display:block}
       if(by<ty-r*.5&&bx>x0&&bx<x0+Lp&&t<1300){ctx.fillStyle="rgba(0,0,0,.28)";ctx.beginPath();ctx.ellipse(bx,ty-1.5*s,Math.max(1,r*1.1*(1-(ty-by)/(200*s))),r*.35,0,0,Math.PI*2);ctx.fill()}
       ctx.globalAlpha=1;
       var lg=t<1350?0:Math.min(1,(t-1350)/300);   // Logo erst sichtbar, wenn der Ball groß wird
+      if(topLogo)topLogo.style.opacity=String(1-Math.min(1,Math.max(0,(t-1250)/250)));   // oberes Logo weicht dem Logo auf dem Ball
       ball(bx,by,br,sq,0,lg);
       if(t>=1850){finish();return}
       raf=requestAnimationFrame(frame);
