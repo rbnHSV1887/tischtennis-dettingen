@@ -6,7 +6,7 @@ Die Seite zeigt Spielplan, Ergebnisse und Tabellen aller Mannschaften. Die Daten
 src/page.html              Quelltext der Homepage (hier Design und Texte ändern)
 build.py                   baut daraus site/index.html: python build.py
 site/index.html            die fertige Homepage
-site/assets/               Logo und Schrift (Archivo, SIL Open Font License)
+site/assets/               Logo und Schrift (Plus Jakarta Sans, SIL Open Font License)
 site/data.json             die aktuellen Daten (wird automatisch überschrieben)
 site/turniere.json         eure Turniere (von Hand gepflegt)
 site/presse.json           eure Presseberichte aus Dettingen aktuell (von Hand gepflegt)

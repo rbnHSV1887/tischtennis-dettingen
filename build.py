@@ -13,7 +13,7 @@ full = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
 (R / "site" / "index.html").write_text(full, encoding="utf-8")
 print("site/index.html gebaut")
 if len(sys.argv) > 2 and sys.argv[1] == "--preview":
-    font = base64.b64encode((R / "site/assets/fonts/archivo.woff2").read_bytes()).decode()
+    font = base64.b64encode((R / "site/assets/fonts/jakarta.woff2").read_bytes()).decode()
     out = Path(sys.argv[2]); out.mkdir(parents=True, exist_ok=True)
-    (out / "index.html").write_text(src.replace('url("assets/fonts/archivo.woff2")', f'url("data:font/woff2;base64,{font}")'), encoding="utf-8")
+    (out / "index.html").write_text(src.replace('url("assets/fonts/jakarta.woff2")', f'url("data:font/woff2;base64,{font}")'), encoding="utf-8")
     print("Vorschau gebaut:", out / "index.html")
