@@ -22,6 +22,14 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
 body{background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--f);-webkit-font-smoothing:antialiased}
+/* Hintergrund: gepunktete Flugbahnen eines Balls mit Aufsprungstellen, dazu weiche Verläufe in Vereinsblau und Ball-Orange */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:var(--art) center/cover no-repeat,
+    radial-gradient(55% 45% at 0% 0%,color-mix(in srgb,var(--club) 11%,transparent),transparent 72%),
+    radial-gradient(45% 40% at 100% 100%,color-mix(in srgb,var(--ball) 10%,transparent),transparent 72%),
+    radial-gradient(40% 35% at 100% 15%,color-mix(in srgb,var(--sky) 7%,transparent),transparent 70%)}
+:root{--art:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><g fill='none' stroke='rgba%280%2C65%2C115%2C0.13%29' stroke-linecap='round' stroke-width='2.4'><path stroke-dasharray='0.1 16' d='M-60 760 Q260 300 560 640 Q760 430 960 600 Q1150 440 1330 560 Q1480 470 1660 520'/><path stroke-dasharray='0.1 16' d='M-40 190 Q340 -60 700 230 Q980 40 1240 210 Q1440 110 1680 160'/><g stroke-width='2'><ellipse cx='560' cy='644' rx='14' ry='4'/><ellipse cx='960' cy='604' rx='12' ry='3.5'/><ellipse cx='700' cy='234' rx='12' ry='3.5'/></g><circle cx='1330' cy='548' r='9' stroke-width='2.2'/><circle cx='1240' cy='198' r='8' stroke-width='2.2'/></g></svg>")}
+@media (prefers-color-scheme:dark){:root{--art:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><g fill='none' stroke='rgba%28108%2C182%2C232%2C0.14%29' stroke-linecap='round' stroke-width='2.4'><path stroke-dasharray='0.1 16' d='M-60 760 Q260 300 560 640 Q760 430 960 600 Q1150 440 1330 560 Q1480 470 1660 520'/><path stroke-dasharray='0.1 16' d='M-40 190 Q340 -60 700 230 Q980 40 1240 210 Q1440 110 1680 160'/><g stroke-width='2'><ellipse cx='560' cy='644' rx='14' ry='4'/><ellipse cx='960' cy='604' rx='12' ry='3.5'/><ellipse cx='700' cy='234' rx='12' ry='3.5'/></g><circle cx='1330' cy='548' r='9' stroke-width='2.2'/><circle cx='1240' cy='198' r='8' stroke-width='2.2'/></g></svg>")}}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
@@ -232,14 +240,15 @@ tr.us td{animation:rowflash 1.8s ease .3s both}
 .link-btn{font:600 .95rem var(--f);background:none;border:0;color:var(--club);cursor:pointer;padding:.3rem 0;text-decoration:underline;text-underline-offset:4px}
 
 .tabs{display:flex;gap:var(--s2);overflow-x:auto;padding:0 0 var(--s3);margin-bottom:var(--s5);scrollbar-width:thin}
-.tabs button{flex:none;display:flex;flex-direction:column;align-items:flex-start;text-align:left;font:inherit;background:transparent;color:var(--ink);border:1px solid var(--rule);border-radius:var(--r);padding:.6rem 1rem;cursor:pointer;min-width:9.5rem;position:relative;transition:border-color .2s,background .2s}
+.tabs button{flex:none;display:grid;grid-template-columns:auto auto;grid-template-areas:"n r" "l r";column-gap:1rem;row-gap:.1rem;align-items:center;text-align:left;font:inherit;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:var(--r);padding:.65rem .8rem .65rem 1rem;cursor:pointer;position:relative;transition:border-color .2s,background .2s}
 .tabs button:hover{border-color:var(--club)}
-.tabs button .rk{position:absolute;right:.7rem;top:.6rem;font-size:.78rem;font-weight:650;color:var(--muted)}
+.tabs button .rk{grid-area:r;justify-self:end;white-space:nowrap;font-size:.85rem;font-weight:700;color:var(--club);background:var(--tint);padding:.28rem .6rem;border-radius:99px;line-height:1.1}
 .tabs button .rk::before{content:"Platz ";font-weight:400}
-.tabs button b{font-weight:650;font-size:.97rem;line-height:1.25}
-.tabs button span.l{font-size:.8rem;color:var(--muted)}
+.tabs button b{grid-area:n;font-weight:650;font-size:.97rem;line-height:1.25;white-space:nowrap}
+.tabs button span.l{grid-area:l;font-size:.8rem;color:var(--muted);white-space:nowrap}
 .tabs button[aria-selected="true"]{background:var(--club);border-color:var(--club);color:var(--bg)}
-.tabs button[aria-selected="true"] span.l,.tabs button[aria-selected="true"] .rk{color:inherit;opacity:.85}
+.tabs button[aria-selected="true"] span.l{color:inherit;opacity:.85}
+.tabs button[aria-selected="true"] .rk{color:var(--club);background:var(--bg)}
 .panel{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s7)}
 .panel.swap{animation:reveal .35s var(--ease)}
 .panel-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s4);margin-bottom:var(--s3)}
