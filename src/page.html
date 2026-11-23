@@ -64,22 +64,29 @@ nav .nav-cta:hover{background:var(--ball-hi);color:#1b0d00}
 .btn-ghost,.btn-out,.btn-line{border-color:var(--rule);color:var(--ink);background:transparent}
 .btn-ghost:hover,.btn-out:hover,.btn-line:hover{border-color:var(--club);color:var(--club)}
 .nextcard{background:var(--alt);border:1px solid var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6)}
+/* Zählgerät wie an der Platte: links Tage, Mitte Sätze 0:0, rechts Stunden */
+.pointer{width:min(100%,290px);margin:var(--s4) 0 var(--s2)}
+.pt-body{position:relative;padding:16px 16px 0;background:linear-gradient(180deg,#30343b 0,#16181c 18%,#0c0d10 100%);clip-path:polygon(3.5% 0,96.5% 0,100% 100%,0 100%);border-radius:6px 6px 0 0}
+.pt-rings{position:absolute;top:5px;left:0;right:0;display:flex;justify-content:space-around;padding-inline:12%}
+.pt-rings i{width:16px;height:7px;border-radius:4px;background:linear-gradient(#f2f4f7,#9aa1ab);box-shadow:0 1px 1px #0008}
+.pt-cards{display:flex;align-items:flex-end;justify-content:center;gap:7px;perspective:500px}
+.pt-card{position:relative;display:grid;place-items:center;color:#fff;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#25282e,#0f1013 55%,#141519);border:1px solid #33373e;border-radius:3px;
+  box-shadow:0 2px 0 #1b1d21,0 3px 0 #3a3e45,0 5px 0 #1b1d21,0 6px 0 #3a3e45;transform-origin:50% 0;backface-visibility:hidden}
+.pt-card.big{width:37%;aspect-ratio:4/5;font-size:4rem}
+.pt-card.big.two{font-size:3rem}
+.pt-card.set{width:12%;aspect-ratio:3/5;font-size:1.65rem;margin-bottom:4px}
+.pt-card.flip{animation:ptflip .42s ease-in-out}
+.pt-card.fast{animation:ptflip .14s linear}
+@keyframes ptflip{0%{transform:rotateX(0)}50%{transform:rotateX(-88deg);filter:brightness(1.6)}100%{transform:rotateX(0)}}
+.pt-base{height:14px;margin:14px -16px 0;background:linear-gradient(180deg,#b9bec5,#7d838b 60%,#5d626a);position:relative}
+.pt-base::before,.pt-base::after{content:"";position:absolute;bottom:2px;width:22px;height:9px;border-radius:2px;background:linear-gradient(#f4f6f8,#a4abb4);box-shadow:inset 0 -1px 0 #0004}
+.pt-base::before{left:8%}.pt-base::after{right:8%}
+.pt-legend{display:flex;justify-content:center;gap:7px;margin-top:8px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.pt-legend span{width:37%;text-align:center}.pt-legend span.m{width:calc(24% + 7px)}
+.pt-note{font-size:.8rem;color:var(--muted);text-align:center;margin-top:2px}
+@media (prefers-reduced-motion:reduce){.pt-card.flip,.pt-card.fast{animation:none}}
 .nx-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3)}
-.nx-head .scorer{margin-top:-2px}
-/* Zählgerät: Wendeblätter wie am Spieltisch, zählt Stunden und Minuten bis zum Spiel */
-.scorer{display:flex;flex-direction:column;align-items:center}
-.sc-body{display:flex;gap:6px;background:#0b0e13;border:1px solid #ffffff24;border-radius:8px;padding:6px 7px 5px;box-shadow:0 10px 20px -10px #000c}
-.sc-side{display:flex;flex-direction:column;align-items:center;gap:3px}
-.sc-cards{display:flex;gap:3px}
-.flipc{position:relative;width:1.55em;height:2.05em;font-size:1.3rem;display:grid;place-items:center;background:linear-gradient(#fff 0 49%,#e6e9ee 51%);border-radius:3px;
-  color:#c8102e;font-weight:800;font-variant-numeric:tabular-nums;line-height:1;box-shadow:inset 0 -1px 0 #0002;transform-origin:50% 50%}
-.flipc::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#0003}
-.sc-side.b .flipc{color:#16181c}
-.flipc.turn{animation:turn .5s ease-in-out}
-@keyframes turn{0%{transform:perspective(200px) rotateX(0)}49%{transform:perspective(200px) rotateX(90deg)}51%{transform:perspective(200px) rotateX(-90deg)}100%{transform:perspective(200px) rotateX(0)}}
-.sc-side small{font-size:.6rem;font-weight:700;letter-spacing:.12em;color:#cfe6f5}
-.sc-leg{width:62%;height:9px;background:linear-gradient(#1a1f27,#0b0e13);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);margin-top:-1px}
-.sc-note{font-size:.72rem;color:var(--muted);margin-top:4px}
 
 /* ---------- Intro ---------- */
 html.intro-on{overflow:hidden}
@@ -140,7 +147,6 @@ html.opened #next{animation:slideIn .8s var(--ease) .3s both}
 .when-pill.today{background:var(--ball);color:#1b0d00}
 .when-pill.today i{background:#1b0d00}
 @keyframes blink{50%{opacity:.2;transform:scale(.7)}}
-.flipc.fast{animation:turn .16s linear}
 /* Probetraining: Ball landet auf dem Knopf, Knopf pulsiert */
 .cta .btn-ball{position:relative;overflow:visible}
 .cta .btn-ball::after{content:"";position:absolute;top:-13px;right:22px;width:13px;height:13px;border-radius:50%;opacity:0;
@@ -730,7 +736,7 @@ footer a{color:#fff}
     if(!m){box.innerHTML='<div class="nextcard"><span class="eyebrow">Nächstes Spiel</span><p class="muted" style="margin:.75rem 0 0">Der Spielplan folgt, sobald er in click-TT steht.</p></div>';return}
     var d=parseDate(m), home=isUs(m.h);
     var nd=daysUntil(d), pill=nd<=0?'<span class="when-pill today"><i></i>Heute!</span>':(nd<=7?'<span class="when-pill"><i></i>'+rel(d)+'</span>':'');
-    box.innerHTML='<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel'+pill+'</span>'+scorerHTML()+'</div>'+
+    box.innerHTML='<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel'+pill+'</span></div>'+scorerHTML()+
       '<div class="nx-teams"><b>'+esc(m.h)+'</b><span>gegen</span><b>'+esc(m.a)+'</b></div>'+
       '<div class="nx-meta"><span class="num">'+WDL[d.getDay()]+', '+d.getDate()+'. '+MON[d.getMonth()]+', '+esc(m.t)+' Uhr</span>'+
       '<span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span>'+
@@ -738,44 +744,43 @@ footer a{color:#fff}
     startScorer(d);
   }
 
-  /* ---------- Zählgerät ---------- */
+  /* ---------- Zählgerät: Tage und Stunden bis zum Anpfiff ---------- */
   var scorerTimer=null;
   function scorerHTML(){
-    return '<div class="scorer" role="timer" aria-live="off" id="scorer"><div class="sc-body">'+
-      '<div class="sc-side r"><div class="sc-cards" id="sc-h"></div><small>STD</small></div>'+
-      '<div class="sc-side b"><div class="sc-cards" id="sc-m"></div><small>MIN</small></div>'+
-      '</div><div class="sc-leg" aria-hidden="true"></div><div class="sc-note" id="sc-note"></div></div>';
+    return '<div class="pointer" role="timer" aria-live="off" id="scorer">'+
+      '<div class="pt-body" aria-hidden="true"><div class="pt-rings"><i></i><i></i><i></i><i></i></div>'+
+      '<div class="pt-cards"><span class="pt-card big" id="pt-d">0</span><span class="pt-card set">0</span><span class="pt-card set">0</span><span class="pt-card big" id="pt-h">0</span></div>'+
+      '<div class="pt-base"></div></div>'+
+      '<div class="pt-legend" aria-hidden="true"><span>Tage</span><span class="m">Sätze</span><span>Stunden</span></div>'+
+      '<div class="pt-note" id="sc-note">bis zum Anpfiff</div></div>';
   }
-  function setCards(el,str){
-    var cur=el.children;
-    if(cur.length!==str.length){el.innerHTML=str.split("").map(function(c){return '<span class="flipc">'+c+'</span>'}).join("");return}
-    str.split("").forEach(function(c,i){var f=cur[i];if(f.textContent===c)return;
-      f.classList.remove("turn");void f.offsetWidth;f.classList.add("turn");setTimeout(function(){f.textContent=c},250)});
+  function setCard(el,v,cls){
+    if(!el)return;v=String(v);
+    el.classList.toggle("two",v.length>1);
+    if(el.textContent===v)return;
+    el.classList.remove("flip","fast");void el.offsetWidth;el.classList.add(cls||"flip");
+    setTimeout(function(){el.textContent=v;el.classList.toggle("two",v.length>1)},cls==="fast"?60:200);
+  }
+  function timeLeft(start){
+    var ms=start-new Date();if(ms<=0)return {live:true,d:0,h:0};
+    return {live:false,d:Math.floor(ms/864e5),h:Math.floor(ms%864e5/36e5)};
   }
   function startScorer(start){
     if(scorerTimer)clearInterval(scorerTimer);
-    function tick(){
-      var h=$("sc-h"),mm=$("sc-m");if(!h){clearInterval(scorerTimer);return}
-      var ms=start-new Date(), live=ms<=0, mins=live?0:Math.ceil(ms/60000);
-      var hrs=Math.floor(mins/60), mi=mins%60;
-      setCards(h,(hrs<10?"0":"")+hrs);setCards(mm,(mi<10?"0":"")+mi);
-      $("sc-note").textContent=live?"Spiel läuft":"bis zum Anpfiff";
-      $("scorer").setAttribute("aria-label",live?"Das Spiel läuft":"Noch "+hrs+" Stunden und "+mi+" Minuten bis zum Spiel");
+    function label(x){
+      $("sc-note").textContent=x.live?"Spiel läuft":"bis zum Anpfiff";
+      $("scorer").setAttribute("aria-label",x.live?"Das Spiel läuft":"Noch "+x.d+(x.d===1?" Tag":" Tage")+" und "+x.h+(x.h===1?" Stunde":" Stunden")+" bis zum Spiel");
     }
-    var ms0=start-new Date(), m0=ms0<=0?0:Math.ceil(ms0/60000), h0=Math.floor(m0/60), mi0=m0%60;
-    var H0=(h0<10?"0":"")+h0, M0=(mi0<10?"0":"")+mi0;
-    setCards($("sc-h"),H0.replace(/./g,"0"));setCards($("sc-m"),"00");$("sc-note").textContent="bis zum Anpfiff";
+    function tick(){if(!$("pt-d")){clearInterval(scorerTimer);return}var x=timeLeft(start);setCard($("pt-d"),x.d);setCard($("pt-h"),x.h);label(x)}
+    var x0=timeLeft(start);label(x0);
     whenOpen(function(){
-      setTimeout(function(){roll($("sc-h"),H0,0);roll($("sc-m"),M0,H0.length)},650);
-      setTimeout(function(){tick();scorerTimer=setInterval(tick,1000)},2600);
+      setTimeout(function(){roll($("pt-d"),x0.d);roll($("pt-h"),x0.h)},650);
+      setTimeout(function(){tick();scorerTimer=setInterval(tick,30000)},2400);
     });
   }
-  function roll(el,target,offset){ // jede Ziffer klappt schnell von 0 bis zu ihrem Wert hoch
-    if(!el)return;
-    target.split("").forEach(function(ch,i){var f=el.children[i],to=+ch,n=0;if(!f)return;
-      setTimeout(function step(){if(n>=to)return;n++;f.classList.remove("fast");void f.offsetWidth;f.classList.add("fast");
-        var v=n;setTimeout(function(){f.textContent=String(v)},80);setTimeout(step,150)},(i+offset)*140);
-    });
+  function roll(el,to){ // Blätter klappen schnell von 0 bis zum Wert hoch, wie beim Umblättern an der Platte
+    if(!el||!to)return;var n=0, gap=Math.max(45,Math.min(150,1400/to));
+    (function step(){if(n>=to)return;n++;setCard(el,n,"fast");setTimeout(step,gap)})();
   }
 
   function renderTrain(){
@@ -912,14 +917,14 @@ footer a{color:#fff}
     var train=tr.length?'<ul class="train">'+tr.map(function(x){return '<li><b>'+esc(x.day)+'</b><span>'+esc(x.time)+(x.group?'<br>'+esc(x.group):'')+'</span></li>'}).join("")+'</ul>':'';
     var contact=c.contact?'<span class="nm">'+esc(c.contact)+'</span>':'unsere Abteilungsleitung';
     $("hall").innerHTML='<div class="hcard rv"><h3>In drei Schritten an die Platte</h3>'+train+
-      '<ol class="steps"><li><b>1</b><span><strong>Kurz melden</strong>Schreib '+contact+(c.instagram?' oder uns auf Instagram':'')+', wann du vorbeikommen möchtest.'+(tr.length?'':' Dort erfährst du auch die aktuellen Trainingszeiten.')+'</span></li>'+
+      '<ol class="steps"><li><b>1</b><span><strong>Kurz melden</strong>Schreib '+contact+(c.email?' eine E-Mail an <a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>':'')+(c.instagram?' oder uns auf Instagram':'')+', wann du vorbeikommen möchtest.'+(tr.length?'':' Dort erfährst du auch die aktuellen Trainingszeiten.')+'</span></li>'+
       '<li><b>2</b><span><strong>Hallenschuhe einpacken</strong>Bequeme Sportkleidung reicht für den Anfang.</span></li>'+
       '<li><b>3</b><span><strong>Mitspielen</strong>Einfach an die Platte stellen und loslegen. Den Rest zeigen wir dir.</span></li></ol>'+
-      (c.instagram?'<a class="btn btn-ball insta" href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">Auf Instagram schreiben</a>':'')+'</div>'+
+      '<div class="cta">'+(c.email?'<a class="btn btn-ball" href="mailto:'+esc(c.email)+'?subject='+encodeURIComponent("Probetraining Tischtennis")+'">E-Mail schreiben</a>':'')+(c.instagram?'<a class="btn btn-out" href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">Auf Instagram schreiben</a>':'')+'</div></div>'+
       '<div class="hcard rv"><h3>'+esc(c.hall||"Uhlandhalle")+'</h3><p>'+esc(c.address||"Rathausplatz 2, 72581 Dettingen an der Erms")+'</p>'+
       (c.maps?'<p><a href="'+esc(c.maps)+'" target="_blank" rel="noopener">Route planen</a></p>':'')+
       (c.contact?'<p>Ansprechpartner<br><strong>'+esc(c.contact)+'</strong></p>':'')+
-      (c.email?'<p class="copy"><span style="user-select:all">'+esc(c.email)+'</span><button type="button" id="copy-mail">Kopieren</button></p>':'')+
+      (c.email?'<p>E-Mail<br><span class="copy"><a href="mailto:'+esc(c.email)+'"><strong>'+esc(c.email)+'</strong></a><button type="button" id="copy-mail">Kopieren</button></span></p>':'')+
       (c.instagram?'<p>Instagram<br><a href="https://www.instagram.com/'+esc(c.instagram)+'/" target="_blank" rel="noopener">@'+esc(c.instagram)+'</a></p>':'')+'</div>';
     var cb=$("copy-mail");if(cb)cb.onclick=function(){var t=c.email;try{navigator.clipboard.writeText(t).then(function(){cb.textContent="Kopiert"},function(){cb.textContent="Bitte markieren"})}catch(e){cb.textContent="Bitte markieren"}};
   }
