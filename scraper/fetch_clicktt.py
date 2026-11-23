@@ -102,6 +102,28 @@ def parse_meetings(html, base):
     return matches
 
 
+def table_mark(tr):
+    """Auf-/Abstiegsmarkierung einer Tabellenzeile aus den Pfeil-Symbolen von click-TT:
+    up = Aufsteiger, rup = Relegation (Aufstieg), rdown = Relegation (Abstieg), down = Absteiger."""
+    bits = [" ".join(tr.get("class", []))]
+    for el in tr.find_all(["img", "span", "i", "td"]):
+        if el.name == "img":
+            src = (el.get("src") or "").rsplit("/", 1)[-1]
+            bits += [src, el.get("title") or "", el.get("alt") or ""]
+        else:
+            if el.get("title"):
+                bits.append(el["title"])
+            bits.append(" ".join(el.get("class", [])))
+    raw = " ".join(b for b in bits if b).lower()
+    if "relegation" in raw or "releg" in raw:
+        return ("rdown" if ("ab" in raw.split("relegation")[-1][:12] or "down" in raw) else "rup"), raw
+    if "aufsteig" in raw or re.search(r"\bup[_.\-]|\bup\b|arrow-up|aufstieg", raw):
+        return "up", raw
+    if "absteig" in raw or re.search(r"\bdown[_.\-]|\bdown\b|arrow-down|abstieg", raw):
+        return "down", raw
+    return "", raw
+
+
 def parse_table(html):
     soup = BeautifulSoup(html, "html.parser")
     table = find_table(soup, "Rang")
@@ -132,6 +154,11 @@ def parse_table(html):
         for k in ("rank", "m", "w", "d", "l"):
             if k in row and row[k].lstrip("-").isdigit():
                 row[k] = int(row[k])
+        mark, raw = table_mark(tr)
+        if mark:
+            row["mark"] = mark
+        if raw.strip():
+            row["_raw"] = raw[:160]  # vorübergehend: zeigt, was click-TT an Symbolen liefert
         rows.append(row)
     return rows
 
