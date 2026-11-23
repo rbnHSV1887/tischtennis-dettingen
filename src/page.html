@@ -64,34 +64,24 @@ nav .nav-cta:hover{background:var(--ball-hi);color:#1b0d00}
 .btn-ghost,.btn-out,.btn-line{border-color:var(--rule);color:var(--ink);background:transparent}
 .btn-ghost:hover,.btn-out:hover,.btn-line:hover{border-color:var(--club);color:var(--club)}
 .nextcard{background:var(--alt);border:1px solid var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6)}
-/* Zählgerät wie an der Platte, dreidimensional: links Tage, oben in der Mitte Sätze 0:0, rechts Stunden */
-.pointer{--W:260px;--H:172px;--h:162px;--D:106px;--a:19deg;width:var(--W);max-width:100%;margin:var(--s5) 0 var(--s2)}
-.pt-scene{perspective:900px;perspective-origin:50% 0;height:calc(var(--h) + 58px);display:flex;justify-content:center;padding-top:8px}
-.pt-prism{position:relative;width:var(--W);height:var(--h);transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(-18deg)}
-.pt-prism>div{position:absolute;backface-visibility:hidden}
-.pt-front,.pt-back{left:0;top:calc(var(--h) - var(--H));width:var(--W);height:var(--H);transform-origin:50% 100%}
-.pt-front{transform:translateZ(calc(var(--D) / 2)) rotateX(var(--a));background:linear-gradient(180deg,#24272d 0,#131418 35%,#0b0c0e 100%);box-shadow:inset 0 2px 0 #3d424a;padding:12px 10px 0}
-.pt-back{transform:translateZ(calc(var(--D) / -2)) rotateY(180deg) rotateX(var(--a));background:#08090b}
-.pt-side{top:0;width:var(--D);height:var(--h);clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(160deg,#2c3037,#0d0e11 70%)}
-.pt-side.l{left:calc(var(--D) / -2);transform:rotateY(-90deg)}
-.pt-side.r{left:calc(var(--W) - var(--D) / 2);transform:rotateY(90deg);background:linear-gradient(200deg,#1c1f24,#050607 75%)}
-.pt-foot{left:-4px;width:calc(var(--W) + 8px);height:14px;top:calc(var(--h) - 14px);transform:translateZ(calc(var(--D) / 2 + 6px));background:linear-gradient(180deg,#c3c8cf,#8a9098 55%,#62676f);border-radius:2px}
-.pt-foot.top{height:calc(var(--D) + 12px);top:calc(var(--h) - 14px - (var(--D) + 12px) / 2);transform:rotateX(90deg);background:#8d939b;backface-visibility:visible}
-.pt-foot.side{width:calc(var(--D) + 12px);left:calc(var(--W) + 4px - (var(--D) + 12px) / 2);transform:rotateY(90deg);background:linear-gradient(180deg,#8a9098,#4a4f56)}
-.pt-shadow{left:-8%;width:116%;height:var(--D);top:calc(var(--h) - var(--D) / 2);transform:rotateX(90deg) translateZ(-1px);background:radial-gradient(closest-side,#0006,transparent);filter:blur(6px)}
-.pt-cards{display:flex;align-items:flex-start;justify-content:center;gap:6px;perspective:400px}
+/* Zählgerät wie an der Platte, leicht räumlich: links Tage, oben in der Mitte Sätze 0:0, rechts Stunden */
+.pointer{width:300px;max-width:100%;margin:var(--s5) 0 var(--s2)}
+.pt-scene{position:relative;width:300px;height:186px}
+.pt-scene svg{position:absolute;inset:0;width:300px;height:186px;overflow:visible}
+.pt-cards{position:absolute;left:27px;top:22px;width:224px;display:flex;align-items:flex-start;justify-content:space-between}
 .pt-card{position:relative;display:grid;place-items:center;color:#fff;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.04em;
-  background:linear-gradient(180deg,#2a2d33,#111215 55%,#17181c);border-radius:3px;
-  box-shadow:0 6px 10px -6px #000;transform-origin:50% 0}
-.pt-card.big{width:80px;height:104px;font-size:3.6rem}
-.pt-card.big.two{font-size:2.7rem}
-.pt-card.set{width:27px;height:44px;font-size:1.45rem}
+  background:linear-gradient(180deg,#2b2e34,#121316 55%,#18191d);border-radius:3px;box-shadow:0 1px 0 #000,0 6px 10px -6px #000;transform-origin:50% 0}
+.pt-card.big{width:76px;height:100px;font-size:3.5rem}
+.pt-card.big.two{font-size:2.6rem}
+.pt-card.set{width:27px;height:42px;font-size:1.4rem}
+.pt-mid{display:flex;gap:6px}
 .pt-card.flip{animation:ptflip .42s ease-in-out}
 .pt-card.fast{animation:ptflip .14s linear}
-@keyframes ptflip{0%{transform:rotateX(0)}50%{transform:rotateX(-88deg);filter:brightness(1.6)}100%{transform:rotateX(0)}}
-.pt-legend{display:flex;justify-content:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.pt-legend span{width:86px;text-align:center}.pt-legend span.m{width:60px}
-.pt-note{font-size:.8rem;color:var(--muted);text-align:center;margin-top:2px}
+@keyframes ptflip{0%{transform:perspective(400px) rotateX(0)}50%{transform:perspective(400px) rotateX(-88deg);filter:brightness(1.6)}100%{transform:perspective(400px) rotateX(0)}}
+.pt-legend{position:relative;width:300px;height:1.1rem;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.pt-legend span{position:absolute;top:0;width:90px;text-align:center}
+.pt-legend span:first-child{left:20px}.pt-legend span:last-child{left:168px}
+.pt-note{width:300px;max-width:100%;font-size:.8rem;color:var(--muted);text-align:center;margin-top:2px}
 @media (prefers-reduced-motion:reduce){.pt-card.flip,.pt-card.fast{animation:none}}
 .nx-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3)}
 
@@ -755,12 +745,21 @@ footer a{color:#fff}
   var scorerTimer=null;
   function scorerHTML(){
     return '<div class="pointer" role="timer" aria-live="off" id="scorer">'+
-      '<div class="pt-scene" aria-hidden="true"><div class="pt-prism">'+
-      '<div class="pt-shadow"></div><div class="pt-back"></div><div class="pt-side l"></div><div class="pt-side r"></div>'+
-      '<div class="pt-front"><div class="pt-cards"><span class="pt-card big" id="pt-d">0</span><span class="pt-card set">0</span><span class="pt-card set">0</span><span class="pt-card big" id="pt-h">0</span></div></div>'+
-      '<div class="pt-foot top"></div><div class="pt-foot side"></div><div class="pt-foot"></div>'+
-      '</div></div>'+
-      '<div class="pt-legend" aria-hidden="true"><span>Tage</span><span class="m">Sätze</span><span>Stunden</span></div>'+
+      '<div class="pt-scene" aria-hidden="true"><svg viewBox="0 0 300 186">'+
+      '<defs><linearGradient id="ptF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2e35"/><stop offset=".3" stop-color="#15171b"/><stop offset="1" stop-color="#0a0b0d"/></linearGradient>'+
+      '<linearGradient id="ptS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#262a30"/><stop offset="1" stop-color="#050607"/></linearGradient>'+
+      '<linearGradient id="ptB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdd2d8"/><stop offset=".55" stop-color="#959ba3"/><stop offset="1" stop-color="#6a6f77"/></linearGradient>'+
+      '<filter id="ptBlur" x="-10%" y="-200%" width="120%" height="500%"><feGaussianBlur stdDeviation="5"/></filter></defs>'+
+      '<ellipse cx="150" cy="178" rx="146" ry="7" fill="#0f1c2e" opacity=".28" filter="url(#ptBlur)"/>'+
+      '<polygon points="2,164 272,164 290,154 20,154" fill="#aab0b8"/>'+
+      '<polygon points="250,8 256,8 280,152 262,158 250,158" fill="url(#ptS)"/>'+
+      '<polygon points="14,158 262,158 256,8 22,8" fill="url(#ptF)"/>'+
+      '<polygon points="2,164 272,164 272,176 2,176" fill="url(#ptB)"/>'+
+      '<polygon points="272,164 290,154 290,166 272,176" fill="#7c828a"/>'+
+      '</svg>'+
+      '<div class="pt-cards"><span class="pt-card big" id="pt-d">0</span><span class="pt-mid"><span class="pt-card set">0</span><span class="pt-card set">0</span></span><span class="pt-card big" id="pt-h">0</span></div>'+
+      '</div>'+
+      '<div class="pt-legend" aria-hidden="true"><span>Tage</span><span>Stunden</span></div>'+
       '<div class="pt-note" id="sc-note">bis zum Anpfiff</div></div>';
   }
   function setCard(el,v,cls){
