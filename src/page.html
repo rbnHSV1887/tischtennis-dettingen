@@ -112,6 +112,75 @@ section{padding-block:var(--s8) 0}
 .sec-head{margin-bottom:var(--s6)}
 .sec-head p{margin:var(--s3) 0 0;color:var(--muted);max-width:58ch}
 .in{animation:reveal .5s var(--ease) both}
+
+/* ---------- Auftritt nach dem Intro: das Wichtigste zuerst ---------- */
+:root{--spring:cubic-bezier(.34,1.56,.64,1)}
+.hero h1 .w{display:inline-block}
+.hball{display:inline-block;width:.19em;height:.19em;border-radius:50%;margin-left:.05em;vertical-align:baseline;
+  background:radial-gradient(circle at 35% 30%,#fff 0 22%,transparent 24%),var(--ball);box-shadow:0 .03em .05em #0003}
+html.anim:not(.opened) .hero h1 .w,html.anim:not(.opened) .hball,html.anim:not(.opened) .hero .lead,html.anim:not(.opened) .hero-train,html.anim:not(.opened) .hero .cta,html.anim:not(.opened) #next{opacity:0}
+html.opened .hero h1 .w{animation:rise .7s var(--ease) both;animation-delay:calc(var(--i) * 85ms)}
+html.opened .hball{animation:bounceIn 1.2s cubic-bezier(.3,0,.3,1) .45s both}
+html.opened .hero .lead{animation:rise .7s var(--ease) .5s both}
+html.opened .hero-train{animation:rise .7s var(--ease) .6s both}
+html.opened .hero .cta{animation:rise .7s var(--ease) .7s both}
+html.opened #next{animation:slideIn .8s var(--ease) .3s both}
+@keyframes rise{from{opacity:0;transform:translateY(.45em)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(48px)}}
+@keyframes bounceIn{0%{transform:translateY(-3.4em);opacity:0}8%{opacity:1}38%{transform:translateY(0) scale(1.3,.7)}52%{transform:translateY(-1em) scale(1)}66%{transform:translateY(0) scale(1.15,.85)}78%{transform:translateY(-.3em)}88%{transform:translateY(0) scale(1.06,.94)}100%{transform:none}}
+/* Nächstes Spiel: Mannschaften fliegen aufeinander zu */
+.nx-teams b:first-child{animation:fromL .7s var(--ease) .6s both}
+.nx-teams b:last-child{animation:fromR .7s var(--ease) .6s both}
+.nx-teams span{animation:pop .5s var(--spring) 1s both;justify-self:start}
+@keyframes fromL{from{opacity:0;transform:translateX(-36px)}}
+@keyframes fromR{from{opacity:0;transform:translateX(36px)}}
+@keyframes pop{from{opacity:0;transform:scale(.3)}}
+.when-pill{display:inline-flex;align-items:center;gap:.4rem;margin-left:.5rem;padding:.12rem .55rem;border-radius:99px;background:color-mix(in srgb,var(--ball) 16%,transparent);color:var(--ball-ink);font-size:.72rem;font-weight:700;letter-spacing:.02em;text-transform:none;vertical-align:middle}
+.when-pill i{width:7px;height:7px;border-radius:50%;background:var(--ball);animation:blink 1.3s ease-in-out infinite}
+.when-pill.today{background:var(--ball);color:#1b0d00}
+.when-pill.today i{background:#1b0d00}
+@keyframes blink{50%{opacity:.2;transform:scale(.7)}}
+.flipc.fast{animation:turn .16s linear}
+/* Probetraining: Ball landet auf dem Knopf, Knopf pulsiert */
+.cta .btn-ball{position:relative;overflow:visible}
+.cta .btn-ball::after{content:"";position:absolute;top:-13px;right:22px;width:13px;height:13px;border-radius:50%;opacity:0;
+  background:radial-gradient(circle at 35% 30%,#fff 0 30%,#eef1f5 55%,#c9d1db);box-shadow:0 2px 3px #0003}
+html.opened .cta .btn-ball::after{animation:hop 5.5s ease-in 1.5s infinite}
+html.opened .cta .btn-ball{animation:ring 2.8s ease-out 2.4s infinite}
+@keyframes hop{0%{opacity:0;transform:translateY(-46px)}6%{opacity:1}13%{transform:translateY(0) scale(1.25,.8)}20%{transform:translateY(-18px) scale(1)}27%{transform:translateY(0) scale(1.12,.9)}32%{transform:translateY(-6px)}37%{transform:translateY(0)}78%{opacity:1;transform:translateY(0)}86%,100%{opacity:0;transform:translateY(0)}}
+@keyframes ring{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ball) 60%,transparent)}70%,100%{box-shadow:0 0 0 14px color-mix(in srgb,var(--ball) 0%,transparent)}}
+/* Fortschritt unter dem Menü */
+.track{height:2px;background:transparent;position:relative;overflow:hidden}
+.track i{position:absolute;inset:0;background:linear-gradient(90deg,var(--club),var(--ball));transform-origin:left;transform:scaleX(0)}
+/* Laufband mit Ergebnissen */
+.ticker{display:flex;align-items:stretch;background:var(--alt);border-block:1px solid var(--rule);overflow:hidden;margin-top:var(--s5)}
+.ticker .lab{flex:none;display:flex;align-items:center;gap:.5rem;padding:.7rem 1rem .7rem max(20px,env(safe-area-inset-left,0px));font-weight:700;font-size:.88rem;background:var(--club);color:#fff;z-index:1}
+@media (prefers-color-scheme:dark){.ticker .lab{color:#0b1727}}
+.ticker .lab i{width:8px;height:8px;border-radius:50%;background:var(--ball);animation:blink 1.3s ease-in-out infinite}
+.ticker .viewport{overflow:hidden;flex:1;min-width:0;display:flex;align-items:center}
+.ticker .belt{display:flex;gap:2.4rem;white-space:nowrap;padding-inline:1.5rem;animation:belt 50s linear infinite;width:max-content}
+.ticker:hover .belt{animation-play-state:paused}
+@keyframes belt{to{transform:translateX(-50%)}}
+.ticker .it{display:inline-flex;align-items:center;gap:.55rem;font-size:.92rem}
+.ticker .it b{font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
+/* Saisonbilanz als Balken */
+.wdl{display:flex;height:8px;border-radius:8px;overflow:hidden;flex:1 1 220px;max-width:340px;background:var(--rule);gap:2px}
+.wdl i{display:block;transform-origin:left;transform:scaleX(0);transition:transform 1.1s var(--ease)}
+.wdl .w{background:var(--win)}.wdl .d{background:var(--draw)}.wdl .l{background:var(--loss)}
+.wdl.on i{transform:scaleX(1)}.wdl.on .d{transition-delay:.25s}.wdl.on .l{transition-delay:.5s}
+/* Überschriften: orange Linie läuft ein */
+.sec-head h2::after{content:"";display:block;width:56px;height:4px;border-radius:4px;margin-top:.55rem;background:var(--ball);transform-origin:left;transform:scaleX(0);transition:transform .8s var(--ease)}
+.sec-head.on h2::after{transform:scaleX(1)}
+/* Tabellenplätze: Balken wachsen, Platz poppt */
+.rung .meter i{transform-origin:left;transform:scaleX(0);transition:transform 1s var(--ease)}
+.rungs.on .meter i{transform:scaleX(1)}
+.rungs.on .rung:nth-child(2) .meter i{transition-delay:.1s}.rungs.on .rung:nth-child(3) .meter i{transition-delay:.2s}.rungs.on .rung:nth-child(4) .meter i{transition-delay:.3s}.rungs.on .rung:nth-child(5) .meter i{transition-delay:.4s}.rungs.on .rung:nth-child(6) .meter i{transition-delay:.5s}
+.rung.in .lvl{animation:pop .5s var(--spring) .15s both}
+/* Ergebnisse: Ausgang poppt, eigene Tabellenzeile leuchtet auf */
+.res.in .chip{animation:pop .45s var(--spring) .3s both}
+tr.us td{animation:rowflash 1.8s ease .3s both}
+@keyframes rowflash{0%,25%{background:color-mix(in srgb,var(--ball) 30%,var(--tint))}}
+@media (prefers-reduced-motion:reduce){.ticker .belt{animation-duration:120s}.cta .btn-ball,.cta .btn-ball::after{animation-iteration-count:1}}
 @keyframes reveal{from{opacity:0;transform:translateY(12px)}}
 
 .ladder{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s7);align-items:start}
@@ -292,13 +361,14 @@ footer img{height:44px;width:auto;display:block}
       <a href="#mitmachen" data-sec="mitmachen" class="nav-cta">Probetraining</a>
     </nav>
   </div>
+  <div class="track" aria-hidden="true"><i id="track-fill"></i></div>
 </header>
 
 <main>
   <div class="hero" id="start">
     <div class="wrap">
       <div>
-        <h1>Dein Platz an der <span class="hl">Platte.</span></h1>
+        <h1 aria-label="Dein Platz an der Platte."><span class="w" style="--i:0">Dein</span> <span class="w" style="--i:1">Platz</span> <span class="w" style="--i:2">an</span> <span class="w" style="--i:3">der</span> <span class="w hl" style="--i:4">Platte</span><span class="hball" aria-hidden="true"></span></h1>
         <p class="lead">Tischtennis beim TSV Dettingen/Erms: <span id="team-count">fünf Erwachsenenmannschaften und eine Seniorenmannschaft</span> von der Kreisklasse bis zur Bezirksoberliga. Eine Halle mitten im Ort und Platz für alle, die mitspielen wollen.</p>
         <p class="hero-train" id="hero-train" hidden></p>
         <div class="cta">
@@ -312,6 +382,11 @@ footer img{height:44px;width:auto;display:block}
 
   <div class="season" id="season" hidden><div class="wrap"><div class="season-card" id="season-in"></div></div></div>
 
+  <div class="ticker" id="ticker" hidden aria-label="Letzte Ergebnisse">
+    <span class="lab"><i aria-hidden="true"></i>Letzte Ergebnisse</span>
+    <div class="viewport"><div class="belt" id="belt"></div></div>
+  </div>
+
   <section id="niveau">
     <div class="wrap ladder">
       <div class="ladder-copy">
@@ -319,7 +394,7 @@ footer img{height:44px;width:auto;display:block}
         <p>Ob du zum ersten Mal einen Schläger hältst, nach Jahren zurückkommst oder um Punkte kämpfen willst: Bei uns gibt es eine Mannschaft, die zu dir passt.</p>
         <a class="btn btn-line" href="#mitmachen">Unverbindlich reinschnuppern</a>
       </div>
-      <ol class="rungs" id="rungs"></ol>
+      <ol class="rungs" id="rungs" data-on></ol>
     </div>
   </section>
 
@@ -390,6 +465,7 @@ footer img{height:44px;width:auto;display:block}
 <script>
 (function(){
   "use strict";
+  document.documentElement.classList.add("anim");
   /* ---------- Intro: ein Ballwechsel, dann öffnet sich die Seite (einmal pro Besuch) ---------- */
   (function intro(){
     var seen=false;try{seen=sessionStorage.getItem("tt-intro")==="1";sessionStorage.setItem("tt-intro","1")}catch(e){}
@@ -401,7 +477,8 @@ footer img{height:44px;width:auto;display:block}
     var cv=ov.querySelector("canvas"), ctx=cv.getContext("2d"), W, H, dpr, t0=null, done=false, raf;
     function size(){dpr=Math.min(2,window.devicePixelRatio||1);W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
     size();window.addEventListener("resize",size);
-    function finish(){if(done)return;done=true;ov.classList.add("out");document.documentElement.classList.remove("intro-on");
+    window.__ttIntro=true;
+    function finish(){if(done)return;done=true;ov.classList.add("out");window.dispatchEvent(new Event("tt-open"));document.documentElement.classList.remove("intro-on");
       setTimeout(function(){cancelAnimationFrame(raf);ov.remove();window.removeEventListener("resize",size)},500)}
     ov.addEventListener("click",finish);document.addEventListener("keydown",function k(e){if(e.key==="Escape"||e.key==="Enter"||e.key===" "){finish();document.removeEventListener("keydown",k)}});
     setTimeout(finish,4200); // Sicherheitsnetz
@@ -433,10 +510,14 @@ footer img{height:44px;width:auto;display:block}
       [-9,-6.5,7,9.5].forEach(function(gx){ctx.beginPath();ctx.moveTo(gx,BH-24);ctx.lineTo(gx*1.15,BH+92);ctx.stroke()});
       ctx.restore();
     }
-    function ball(x,y,r,sq){
+    var logo=new Image();logo.src="assets/logo.png";
+    function ball(x,y,r,sq,spin){ // weißer Wettkampfball mit aufgedrucktem Vereinslogo
       ctx.save();ctx.translate(x,y);ctx.scale(1+sq,1-sq);
-      var g=ctx.createRadialGradient(-r*.35,-r*.4,r*.1,0,0,r);g.addColorStop(0,"#ffd1a3");g.addColorStop(.45,"#f78a34");g.addColorStop(1,"#c3570b");
-      ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.restore();
+      ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fillStyle="#f7f8fa";ctx.fill();
+      ctx.save();ctx.clip();
+      if(logo.complete&&logo.naturalWidth){var lw=Math.min(r*1.15,Math.max(420,logo.naturalWidth*1.6)),lh=lw*logo.naturalHeight/logo.naturalWidth;ctx.rotate(spin||0);ctx.globalAlpha=.95;ctx.drawImage(logo,-lw/2,-lh/2,lw,lh);ctx.globalAlpha=1;ctx.rotate(-(spin||0))}
+      var g=ctx.createRadialGradient(-r*.35,-r*.4,r*.05,0,0,r);g.addColorStop(0,"rgba(255,255,255,.75)");g.addColorStop(.35,"rgba(255,255,255,0)");g.addColorStop(.8,"rgba(120,135,155,.18)");g.addColorStop(1,"rgba(60,75,95,.45)");
+      ctx.fillStyle=g;ctx.fillRect(-r,-r,2*r,2*r);ctx.restore();ctx.restore();
     }
     function frame(ts){
       if(done)return;if(t0===null)t0=ts;var t=(ts-t0)/(reduce?1.4:1);
@@ -471,12 +552,20 @@ footer img{height:44px;width:auto;display:block}
       bat(cx,cy,bs,ang);
       if(by<ty-r&&bx>x0&&bx<x0+Lp&&t<1400){ctx.fillStyle="rgba(0,0,0,.28)";ctx.beginPath();ctx.ellipse(bx,ty-1.5*s,r*1.1*(1-(ty-by)/(160*s)),r*.35,0,0,Math.PI*2);ctx.fill()}
       ctx.globalAlpha=1;
-      ball(bx,by,br,sq);
+      var spin=t<1200?t/90:(t<1850?(1-ease((t-1200)/650))*(1200/90)%(Math.PI*2):0);
+      ball(bx,by,br,sq,spin);
       if(t>=1850){finish();return}
       raf=requestAnimationFrame(frame);
     }
     raf=requestAnimationFrame(frame);
   })();
+
+  /* Seite gilt als "offen", sobald das Intro vorbei ist (oder sofort, wenn kein Intro läuft) */
+  var opened=false, onOpen=[];
+  function whenOpen(f){if(opened)f();else onOpen.push(f)}
+  function openPage(){if(opened)return;opened=true;document.documentElement.classList.add("opened");onOpen.splice(0).forEach(function(f){f()})}
+  if(window.__ttIntro){window.addEventListener("tt-open",openPage);setTimeout(openPage,5000)}
+  else requestAnimationFrame(function(){requestAnimationFrame(openPage)});
 
   var DATA=null, homeOnly=false, showAll=false, activeTeam=null;
   var $=function(id){return document.getElementById(id)};
@@ -516,7 +605,8 @@ footer img{height:44px;width:auto;display:block}
     var m=upcomingList()[0], box=$("next");
     if(!m){box.innerHTML='<div class="nextcard"><span class="eyebrow">Nächstes Spiel</span><p class="muted" style="margin:.75rem 0 0">Der Spielplan folgt, sobald er in click-TT steht.</p></div>';return}
     var d=parseDate(m), home=isUs(m.h);
-    box.innerHTML='<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel</span>'+scorerHTML()+'</div>'+
+    var nd=daysUntil(d), pill=nd<=0?'<span class="when-pill today"><i></i>Heute!</span>':(nd<=7?'<span class="when-pill"><i></i>'+rel(d)+'</span>':'');
+    box.innerHTML='<div class="nextcard"><div class="nx-head"><span class="eyebrow">Nächstes Spiel'+pill+'</span>'+scorerHTML()+'</div>'+
       '<div class="nx-teams"><b>'+esc(m.h)+'</b><span>gegen</span><b>'+esc(m.a)+'</b></div>'+
       '<div class="nx-meta"><span class="num">'+WDL[d.getDay()]+', '+d.getDate()+'. '+MON[d.getMonth()]+', '+esc(m.t)+' Uhr</span>'+
       '<span>'+(home?"Heimspiel, "+esc((DATA.club&&DATA.club.hall)||"Uhlandhalle"):"Auswärtsspiel")+'</span>'+
@@ -548,7 +638,20 @@ footer img{height:44px;width:auto;display:block}
       $("sc-note").textContent=live?"Spiel läuft":"bis zum Anpfiff";
       $("scorer").setAttribute("aria-label",live?"Das Spiel läuft":"Noch "+hrs+" Stunden und "+mi+" Minuten bis zum Spiel");
     }
-    tick();scorerTimer=setInterval(tick,1000);
+    var ms0=start-new Date(), m0=ms0<=0?0:Math.ceil(ms0/60000), h0=Math.floor(m0/60), mi0=m0%60;
+    var H0=(h0<10?"0":"")+h0, M0=(mi0<10?"0":"")+mi0;
+    setCards($("sc-h"),H0.replace(/./g,"0"));setCards($("sc-m"),"00");$("sc-note").textContent="bis zum Anpfiff";
+    whenOpen(function(){
+      setTimeout(function(){roll($("sc-h"),H0,0);roll($("sc-m"),M0,H0.length)},650);
+      setTimeout(function(){tick();scorerTimer=setInterval(tick,1000)},2600);
+    });
+  }
+  function roll(el,target,offset){ // jede Ziffer klappt schnell von 0 bis zu ihrem Wert hoch
+    if(!el)return;
+    target.split("").forEach(function(ch,i){var f=el.children[i],to=+ch,n=0;if(!f)return;
+      setTimeout(function step(){if(n>=to)return;n++;f.classList.remove("fast");void f.offsetWidth;f.classList.add("fast");
+        var v=n;setTimeout(function(){f.textContent=String(v)},80);setTimeout(step,150)},(i+offset)*140);
+    });
   }
 
   function renderTrain(){
@@ -565,7 +668,15 @@ footer img{height:44px;width:auto;display:block}
     $("season-in").innerHTML='<div class="t">Saison '+esc(DATA.season)+'<small>Bilanz aller Mannschaften bisher</small></div>'+
       '<div class="tally num"><div class="w"><b data-count="'+c.w+'">'+c.w+'</b><span>Siege</span></div><div class="d"><b data-count="'+c.d+'">'+c.d+'</b><span>Unentschieden</span></div><div class="l"><b data-count="'+c.l+'">'+c.l+'</b><span>Niederlagen</span></div></div>'+
       (leaders.length?'<div class="leader"><span class="crown">1</span><div><small>Tabellenführer</small><strong>'+leaders.map(function(t){return esc(t.label)+", "+esc(shortLeague(t))}).join("; ")+'</strong></div></div>':"");
+    var tl=$("season-in").querySelector(".tally");
+    if(tl)tl.insertAdjacentHTML("afterend",'<div class="wdl" data-on aria-hidden="true"><i class="w" style="flex:'+c.w+'"></i><i class="d" style="flex:'+c.d+'"></i><i class="l" style="flex:'+c.l+'"></i></div>');
     $("season").hidden=false;
+  }
+  function renderTicker(){
+    var list=playedList().slice(0,10);if(!list.length)return;
+    var items=list.map(function(m){var o=outcome(m);return '<span class="it">'+shortDate(parseDate(m))+' '+esc(m.h)+' <b>'+esc(m.r)+'</b> '+esc(m.a)+' <span class="chip '+o+'" title="'+OUT_TXT[o]+'">'+OUT_S[o]+'</span></span>'}).join("");
+    $("belt").innerHTML=items+items.replace(/class="it"/g,'class="it" aria-hidden="true"');
+    $("ticker").hidden=false;
   }
 
   function renderRungs(){
@@ -711,7 +822,7 @@ footer img{height:44px;width:auto;display:block}
   var io="IntersectionObserver" in window?new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
-      if(el.classList.contains("sec-head")){var d=el.querySelector(".drop");if(d)d.classList.add("go");return}
+      if(el.classList.contains("sec-head")||el.hasAttribute("data-on")){el.classList.add("on");return}
       if(el.hasAttribute("data-count")){countUp(el);return}
       el.style.animationDelay=(el._delay||0)+"ms";el.classList.add("in");
     });
@@ -729,7 +840,7 @@ footer img{height:44px;width:auto;display:block}
     });
   }
   function watchCounts(){if(!io)return;document.querySelectorAll("[data-count]").forEach(function(el){io.observe(el)})}
-  function watchHeads(){if(!io)return;document.querySelectorAll(".sec-head").forEach(function(h){io.observe(h)})}
+  function watchHeads(){if(!io){document.querySelectorAll(".sec-head,[data-on]").forEach(function(h){h.classList.add("on")});return}document.querySelectorAll(".sec-head,[data-on]").forEach(function(h){io.observe(h)})}
 
   var secs=["start","niveau","spiele","tabellen","turniere","mitmachen"].map(function(id){return document.getElementById(id)});
   var links=document.querySelectorAll("a[data-sec]");
@@ -741,6 +852,7 @@ footer img{height:44px;width:auto;display:block}
     var probe=y+vh*.35, idx=0;
     for(var i=0;i<tops.length;i++)if(probe>=tops[i])idx=i;
     if(y>=max-4)idx=secs.length-1;
+    var tf=$("track-fill");if(tf)tf.style.transform="scaleX("+Math.min(1,y/max).toFixed(4)+")";
     var heroBottom=secs[0].getBoundingClientRect().bottom, joinTop=$("mitmachen").getBoundingClientRect().top;
     fab.classList.toggle("show",heroBottom<0&&joinTop>vh*.6);
     if(idx!==current){
@@ -755,8 +867,8 @@ footer img{height:44px;width:auto;display:block}
   function render(){
     try{activeTeam=localStorage.getItem("tt-team")}catch(e){}
     if(!DATA.teams.some(function(t){return t.key===activeTeam}))activeTeam=DATA.teams[0]&&DATA.teams[0].key;
-    renderNext();renderTrain();renderSeason();renderRungs();renderUpcoming();renderResults();renderTabs();renderPanel(false);renderWhy();renderHall();renderStand();
-    watch();watchCounts();watchHeads();update();
+    renderNext();renderTrain();renderSeason();renderTicker();renderRungs();renderUpcoming();renderResults();renderTabs();renderPanel(false);renderWhy();renderHall();renderStand();
+    whenOpen(function(){watch();watchCounts();watchHeads()});update();
   }
 
   /* ---------- Menü am Handy ---------- */
