@@ -9,6 +9,8 @@ site/index.html            die fertige Homepage
 site/assets/               Logo und Schrift (Archivo, SIL Open Font License)
 site/data.json             die aktuellen Daten (wird automatisch überschrieben)
 site/turniere.json         eure Turniere (von Hand gepflegt)
+site/presse.json           eure Presseberichte aus Dettingen aktuell (von Hand gepflegt)
+site/presse/               PDFs und Fotos zu den Presseberichten
 scraper/fetch_clicktt.py   holt die Daten aus click-TT
 scraper/config.json        Mannschaften, Ligen, Halle, Trainingszeiten, Kontakt
 scraper/test_parser.py     Test des Abrufs
@@ -58,6 +60,8 @@ Ihr braucht kein Programm. Datei auf github.com öffnen → Stift-Symbol („Edi
 | Was | Datei |
 |---|---|
 | Turnier eintragen | `site/turniere.json` – Block aus `_vorlage` kopieren und in `turniere: [ ... ]` einfügen |
+| Pressebericht eintragen | `site/presse.json` – Block aus `_vorlage` kopieren und oben in `berichte: [ ... ]` einfügen |
+| PDF oder Foto zum Bericht | in den Ordner `site/presse` hochladen (**Add file → Upload files**), dann im Bericht z. B. `"pdf": "presse/2026-11-20-bericht.pdf"` eintragen |
 | Trainingszeiten, Ansprechpartner, E-Mail, Instagram | `scraper/config.json` → Abschnitt `club` |
 | Texte und Design | `src/page.html` (wird automatisch zu `site/index.html` gebaut) |
 
@@ -70,6 +74,17 @@ Beispiel für `site/turniere.json` mit einem Turnier:
     "anmeldung": "https://www.mytischtennis.de/…", "ausschreibung": "", "hinweis": "" }
 ]
 ```
+
+Beispiel für `site/presse.json` mit einem Bericht:
+
+```json
+"berichte": [
+  { "datum": "2026-11-20", "titel": "Erster Saisonsieg für die Zweite", "mannschaft": "2. Mannschaft", "ausgabe": "KW 47",
+    "text": ["Erster Absatz.", "Zweiter Absatz."], "pdf": "presse/2026-11-20-bericht.pdf", "bild": "", "link": "" }
+]
+```
+
+Nur `datum` und `titel` sind Pflicht. Die neuesten Berichte stehen automatisch oben, ab mehreren Mannschaften erscheinen Filter-Knöpfe, ab sieben Berichten ein Knopf „Ältere Berichte anzeigen“.
 
 Wichtig: Anführungszeichen und Kommas genau so lassen. Wenn nach dem Speichern unter Actions ein roter Lauf erscheint, ist meist ein Komma zu viel oder zu wenig. Die alte Version bleibt dann online.
 

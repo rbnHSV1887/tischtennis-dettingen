@@ -1,0 +1,14 @@
+{
+  "_anleitung": "Neuen Bericht eintragen: den Block aus _vorlage kopieren, oben in die Liste berichte einfügen und die Werte anpassen. Datum als JJJJ-MM-TT (Erscheinungstag in Dettingen aktuell). Absätze im Text mit \\n\\n trennen oder text als Liste [\"Absatz 1\", \"Absatz 2\"] schreiben. PDF oder Foto vorher in den Ordner site/presse hochladen und dann z. B. \"presse/2026-11-20-bericht.pdf\" eintragen. Felder, die ihr nicht braucht, leer lassen (\"\"). Mehrere Berichte durch Komma trennen. Die Seite sortiert automatisch nach Datum, die neuesten oben.",
+  "_vorlage": {
+    "datum": "2026-11-20",
+    "titel": "Erster Saisonsieg für die Zweite",
+    "mannschaft": "2. Mannschaft",
+    "ausgabe": "KW 47",
+    "text": ["Erster Absatz des Berichts.", "Zweiter Absatz mit den Ergebnissen."],
+    "pdf": "",
+    "bild": "",
+    "link": ""
+  },
+  "berichte": []
+}

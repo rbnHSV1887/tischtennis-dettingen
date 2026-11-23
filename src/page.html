@@ -22,14 +22,15 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
 body{background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--f);-webkit-font-smoothing:antialiased}
-/* Hintergrund: gepunktete Flugbahnen eines Balls mit Aufsprungstellen, dazu weiche Verläufe in Vereinsblau und Ball-Orange */
+/* Hintergrund: Farbabstufungen in Vereinsblau und Ball-Orange, gestufte Wellen und eine gepunktete Ballflugbahn */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:var(--art) center/cover no-repeat,
-    radial-gradient(55% 45% at 0% 0%,color-mix(in srgb,var(--club) 11%,transparent),transparent 72%),
-    radial-gradient(45% 40% at 100% 100%,color-mix(in srgb,var(--ball) 10%,transparent),transparent 72%),
-    radial-gradient(40% 35% at 100% 15%,color-mix(in srgb,var(--sky) 7%,transparent),transparent 70%)}
-:root{--art:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><g fill='none' stroke='rgba%280%2C65%2C115%2C0.13%29' stroke-linecap='round' stroke-width='2.4'><path stroke-dasharray='0.1 16' d='M-60 760 Q260 300 560 640 Q760 430 960 600 Q1150 440 1330 560 Q1480 470 1660 520'/><path stroke-dasharray='0.1 16' d='M-40 190 Q340 -60 700 230 Q980 40 1240 210 Q1440 110 1680 160'/><g stroke-width='2'><ellipse cx='560' cy='644' rx='14' ry='4'/><ellipse cx='960' cy='604' rx='12' ry='3.5'/><ellipse cx='700' cy='234' rx='12' ry='3.5'/></g><circle cx='1330' cy='548' r='9' stroke-width='2.2'/><circle cx='1240' cy='198' r='8' stroke-width='2.2'/></g></svg>")}
-@media (prefers-color-scheme:dark){:root{--art:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><g fill='none' stroke='rgba%28108%2C182%2C232%2C0.14%29' stroke-linecap='round' stroke-width='2.4'><path stroke-dasharray='0.1 16' d='M-60 760 Q260 300 560 640 Q760 430 960 600 Q1150 440 1330 560 Q1480 470 1660 520'/><path stroke-dasharray='0.1 16' d='M-40 190 Q340 -60 700 230 Q980 40 1240 210 Q1440 110 1680 160'/><g stroke-width='2'><ellipse cx='560' cy='644' rx='14' ry='4'/><ellipse cx='960' cy='604' rx='12' ry='3.5'/><ellipse cx='700' cy='234' rx='12' ry='3.5'/></g><circle cx='1330' cy='548' r='9' stroke-width='2.2'/><circle cx='1240' cy='198' r='8' stroke-width='2.2'/></g></svg>")}}
+    radial-gradient(55% 50% at 5% 0%,var(--g1),transparent 70%),
+    radial-gradient(45% 45% at 100% 35%,var(--g2),transparent 70%),
+    radial-gradient(60% 50% at 20% 100%,var(--g3),transparent 70%),
+    linear-gradient(165deg,var(--b1) 0%,var(--b2) 30%,var(--b3) 55%,var(--b4) 82%,var(--b5) 100%)}
+:root{--g1:#0079ad38;--g2:#f57c1f29;--g3:#0041732e;--b1:#d6e6f4;--b2:#ecf3fa;--b3:#f8fafd;--b4:#fdf2e7;--b5:#fbe2cc;--art:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><path fill='rgb%280%2C121%2C173%29' fill-opacity='0.035' d='M0 690 C260 610 520 760 820 700 S1340 590 1600 660 V1000 H0Z'/><path fill='rgb%280%2C121%2C173%29' fill-opacity='0.05' d='M0 770 C300 700 560 830 880 780 S1380 690 1600 750 V1000 H0Z'/><path fill='rgb%280%2C121%2C173%29' fill-opacity='0.07' d='M0 850 C320 790 620 900 940 860 S1420 780 1600 840 V1000 H0Z'/><path fill='rgb%280%2C121%2C173%29' fill-opacity='0.1' d='M0 925 C340 880 660 965 980 935 S1440 870 1600 915 V1000 H0Z'/><path fill='rgb%28245%2C124%2C31%29' fill-opacity='0.06' d='M760 0 C900 120 1120 60 1260 170 S1500 230 1600 190 V0Z'/><path fill='rgb%28245%2C124%2C31%29' fill-opacity='0.09' d='M1000 0 C1110 90 1260 50 1370 120 S1540 150 1600 130 V0Z'/><path fill='rgb%28245%2C124%2C31%29' fill-opacity='0.13' d='M1220 0 C1300 60 1400 40 1480 80 S1570 90 1600 80 V0Z'/><g fill='none' stroke='rgba%280%2C65%2C115%2C0.16%29' stroke-linecap='round' stroke-width='2.6'><path stroke-dasharray='0.1 15' d='M-60 560 Q260 160 560 470 Q760 290 960 430 Q1150 300 1330 400 Q1480 330 1660 360'/><g stroke-width='2'><ellipse cx='560' cy='474' rx='14' ry='4'/><ellipse cx='960' cy='434' rx='12' ry='3.5'/></g><circle cx='1330' cy='388' r='9' stroke-width='2.2'/></g></svg>")}
+@media (prefers-color-scheme:dark){:root{--g1:#1d6fa866;--g2:#f57c1f26;--g3:#0a4d8a55;--b1:#0d2a4a;--b2:#0b1d33;--b3:#0b1727;--b4:#14182a;--b5:#2a1a14;--art:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000' preserveAspectRatio='xMidYMid slice'><path fill='rgb%28108%2C182%2C232%29' fill-opacity='0.035' d='M0 690 C260 610 520 760 820 700 S1340 590 1600 660 V1000 H0Z'/><path fill='rgb%28108%2C182%2C232%29' fill-opacity='0.05' d='M0 770 C300 700 560 830 880 780 S1380 690 1600 750 V1000 H0Z'/><path fill='rgb%28108%2C182%2C232%29' fill-opacity='0.07' d='M0 850 C320 790 620 900 940 860 S1420 780 1600 840 V1000 H0Z'/><path fill='rgb%28108%2C182%2C232%29' fill-opacity='0.1' d='M0 925 C340 880 660 965 980 935 S1440 870 1600 915 V1000 H0Z'/><path fill='rgb%28255%2C154%2C74%29' fill-opacity='0.06' d='M760 0 C900 120 1120 60 1260 170 S1500 230 1600 190 V0Z'/><path fill='rgb%28255%2C154%2C74%29' fill-opacity='0.09' d='M1000 0 C1110 90 1260 50 1370 120 S1540 150 1600 130 V0Z'/><path fill='rgb%28255%2C154%2C74%29' fill-opacity='0.13' d='M1220 0 C1300 60 1400 40 1480 80 S1570 90 1600 80 V0Z'/><g fill='none' stroke='rgba%28108%2C182%2C232%2C0.18%29' stroke-linecap='round' stroke-width='2.6'><path stroke-dasharray='0.1 15' d='M-60 560 Q260 160 560 470 Q760 290 960 430 Q1150 300 1330 400 Q1480 330 1660 360'/><g stroke-width='2'><ellipse cx='560' cy='474' rx='14' ry='4'/><ellipse cx='960' cy='434' rx='12' ry='3.5'/></g><circle cx='1330' cy='388' r='9' stroke-width='2.2'/></g></svg>")}}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
@@ -266,7 +267,7 @@ tr.us td{background:var(--tint);font-weight:650}
 tr.us td:first-child{box-shadow:inset 3px 0 0 var(--club)}
 .src{font-size:.88rem;color:var(--muted);margin-top:var(--s3);display:flex;gap:var(--s4);flex-wrap:wrap}
 
-.tour{display:grid;grid-template-columns:5.5rem minmax(0,1fr);border:1px solid var(--rule);border-radius:var(--r);margin-bottom:var(--s4);overflow:hidden}
+.tour{background:var(--surface);display:grid;grid-template-columns:5.5rem minmax(0,1fr);border:1px solid var(--rule);border-radius:var(--r);margin-bottom:var(--s4);overflow:hidden}
 .tour .when{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--alt);padding:var(--s4) var(--s2);text-align:center;line-height:1.2}
 .tour .when .wd{font-size:.72rem;font-weight:650;letter-spacing:.06em;color:var(--muted)}
 .tour .when .dd{font-weight:700;font-size:2rem}
@@ -279,11 +280,35 @@ tr.us td:first-child{box-shadow:inset 3px 0 0 var(--club)}
 .tour .acts,.tour-empty .acts{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s2)}
 .tour .acts .btn,.tour-empty .acts .btn{padding:.55rem 1.05rem;font-size:.93rem}
 .tour.past .what{opacity:.7}
-.tour-empty{border:1px dashed var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6);display:grid;gap:var(--s3)}
+.tour-empty{background:color-mix(in srgb,var(--surface) 80%,transparent);border:1px dashed var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6);display:grid;gap:var(--s3)}
 .tour-empty p{margin:0;color:var(--muted);max-width:60ch}
 .past-h{margin:var(--s6) 0 var(--s3);font-size:1rem;color:var(--muted)}
 
-.band{margin-top:var(--s8);background:var(--alt);border-top:1px solid var(--rule)}
+/* Presse */
+.press-filter{display:flex;flex-wrap:wrap;gap:var(--s2);margin-bottom:var(--s5)}
+.press-filter button{font:600 .9rem var(--f);color:var(--muted);background:var(--surface);border:1px solid var(--rule);border-radius:99px;padding:.4rem .95rem;cursor:pointer;transition:all .2s}
+.press-filter button[aria-pressed="true"]{background:var(--club);border-color:var(--club);color:var(--bg)}
+.press-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:var(--s5)}
+.press{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s,border-color .2s}
+.press:hover{transform:translateY(-3px);box-shadow:0 18px 34px -22px #00305a66;border-color:color-mix(in srgb,var(--club) 35%,var(--rule))}
+.press::before{content:"";height:4px;background:linear-gradient(90deg,var(--club),var(--sky) 60%,var(--ball))}
+.press .pic{aspect-ratio:16/9;background:var(--alt) center/cover no-repeat}
+.press .body{padding:var(--s5);display:flex;flex-direction:column;gap:var(--s3);flex:1}
+.press .top{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3);font-size:.85rem;color:var(--muted)}
+.press .src{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--club);background:var(--tint);padding:.2rem .6rem;border-radius:99px}
+.press .new{font-size:.72rem;font-weight:700;color:#1b0d00;background:var(--ball);padding:.2rem .55rem;border-radius:99px}
+.press h3{font-size:1.2rem}
+.press .team{margin:-.4rem 0 0;font-size:.9rem;font-weight:600;color:var(--sky)}
+.press .txt{color:var(--muted);display:grid;gap:var(--s3)}
+.press .txt p{margin:0}
+.press:not(.open) .txt.long{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.press .acts{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:auto;padding-top:var(--s2)}
+.press .acts .btn{padding:.5rem 1rem;font-size:.9rem}
+.press .more{font:650 .92rem var(--f);color:var(--club);background:none;border:0;padding:0;cursor:pointer;align-self:flex-start}
+.press-older{display:flex;justify-content:center;margin-top:var(--s5)}
+.press-empty{background:color-mix(in srgb,var(--surface) 80%,transparent);border:1px dashed var(--rule);border-radius:var(--r);padding:var(--s5) var(--s6)}
+.press-empty p{margin:var(--s2) 0 0;color:var(--muted)}
+.band{margin-top:var(--s8);background:color-mix(in srgb,var(--alt) 72%,transparent);border-top:1px solid var(--rule)}
 .band section{padding-block:var(--s8)}
 .why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6);margin-bottom:var(--s7)}
 .why b{display:block;font-weight:700;font-size:2.4rem;line-height:1;color:var(--club);margin-bottom:var(--s2)}
@@ -367,6 +392,7 @@ footer img{height:44px;width:auto;display:block}
       <a href="#spiele" data-sec="spiele">Spiele</a>
       <a href="#tabellen" data-sec="tabellen">Tabellen</a>
       <a href="#turniere" data-sec="turniere">Turniere</a>
+      <a href="#presse" data-sec="presse">Presse</a>
       <a href="#mitmachen" data-sec="mitmachen" class="nav-cta">Probetraining</a>
     </nav>
   </div>
@@ -447,6 +473,15 @@ footer img{height:44px;width:auto;display:block}
         <h2>Turniere</h2><p>Turniere, die wir in der Uhlandhalle ausrichten, zum Beispiel TTBW-Race-Turniere. Melde dich direkt über den Link beim Turnier an.</p>
       </div>
       <div id="tourneys"><p class="muted">Turniere werden geladen …</p></div>
+    </div>
+  </section>
+
+  <section id="presse">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Presse</h2><p>Unsere Berichte aus „Dettingen aktuell“: Spieltage, Turniere und Neuigkeiten aus der Abteilung zum Nachlesen.</p>
+      </div>
+      <div id="press"><p class="muted">Berichte werden geladen …</p></div>
     </div>
   </section>
 
@@ -793,6 +828,47 @@ footer img{height:44px;width:auto;display:block}
     $("tourneys").innerHTML=html;watch($("tourneys"));
   }
 
+  /* ---------- Presse (aus site/presse.json) ---------- */
+  var PRESS=[], pressTeam="", pressAll=false;
+  function pressDate(d){return d.toLocaleDateString("de-DE",{day:"numeric",month:"long",year:"numeric"})}
+  function pressParas(t){
+    if(Array.isArray(t))return t.filter(Boolean);
+    return String(t||"").split(/\n\s*\n/).map(function(x){return x.trim()}).filter(Boolean);
+  }
+  function renderPress(list){
+    if(list){
+      PRESS=list.filter(function(b){return b&&b.titel&&b.datum&&/^\d{4}-\d{2}-\d{2}$/.test(b.datum)}).map(function(b){var p=b.datum.split("-");b._d=new Date(+p[0],p[1]-1,+p[2]);return b}).sort(function(a,b){return b._d-a._d});
+    }
+    var box=$("press");
+    if(!PRESS.length){
+      box.innerHTML='<div class="press-empty rv"><h3>Bald gibt es hier was zu lesen</h3><p>Sobald unser nächster Bericht in „Dettingen aktuell“ erscheint, steht er auch hier, mit Spielbericht und Ergebnissen.</p></div>';
+      watch(box);return;
+    }
+    var teams=[];PRESS.forEach(function(b){if(b.mannschaft&&teams.indexOf(b.mannschaft)<0)teams.push(b.mannschaft)});
+    var shown=PRESS.filter(function(b){return !pressTeam||b.mannschaft===pressTeam});
+    var limit=pressAll?shown.length:6, rest=shown.length-limit;
+    var html="";
+    if(teams.length>1)html+='<div class="press-filter" role="group" aria-label="Berichte filtern">'+['<button type="button" data-t="" aria-pressed="'+(!pressTeam)+'">Alle</button>'].concat(teams.map(function(t){return '<button type="button" data-t="'+esc(t)+'" aria-pressed="'+(pressTeam===t)+'">'+esc(t)+'</button>'})).join("")+'</div>';
+    html+='<div class="press-grid">'+shown.slice(0,limit).map(function(b,i){
+      var ps=pressParas(b.text), long=ps.join(" ").length>420||ps.length>2, fresh=daysUntil(b._d)>=-10;
+      return '<article class="press rv" style="--i:'+i+'">'+
+        (b.bild?'<div class="pic" role="img" aria-label="'+esc(b.titel)+'" style="background-image:url(\''+esc(b.bild)+'\')"></div>':'')+
+        '<div class="body"><div class="top"><span class="src">'+esc(b.quelle||"Dettingen aktuell")+(b.ausgabe?' · '+esc(b.ausgabe):'')+'</span><time datetime="'+esc(b.datum)+'">'+pressDate(b._d)+'</time>'+(fresh?'<span class="new">Neu</span>':'')+'</div>'+
+        '<h3>'+esc(b.titel)+'</h3>'+(b.mannschaft?'<p class="team">'+esc(b.mannschaft)+'</p>':'')+
+        (ps.length?'<div class="txt'+(long?' long':'')+'">'+ps.map(function(x){return '<p>'+esc(x)+'</p>'}).join("")+'</div>'+(long?'<button class="more" type="button" aria-expanded="false">Weiterlesen</button>':''):'')+
+        ((b.pdf||b.link)?'<div class="acts">'+(b.pdf?'<a class="btn btn-out" href="'+esc(b.pdf)+'" target="_blank" rel="noopener">Bericht als PDF</a>':'')+(b.link?'<a class="btn btn-out" href="'+esc(b.link)+'" target="_blank" rel="noopener">Online lesen</a>':'')+'</div>':'')+
+        '</div></article>';
+    }).join("")+'</div>';
+    if(rest>0)html+='<div class="press-older"><button class="btn btn-out" type="button" id="press-all">Ältere Berichte anzeigen ('+rest+')</button></div>';
+    box.innerHTML=html;watch(box);
+  }
+  $("press").addEventListener("click",function(e){
+    var t=e.target;
+    if(t.classList.contains("more")){var a=t.closest(".press"),o=a.classList.toggle("open");t.textContent=o?"Weniger anzeigen":"Weiterlesen";t.setAttribute("aria-expanded",o)}
+    else if(t.id==="press-all"){pressAll=true;renderPress()}
+    else if(t.dataset&&t.dataset.t!==undefined&&t.closest(".press-filter")){pressTeam=t.dataset.t;pressAll=false;renderPress()}
+  });
+
   function renderStand(){
     var u=new Date(DATA.updated);
     var s=u.toLocaleString("de-DE",{timeZone:"Europe/Berlin",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
@@ -835,7 +911,7 @@ footer img{height:44px;width:auto;display:block}
   function watchCounts(){if(!io)return;document.querySelectorAll("[data-count]").forEach(function(el){io.observe(el)})}
   function watchHeads(){if(!io){document.querySelectorAll(".sec-head,[data-on]").forEach(function(h){h.classList.add("on")});return}document.querySelectorAll(".sec-head,[data-on]").forEach(function(h){io.observe(h)})}
 
-  var secs=["start","niveau","spiele","tabellen","turniere","mitmachen"].map(function(id){return document.getElementById(id)});
+  var secs=["start","niveau","spiele","tabellen","turniere","presse","mitmachen"].map(function(id){return document.getElementById(id)});
   var links=document.querySelectorAll("a[data-sec]");
   var fab=$("fab"), current=-1, ticking=false;
   function update(){
@@ -871,6 +947,7 @@ footer img{height:44px;width:auto;display:block}
   navEl.addEventListener("click",function(e){if(e.target.tagName==="A")closeMenu()});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMenu()});
 
+  fetch("presse.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){renderPress(j.berichte||[])}).catch(function(){renderPress([])});
   fetch("turniere.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){renderTourneys(j.turniere)}).catch(function(){renderTourneys([])});
   fetch("data.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
     .then(function(d){DATA=d;render()})
