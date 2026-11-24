@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23T15:26:10+00:00",
+ "updated": "2026-11-24T02:53:51+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -384,6 +384,18 @@
     },
     {
      "rank": 2,
+     "team": "TuS Metzingen IV",
+     "m": 4,
+     "w": 3,
+     "d": 0,
+     "l": 1,
+     "games": "33:16",
+     "diff": "+17",
+     "pts": "6:2",
+     "mark": "up"
+    },
+    {
+     "rank": 3,
      "team": "FC Mittelstadt III",
      "m": 4,
      "w": 3,
@@ -391,30 +403,18 @@
      "l": 1,
      "games": "34:18",
      "diff": "+16",
-     "pts": "6:2",
-     "mark": "up"
-    },
-    {
-     "rank": 3,
-     "team": "TuS Metzingen V",
-     "m": 5,
-     "w": 3,
-     "d": 0,
-     "l": 2,
-     "games": "33:32",
-     "diff": "+1",
-     "pts": "6:4"
+     "pts": "6:2"
     },
     {
      "rank": 4,
-     "team": "TuS Metzingen IV",
-     "m": 3,
-     "w": 2,
+     "team": "TuS Metzingen V",
+     "m": 6,
+     "w": 3,
      "d": 0,
-     "l": 1,
-     "games": "24:14",
-     "diff": "+10",
-     "pts": "4:2"
+     "l": 3,
+     "games": "35:41",
+     "diff": "-6",
+     "pts": "6:6"
     },
     {
      "rank": 5,
@@ -934,23 +934,23 @@
    "d": "2026-11-06",
    "t": "20:00",
    "f": [],
-   "lg": "E KKA",
-   "h": "TSV Dettingen V",
-   "a": "SV Tübingen IV",
-   "r": "0:10",
-   "n": "",
-   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=15949578&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
-  },
-  {
-   "d": "2026-11-06",
-   "t": "20:00",
-   "f": [],
    "lg": "E BK",
    "h": "TSV Dettingen II",
    "a": "TSV Riederich",
    "r": "8:8",
    "n": "",
    "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16004407&championship=SK+Bez.+AL+26%2F27&club=3939&group=528659"
+  },
+  {
+   "d": "2026-11-06",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "SV Tübingen IV",
+   "r": "0:10",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=15949578&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
   },
   {
    "d": "2026-11-07",
@@ -1221,13 +1221,10 @@
   {
    "d": "2026-12-12",
    "t": "16:30",
-   "f": [
-    "t",
-    "v"
-   ],
-   "lg": "E KLB",
-   "h": "TSV Dettingen IV",
-   "a": "TSV Sondelfingen III",
+   "f": [],
+   "lg": "E BOL",
+   "h": "TSV Dettingen",
+   "a": "SV Tübingen",
    "r": "",
    "n": "",
    "u": ""
@@ -1235,10 +1232,13 @@
   {
    "d": "2026-12-12",
    "t": "16:30",
-   "f": [],
-   "lg": "E BOL",
-   "h": "TSV Dettingen",
-   "a": "SV Tübingen",
+   "f": [
+    "t",
+    "v"
+   ],
+   "lg": "E KLB",
+   "h": "TSV Dettingen IV",
+   "a": "TSV Sondelfingen III",
    "r": "",
    "n": "",
    "u": ""
