@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T19:28:28+00:00",
+ "updated": "2026-11-28T02:39:49+00:00",
  "season": "2026/27",
  "clubName": "TSV Dettingen",
  "clubUrl": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=3939",
@@ -157,13 +157,13 @@
     {
      "rank": 2,
      "team": "TSV Dettingen II",
-     "m": 6,
+     "m": 7,
      "w": 4,
      "d": 1,
-     "l": 1,
-     "games": "47:32",
-     "diff": "+15",
-     "pts": "9:3",
+     "l": 2,
+     "games": "53:41",
+     "diff": "+12",
+     "pts": "9:5",
      "mark": "rup"
     },
     {
@@ -191,13 +191,13 @@
     {
      "rank": 5,
      "team": "TTC Reutlingen II",
-     "m": 7,
-     "w": 2,
+     "m": 8,
+     "w": 3,
      "d": 2,
      "l": 3,
-     "games": "54:53",
-     "diff": "+1",
-     "pts": "6:8"
+     "games": "63:59",
+     "diff": "+4",
+     "pts": "8:8"
     },
     {
      "rank": 6,
@@ -271,17 +271,28 @@
     {
      "rank": 2,
      "team": "FC Mittelstadt II",
-     "m": 6,
-     "w": 4,
+     "m": 7,
+     "w": 5,
      "d": 1,
      "l": 1,
-     "games": "51:29",
-     "diff": "+22",
-     "pts": "9:3",
+     "games": "60:30",
+     "diff": "+30",
+     "pts": "11:3",
      "mark": "up"
     },
     {
      "rank": 3,
+     "team": "TV Neuhausen II",
+     "m": 7,
+     "w": 3,
+     "d": 2,
+     "l": 2,
+     "games": "47:44",
+     "diff": "+3",
+     "pts": "8:6"
+    },
+    {
+     "rank": 4,
      "team": "TTC Reutlingen IV",
      "m": 7,
      "w": 4,
@@ -292,18 +303,18 @@
      "pts": "8:6"
     },
     {
-     "rank": 4,
+     "rank": 5,
      "team": "SV Rommelsbach III",
-     "m": 4,
+     "m": 5,
      "w": 3,
      "d": 0,
-     "l": 1,
-     "games": "27:14",
-     "diff": "+13",
-     "pts": "6:2"
+     "l": 2,
+     "games": "28:23",
+     "diff": "+5",
+     "pts": "6:4"
     },
     {
-     "rank": 5,
+     "rank": 6,
      "team": "TTV Reicheneck",
      "m": 6,
      "w": 3,
@@ -314,26 +325,15 @@
      "pts": "6:6"
     },
     {
-     "rank": 6,
-     "team": "TV Neuhausen II",
-     "m": 6,
-     "w": 2,
-     "d": 2,
-     "l": 2,
-     "games": "38:43",
-     "diff": "-5",
-     "pts": "6:6"
-    },
-    {
      "rank": 7,
      "team": "TSV Dettingen III",
-     "m": 5,
+     "m": 6,
      "w": 1,
      "d": 0,
-     "l": 4,
-     "games": "11:42",
-     "diff": "-31",
-     "pts": "2:8"
+     "l": 5,
+     "games": "12:51",
+     "diff": "-39",
+     "pts": "2:10"
     },
     {
      "rank": 8,
@@ -373,37 +373,37 @@
     {
      "rank": 1,
      "team": "TSV Riederich II",
-     "m": 3,
-     "w": 3,
+     "m": 4,
+     "w": 4,
      "d": 0,
      "l": 0,
-     "games": "27:11",
-     "diff": "+16",
-     "pts": "6:0",
+     "games": "36:15",
+     "diff": "+21",
+     "pts": "8:0",
      "mark": "up"
     },
     {
      "rank": 2,
      "team": "TuS Metzingen IV",
-     "m": 4,
-     "w": 3,
+     "m": 5,
+     "w": 4,
      "d": 0,
      "l": 1,
-     "games": "33:16",
-     "diff": "+17",
-     "pts": "6:2",
+     "games": "42:16",
+     "diff": "+26",
+     "pts": "8:2",
      "mark": "up"
     },
     {
      "rank": 3,
      "team": "FC Mittelstadt III",
-     "m": 4,
+     "m": 5,
      "w": 3,
      "d": 0,
-     "l": 1,
-     "games": "34:18",
-     "diff": "+16",
-     "pts": "6:2"
+     "l": 2,
+     "games": "34:27",
+     "diff": "+7",
+     "pts": "6:4"
     },
     {
      "rank": 4,
@@ -419,13 +419,13 @@
     {
      "rank": 5,
      "team": "TSV Sondelfingen III",
-     "m": 4,
+     "m": 5,
      "w": 2,
      "d": 0,
-     "l": 2,
-     "games": "30:23",
-     "diff": "+7",
-     "pts": "4:4"
+     "l": 3,
+     "games": "34:32",
+     "diff": "+2",
+     "pts": "4:6"
     },
     {
      "rank": 6,
@@ -934,23 +934,23 @@
    "d": "2026-11-06",
    "t": "20:00",
    "f": [],
-   "lg": "E KKA",
-   "h": "TSV Dettingen V",
-   "a": "SV Tübingen IV",
-   "r": "0:10",
-   "n": "",
-   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=15949578&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
-  },
-  {
-   "d": "2026-11-06",
-   "t": "20:00",
-   "f": [],
    "lg": "E BK",
    "h": "TSV Dettingen II",
    "a": "TSV Riederich",
    "r": "8:8",
    "n": "",
    "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16004407&championship=SK+Bez.+AL+26%2F27&club=3939&group=528659"
+  },
+  {
+   "d": "2026-11-06",
+   "t": "20:00",
+   "f": [],
+   "lg": "E KKA",
+   "h": "TSV Dettingen V",
+   "a": "SV Tübingen IV",
+   "r": "0:10",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=15949578&championship=SK+Bez.+AL+26%2F27&club=3939&group=528672"
   },
   {
    "d": "2026-11-07",
@@ -1107,9 +1107,9 @@
    "lg": "E KLA",
    "h": "TV Neuhausen II",
    "a": "TSV Dettingen III",
-   "r": "",
+   "r": "9:1",
    "n": "",
-   "u": ""
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16124590&championship=SK+Bez.+AL+26%2F27&club=3939&group=528666"
   },
   {
    "d": "2026-11-27",
@@ -1121,6 +1121,17 @@
    "lg": "E BK",
    "h": "TSV Dettingen II",
    "a": "TTC Reutlingen II",
+   "r": "6:9",
+   "n": "",
+   "u": "https://ttbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubMeetingReport?meeting=16004388&championship=SK+Bez.+AL+26%2F27&club=3939&group=528659"
+  },
+  {
+   "d": "2026-11-28",
+   "t": "18:00",
+   "f": [],
+   "lg": "E BK",
+   "h": "TTC Reutlingen III",
+   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
@@ -1135,17 +1146,6 @@
    "lg": "E KLA",
    "h": "TSV Sickenhausen II",
    "a": "TSV Dettingen III",
-   "r": "",
-   "n": "",
-   "u": ""
-  },
-  {
-   "d": "2026-11-28",
-   "t": "18:00",
-   "f": [],
-   "lg": "E BK",
-   "h": "TTC Reutlingen III",
-   "a": "TSV Dettingen II",
    "r": "",
    "n": "",
    "u": ""
